@@ -1,0 +1,17 @@
+body {
+  min-height: 2000px;
+}
+
+.navbar-static-top {
+  margin-bottom: 19px;
+}
+
+.tab-content {
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  border-top: 0;
+}
+
+.tab-pane {
+  padding: 1em;
+}
