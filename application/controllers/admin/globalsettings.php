@@ -107,7 +107,64 @@ class GlobalSettings extends Survey_Common_Action
             $data['excludedLanguages'] = array_diff(array_keys($data['allLanguages']), $data['restrictToLanguages']);
         }
 
+        $data['overview']     = $this->_build_overview_data($data);
+        $data['general']      = $this->_build_general_data($data);
+        $data['email']        = $this->_build_email_data($data);
+        $data['bounce']       = $this->_build_bounce_data($data);
+        $data['security']     = $this->_build_security_data($data);
+        $data['presentation'] = $this->_build_presentation_data($data);
+        $data['language']     = $this->_build_language_data($data);
+        $data['interfaces']   = $this->_build_interfaces_data($data);
+
         $this->_renderWrappedTemplate('', 'globalSettings_view', $data);
+    }
+
+    private function _build_overview_data($data) {
+        $attrs = array('clang', 'usercount', 'surveycount', 'activesurveycount', 'deactivatedsurveys', 'activetokens', 'deactivatedtokens', 'thisupdatecheckperiod', 'updatelastcheck', 'updateavailable', 'aUpdateVersions', 'updateinfo', 'updatable');
+        return $this->_build_data($data, $attrs);
+    }
+
+    private function _build_general_data($data) {
+        $attrs = array('clang');
+        return $this->_build_data($data, $attrs);
+    }
+
+    private function _build_email_data($data) {
+        $attrs = array('clang');
+        return $this->_build_data($data, $attrs);
+    }
+
+    private function _build_bounce_data($data) {
+        $attrs = array('clang');
+        return $this->_build_data($data, $attrs);
+    }
+
+    private function _build_security_data($data) {
+        $attrs = array('clang');
+        return $this->_build_data($data, $attrs);
+    }
+
+    private function _build_presentation_data($data) {
+        $attrs = array('clang');
+        return $this->_build_data($data, $attrs);
+    }
+
+    private function _build_language_data($data) {
+        $attrs = array('clang', 'excludedLanguages', 'restrictToLanguages', 'allLanguages');
+        return $this->_build_data($data, $attrs);
+    }
+
+    private function _build_interfaces_data($data) {
+        $attrs = array('clang');
+        return $this->_build_data($data, $attrs);
+    }
+
+    private function _build_data($data, $attrs) {
+        $return = array();
+        foreach($attrs as $attr) {
+            $return[$attr] = $data[$attr];
+        }
+        return $return;
     }
 
     private function _saveSettings()
