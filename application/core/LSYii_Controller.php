@@ -170,4 +170,27 @@ abstract class LSYii_Controller extends CController
         else 
             return parent::createAbsoluteUrl($route,$params,$schema,$ampersand);
     }
+
+  /**
+   * Autofinds existing view file, renders default admin/ if file is not existing
+   * Parameter list is the same as $this->render
+   * @param string  $path   path relative to views/admin
+   * @param array   $data   additional GET parameters (name=>value). Both the name and value will be URL-encoded.
+   * @param boolean $return return the rendered string
+   * @return void or string, depending on $return
+   */
+  public function render_admin_theme($path, $data, $return = null) {
+    Yii::app()->getClientScript()->reset();
+    $theme = Yii::app()->getConfig('admintheme');
+    $render_path = '/' . $theme . $path;
+    if (! $this->getViewFile($render_path)) {
+      $render_path = '/admin' . $path;
+    }
+
+    if(is_null($return)) {
+      $this->render($render_path, $data);
+    } else {
+      return $this->render($render_path, $data, $return);
+    }
+  }
 }
