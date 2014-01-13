@@ -1,0 +1,1 @@
+find me at views/bootstrap/participants/participantsPanel_view.php
