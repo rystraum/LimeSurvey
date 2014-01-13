@@ -36,7 +36,10 @@ $(document).ready(function(){
             duration: 'fast'
         }, $.datepicker.regional[userlanguage]);
     }
-    $(".sf-menu").superfish({speed: 'fast'});
+    if($('.sf-menu').length > 0) {
+        $(".sf-menu").superfish({speed: 'fast'});    
+    }
+    
     doToolTip();
     $('button,input[type=submit],input[type=button],input[type=reset],.button').button();
     $('button,input[type=submit],input[type=button],input[type=reset],.button').addClass("limebutton");
@@ -82,8 +85,8 @@ $(document).ready(function(){
     $('#MaximizeGroupWindow').click(function(){
         $('#groupdetails').show();
     });
-    $('#tabs').tabs();
-    $('.tab-nav').tabs();
+    if($('#tabs').length > 0) $('#tabs').tabs();
+    if($('#tab-nav').length > 0) $('.tab-nav').tabs();
     $(".flashmessage").each(function() {
         $(this).notify().notify('create','themeroller',{},{custom:true,
         speed: 500,
@@ -691,7 +694,8 @@ function removeCSRFDivs()
 
 function initializeAjaxProgress()
 {
-    $('#ajaxprogress').dialog({
+    if($('#ajaxprogress').length > 0) {
+        $('#ajaxprogress').dialog({
             'modal' : true,
             'closeOnEscape' : false,
             'title' : $('#ajaxprogress').attr('title'),
@@ -699,15 +703,16 @@ function initializeAjaxProgress()
             'minHeight': 0,
             'resizable': false
         });
-    $('#ajaxprogress').bind('ajaxStart', function()
-    {
-        $(this).dialog('open');
-    });
-    $('#ajaxprogress').bind('ajaxStop', function()
-    {
-        
-        $(this).dialog('close');
-    });
+        $('#ajaxprogress').bind('ajaxStart', function()
+        {
+            $(this).dialog('open');
+        });
+        $('#ajaxprogress').bind('ajaxStop', function()
+        {
+            
+            $(this).dialog('close');
+        });
+    }
 }
 
 /**
