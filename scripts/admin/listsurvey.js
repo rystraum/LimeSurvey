@@ -87,136 +87,141 @@ $(document).ready(function(){
     });
     var lastSel,lastSel2;
     function returnColModel() {
-        if($.cookie("detailedsurveycolumns")) {
-            hidden=$.cookie("detailedsurveycolumns").split('|');
-            for (i=0;i<hidden.length;i++)
-                if(hidden[i]!="false") colModels[i]['hidden']=true;
+        if($.cookie != undefined) {
+            if($.cookie("detailedsurveycolumns")) {
+                hidden=$.cookie("detailedsurveycolumns").split('|');
+                for (i=0;i<hidden.length;i++)
+                    if(hidden[i]!="false") colModels[i]['hidden']=true;
+            }
+            return colModels;    
         }
-        return colModels;
     }
-    jQuery("#displaysurveys").jqGrid({
-        autoencode: false,// autoencode to false is really a bad idea. Need JS system for link and update
-        direction: $('html').attr('dir'),
-        recordtext: sRecordText,
-        emptyrecords: sEmptyRecords,
-        pgtext: sPageText,
-        loadtext : sLoadText,
-        align:"center",
-        url: jsonUrl,
-        editurl: editUrl,
-        datatype: "json",
-        mtype: "post",
-        colNames : colNames,
-        colModel: returnColModel(),
-        toppager: true,
-        height: "100%",
-        width: $(window).width()-4,
-        shrinkToFit: true,
-        ignoreCase: true,
-        rowNum: 25,
-        editable:true,
-        scrollOffset:0,
-        sortable : true,
-        hidegrid : false,
-        sortname: 'sid',
-        sortorder: 'asc',
-        viewrecords : true,
-        rowList: [25,50,100,250,500,1000,2500,5000],
-        multiselect: true,
-        loadonce : true,
-        pager: "#pager",
-        caption: sCaption,
-        beforeProcessing: function(data){
-            $('#displaysurveys tbody').hide();
-        },
-        loadComplete: function(data){
-            // Need this for vertical scrollbar 
-			$('#displaysurveys').setGridWidth($(window).width()-4);
-            $('.wrapper').width($('#displaysurveys').width()+4);
-            $('.footer').outerWidth($('#displaysurveys').outerWidth()+4).css({ 'margin':'0 auto' });
-            if (jQuery("#displaysurveys").jqGrid('getGridParam','datatype') === "json") {
-                setTimeout(function(){
-                    jQuery("#displaysurveys").trigger("reloadGrid");
-					$('#displaysurveys tbody').show();
-                },100);
-            }
-        }
-    });
-    
-    // Inject the translations into jqGrid
-    $.extend($.jgrid,{ 
-        del:{
-            msg:delmsg, 
-            bSubmit: sDelCaption,
-            caption: sDelCaption,
-            bCancel: sCancel
-        },
-        search : {
-            odata : [ sOperator1, sOperator2, sOperator3, sOperator4, sOperator5, sOperator6, sOperator7, sOperator8, sOperator9, sOperator10, sOperator11, sOperator12, sOperator13, sOperator14, sOperator15, sOperator16 ],
-            caption: sSearchCaption,
-            Find : sFind,
-            Reset: sReset,
-        }
-    });    
-    
-    jQuery("#displaysurveys").jqGrid('navGrid','#pager',{ 
-        deltitle: sDelTitle, 
-        searchtitle: sSearchTitle,
-        refreshtitle: sRefreshTitle,
-        alertcap: sWarningMsg,        alerttext: sSelectRowMsg,
-        add:false,
-        del:true,
-        edit:false,
-        refresh: true,
-        search: true
-        },{},{},{ 
-            width : 450,
-            afterShowForm: function(form) {
-                form.closest('div.ui-jqdialog').center();
+
+    if (jQuery("#displaysurveys").jqGrid != undefined) {
+        jQuery("#displaysurveys").jqGrid({
+            autoencode: false,// autoencode to false is really a bad idea. Need JS system for link and update
+            direction: $('html').attr('dir'),
+            recordtext: sRecordText,
+            emptyrecords: sEmptyRecords,
+            pgtext: sPageText,
+            loadtext : sLoadText,
+            align:"center",
+            url: jsonUrl,
+            editurl: editUrl,
+            datatype: "json",
+            mtype: "post",
+            colNames : colNames,
+            colModel: returnColModel(),
+            toppager: true,
+            height: "100%",
+            width: $(window).width()-4,
+            shrinkToFit: true,
+            ignoreCase: true,
+            rowNum: 25,
+            editable:true,
+            scrollOffset:0,
+            sortable : true,
+            hidegrid : false,
+            sortname: 'sid',
+            sortorder: 'asc',
+            viewrecords : true,
+            rowList: [25,50,100,250,500,1000,2500,5000],
+            multiselect: true,
+            loadonce : true,
+            pager: "#pager",
+            caption: sCaption,
+            beforeProcessing: function(data){
+                $('#displaysurveys tbody').hide();
             },
-            afterSubmit: function(response, postdata) {
-                if (postdata.oper=='del')
-                {
-                    // Remove surveys from dropdown, too
-                    aSurveyIDs=postdata.id.split(",");
-                    $.each(aSurveyIDs,function(iIndex, iSurveyID){
-                        $("#surveylist option[value='"+iSurveyID+"']").remove();   
-                    })
-                };
-                return [true];
-            }
-        },
-        {
-            width:600
-    });
-    jQuery("#displaysurveys").jqGrid('filterToolbar', {searchOnEnter : false,defaultSearch: 'cn'});
-    jQuery("#displaysurveys").jqGrid('navButtonAdd','#pager',{
-        buttonicon:"ui-icon-calculator",
-        caption:"",
-        title: sSelectColumns,
-        onClickButton : function (){
-            jQuery("#displaysurveys").jqGrid('columnChooser', {
-                caption: sSelectColumns,
-                bSubmit: sSubmit,
-                bCancel: sCancel,
-                done : function (perm) {
-                    if (perm) {
-                        this.jqGrid("remapColumns", perm, true);
-                        var hidden = [];
-                        $.each($("#displaysurveys").getGridParam("colModel"), function(key, val) {hidden.push( val['hidden'] );});
-                        hidden.splice(0,1);
-                        $.cookie("detailedsurveycolumns", hidden.join("|") );
-                    }
+            loadComplete: function(data){
+                // Need this for vertical scrollbar 
+    			$('#displaysurveys').setGridWidth($(window).width()-4);
+                $('.wrapper').width($('#displaysurveys').width()+4);
+                $('.footer').outerWidth($('#displaysurveys').outerWidth()+4).css({ 'margin':'0 auto' });
+                if (jQuery("#displaysurveys").jqGrid('getGridParam','datatype') === "json") {
+                    setTimeout(function(){
+                        jQuery("#displaysurveys").trigger("reloadGrid");
+    					$('#displaysurveys tbody').show();
+                    },100);
                 }
-            });
-        }
-    });
+            }
+        });
+        
+        // Inject the translations into jqGrid
+        $.extend($.jgrid,{ 
+            del:{
+                msg:delmsg, 
+                bSubmit: sDelCaption,
+                caption: sDelCaption,
+                bCancel: sCancel
+            },
+            search : {
+                odata : [ sOperator1, sOperator2, sOperator3, sOperator4, sOperator5, sOperator6, sOperator7, sOperator8, sOperator9, sOperator10, sOperator11, sOperator12, sOperator13, sOperator14, sOperator15, sOperator16 ],
+                caption: sSearchCaption,
+                Find : sFind,
+                Reset: sReset,
+            }
+        });    
+        
+        jQuery("#displaysurveys").jqGrid('navGrid','#pager',{ 
+            deltitle: sDelTitle, 
+            searchtitle: sSearchTitle,
+            refreshtitle: sRefreshTitle,
+            alertcap: sWarningMsg,        alerttext: sSelectRowMsg,
+            add:false,
+            del:true,
+            edit:false,
+            refresh: true,
+            search: true
+            },{},{},{ 
+                width : 450,
+                afterShowForm: function(form) {
+                    form.closest('div.ui-jqdialog').center();
+                },
+                afterSubmit: function(response, postdata) {
+                    if (postdata.oper=='del')
+                    {
+                        // Remove surveys from dropdown, too
+                        aSurveyIDs=postdata.id.split(",");
+                        $.each(aSurveyIDs,function(iIndex, iSurveyID){
+                            $("#surveylist option[value='"+iSurveyID+"']").remove();   
+                        })
+                    };
+                    return [true];
+                }
+            },
+            {
+                width:600
+        });
+        jQuery("#displaysurveys").jqGrid('filterToolbar', {searchOnEnter : false,defaultSearch: 'cn'});
+        jQuery("#displaysurveys").jqGrid('navButtonAdd','#pager',{
+            buttonicon:"ui-icon-calculator",
+            caption:"",
+            title: sSelectColumns,
+            onClickButton : function (){
+                jQuery("#displaysurveys").jqGrid('columnChooser', {
+                    caption: sSelectColumns,
+                    bSubmit: sSubmit,
+                    bCancel: sCancel,
+                    done : function (perm) {
+                        if (perm) {
+                            this.jqGrid("remapColumns", perm, true);
+                            var hidden = [];
+                            $.each($("#displaysurveys").getGridParam("colModel"), function(key, val) {hidden.push( val['hidden'] );});
+                            hidden.splice(0,1);
+                            $.cookie("detailedsurveycolumns", hidden.join("|") );
+                        }
+                    }
+                });
+            }
+        });
+    }
 
 	$('.wrapper').width($('#displaysurveys').width()+4);
 	$('.footer').outerWidth($('#displaysurveys').outerWidth()+4).css({ 'margin':'0 auto' });
 	
     $(window).bind('resize', function() {
-        $('#displaysurveys').setGridWidth($(window).width()-4);
+        if($('#displaysurveys').setGridWidth != undefined) $('#displaysurveys').setGridWidth($(window).width()-4);
         $('.wrapper').width($('#displaysurveys').width()+4);
         $('.footer').outerWidth($('#displaysurveys').outerWidth()+4).css({ 'margin':'0 auto' });
     }).trigger('resize');
