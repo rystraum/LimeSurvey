@@ -20,13 +20,13 @@
           <ul class="dropdown-menu">
             <li>
               <a href="<?php echo $this->createUrl("admin/survey/sa/index"); ?>">
-                <?php $clang->eT("Forms list"); ?>
+                <?php $this->lang->eT("Forms list"); ?>
               </a>
             </li>
-            <?php if(Yii::app()->session['USER_RIGHT_CREATE_SURVEY']): ?>
+            <?php if(Permission::model()->hasGlobalPermission('surveys','create')): ?>
               <li>
                 <a href="<?php echo $this->createUrl('admin/survey/sa/newsurvey'); ?>">
-                  <?php $clang->eT("Create, import, or copy a form");?>
+                  <?php $this->lang->eT("Create, import, or copy a form");?>
                 </a>
               </li>
             <?php endif; ?>
@@ -37,13 +37,13 @@
           <ul class="dropdown-menu">
             <li>
               <a href="<?php echo $this->createUrl("admin/user/sa/index"); ?>">
-                <?php $clang->eT("Manage form administrators");?>
+                <?php $this->lang->eT("Manage form administrators");?>
               </a>
             </li>
-            <?php if(Yii::app()->session['USER_RIGHT_CREATE_USER']): ?>
+            <?php if(Permission::model()->hasGlobalPermission('usergroups','read')): ?>
               <li>
                 <a href="<?php echo $this->createUrl('admin/usergroups/sa/index'); ?>">
-                  <?php $clang->eT("Create/edit user groups");?>
+                  <?php $this->lang->eT("Create/edit user groups");?>
                 </a>
               </li>
             <?php endif; ?>
@@ -52,23 +52,23 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <?php if(Yii::app()->session['USER_RIGHT_CONFIGURATOR'] == 1): ?>
+            <?php if(Permission::model()->hasGlobalPermission('settings','read')): ?>
               <li>
                 <a href="<?php echo $this->createUrl("admin/checkintegrity"); ?>">
-                  <?php $clang->eT("Check Data Integrity") ?>
+                  <?php $this->lang->eT("Check Data Integrity") ?>
                 </a>
               </li>
             <?php endif; ?>
-            <?php if(Yii::app()->session['USER_RIGHT_SUPERADMIN'] == 1): ?>
+            <?php if(Permission::model()->hasGlobalPermission('superadmin','read')): ?>
               <?php if (in_array(Yii::app()->db->getDriverName(), array('mysql', 'mysqli')) || Yii::app()->getConfig('demoMode') == true): ?>
                 <li>
                   <a href="<?php echo $this->createUrl("admin/dumpdb"); ?>" >
-                    <?php $clang->eT("Backup Entire Database");?>
+                    <?php $this->lang->eT("Backup Entire Database");?>
                   </a>
                 </li>
               <?php else: ?>
                 <li>
-                  <a href="#" alt='<?php $clang->eT("The database export is only available for MySQL databases. For other database types please use the according backup mechanism to create a database dump."); ?>'>Backup Disabled.</a>
+                  <a href="#" alt='<?php $this->lang->eT("The database export is only available for MySQL databases. For other database types please use the according backup mechanism to create a database dump."); ?>'>Backup Disabled.</a>
                 </li>
               <?php endif; ?>
             <?php endif; ?>
@@ -77,36 +77,36 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other settings <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <?php if(Yii::app()->session['USER_RIGHT_CONFIGURATOR'] == 1): ?>
+            <?php if(Permission::model()->hasGlobalPermission('settings','read')): ?>
               <li><a href="<?php echo $this->createUrl("admin/globalsettings"); ?>">Global Settings</a></li>
             <?php endif; ?>
             
-            <?php if(Yii::app()->session['USER_RIGHT_PARTICIPANT_PANEL'] == 1): ?>
+            <?php if(Permission::model()->hasGlobalPermission('participantpanel','read')): ?>
               <li class="divider"></li>
               <li class="dropdown-header">Participants</li>
               <li>
                 <a href="<?php echo $this->createUrl("admin/participants/sa/index"); ?>" >
-                  <?php $clang->eT("Central participant database/panel");?>
+                  <?php $this->lang->eT("Central participant database/panel");?>
                 </a>
               </li>
             <?php endif; ?>
 
-            <?php if(Yii::app()->session['USER_RIGHT_MANAGE_LABEL'] == 1): ?>
+            <?php if(Permission::model()->hasGlobalPermission('labelsets','read')): ?>
               <li class="divider"></li>
               <li class="dropdown-header">Labels</li>
               <li>
                 <a href="<?php echo $this->createUrl("admin/labels/sa/view"); ?>" >
-                  <?php $clang->eT("Edit label sets");?>
+                  <?php $this->lang->eT("Edit label sets");?>
                 </a>
               </li>
             <?php endif; ?>
 
-            <?php if(Yii::app()->session['USER_RIGHT_MANAGE_TEMPLATE'] == 1): ?>
+            <?php if(Permission::model()->hasGlobalPermission('templates','read')): ?>
               <li class="divider"></li>
               <li class="dropdown-header">Template</li>
               <li>
                 <a href="<?php echo $this->createUrl("admin/templates/sa/view"); ?>" >
-                  <?php $clang->eT("Template Editor");?>
+                  <?php $this->lang->eT("Template Editor");?>
                 </a>
               </li>
             <?php endif; ?>
@@ -117,16 +117,16 @@
         <?php if(Yii::app()->session['loginID']): ?>
         <li>
           <a href="<?php echo $this->createUrl("/admin/user/sa/personalsettings"); ?>">
-            <?php $clang->eT("Logged in as:");?>
+            <?php $this->lang->eT("Logged in as:");?>
             <strong>
               <?php echo Yii::app()->session['user'];?>
-              <span class="glyphicon glyphicon-edit" alt="<?php $clang->eT("Edit your personal preferences");?>"></span>
+              <span class="glyphicon glyphicon-edit" alt="<?php $this->lang->eT("Edit your personal preferences");?>"></span>
             </strong>
           </a></li>
         <?php endif; ?>
         <li>
           <a href="<?php echo $this->createUrl("admin/authentication/sa/logout"); ?>" >
-            <?php $clang->eT("Logout");?>
+            <?php $this->lang->eT("Logout");?>
           </a>
         </li>
       </ul>
