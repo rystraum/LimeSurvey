@@ -21,9 +21,10 @@
 */
 class GlobalSettings extends Survey_Common_Action
 {
-
+    
     function __construct($controller, $id)
     {
+        $controller->layout = 'admin';
         parent::__construct($controller, $id);
 
         if (!Permission::model()->hasGlobalPermission('settings','read')) {
@@ -116,7 +117,7 @@ class GlobalSettings extends Survey_Common_Action
         $data['language']     = $this->_build_language_data($data);
         $data['interfaces']   = $this->_build_interfaces_data($data);
 
-        $this->_renderWrappedTemplate('', 'globalSettings_view', $data);
+        $this->getController()->render('global_settings', $data);
     }
 
     private function _build_overview_data($data) {
