@@ -24,7 +24,11 @@ class GlobalSettings extends Survey_Common_Action
     
     function __construct($controller, $id)
     {
-        $controller->layout = 'admin';
+        $theme = Yii::app()->getConfig('admintheme');
+        if ($theme == 'bootstrap') {
+            $controller->layout = 'admin';
+        }
+
         parent::__construct($controller, $id);
 
         if (!Permission::model()->hasGlobalPermission('settings','read')) {
@@ -108,20 +112,25 @@ class GlobalSettings extends Survey_Common_Action
             $data['excludedLanguages'] = array_diff(array_keys($data['allLanguages']), $data['restrictToLanguages']);
         }
 
-        $data['overview']     = $this->_build_overview_data($data);
-        $data['general']      = $this->_build_general_data($data);
-        $data['email']        = $this->_build_email_data($data);
-        $data['bounce']       = $this->_build_bounce_data($data);
-        $data['security']     = $this->_build_security_data($data);
-        $data['presentation'] = $this->_build_presentation_data($data);
-        $data['language']     = $this->_build_language_data($data);
-        $data['interfaces']   = $this->_build_interfaces_data($data);
+        $theme = Yii::app()->getConfig('admintheme');
+        if ($theme == 'bootstrap') {
+            $data['overview']     = $this->_build_overview_data($data);
+            $data['general']      = $this->_build_general_data($data);
+            $data['email']        = $this->_build_email_data($data);
+            $data['bounce']       = $this->_build_bounce_data($data);
+            $data['security']     = $this->_build_security_data($data);
+            $data['presentation'] = $this->_build_presentation_data($data);
+            $data['language']     = $this->_build_language_data($data);
+            $data['interfaces']   = $this->_build_interfaces_data($data);
 
-        $this->getController()->render('global_settings', $data);
+            $this->getController()->render('global_settings', $data);
+        } else {
+            $this->_renderWrappedTemplate('', 'globalSettings_view', $data);
+        }
     }
 
     private function _build_overview_data($data) {
-        $attrs = array('clang', 'usercount', 'surveycount', 'activesurveycount', 'deactivatedsurveys', 'activetokens', 'deactivatedtokens', 'thisupdatecheckperiod', 'updatelastcheck', 'updateavailable', 'aUpdateVersions', 'updateinfo', 'updatable');
+        $attrs = array('clang', 'usercount', 'surveycount', 'activesurveycount', 'deactivatedsurveys', 'activetokens', 'deactivatedtokens', 'thisupdatecheckperiod', 'updatelastcheck', 'updateavailable', 'aUpdateVersions', 'updateinfo', 'updatable', 'sUpdateNotification');
         return $this->_build_data($data, $attrs);
     }
 
