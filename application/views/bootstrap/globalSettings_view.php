@@ -1,3 +1,4 @@
+<p style="display:none;">This file in application/views/bootstrap/globalSettings_view.php</p>
 <div class="col-md-12">
   <h1>Global Settings</h1>
   <!-- Nav tabs -->
