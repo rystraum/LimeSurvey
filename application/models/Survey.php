@@ -476,4 +476,8 @@ class Survey extends LSActiveRecord
         $this->permission($user_id);
         return $this->with($with)->findAll();
     }
+
+    public function get_super_admin($with = array('languagesettings'=>array('condition'=>'surveyls_language=language'), 'owner')) {
+        return $this->with($with)->findAll();
+    }
 }
