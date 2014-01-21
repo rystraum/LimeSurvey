@@ -24,3 +24,4 @@
 </head>
 <body>
 <!-- super/adminmenu.php usually follows -->
+<!-- super/header.php -->

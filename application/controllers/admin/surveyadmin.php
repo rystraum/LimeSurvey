@@ -35,6 +35,10 @@ class SurveyAdmin extends Survey_Common_Action
     */
     public function __construct($controller, $id)
     {
+        $theme = Yii::app()->getConfig('admintheme');
+        if ($theme == 'bootstrap') {
+            $controller->layout = 'admin';
+        }
         parent::__construct($controller, $id);
     }
 
@@ -60,7 +64,18 @@ class SurveyAdmin extends Survey_Common_Action
                 $aData['issuperadmin'] = true;
             }
             
-            $this->_renderWrappedTemplate('survey', 'listSurveys_view', $aData);
+            $theme = Yii::app()->getConfig('admintheme');
+            if ($theme == 'bootstrap') {
+                if (!Permission::model()->hasGlobalPermission('superadmin','read')) {
+                    $aData['surveys'] = Survey::model()->get_allowed(Yii::app()->user->getId());
+                } else {
+                    $aData['surveys'] = Survey::model()->get_super_admin();
+                }
+                
+                $this->getController()->render('surveys/index', $aData);
+            } else {
+                $this->_renderWrappedTemplate('survey', 'listSurveys_view', $aData);
+            }
         }
     }
 
@@ -575,6 +590,7 @@ class SurveyAdmin extends Survey_Common_Action
         //!!! Is this even possible to execute?
         if (!Permission::model()->hasGlobalPermission('superadmin','read'))
             $surveys->permission(Yii::app()->user->getId());
+        
         $surveys = $surveys->with(array('languagesettings'=>array('condition'=>'surveyls_language=language'), 'owner'))->findAll();
         $aSurveyEntries = new stdClass();
         $aSurveyEntries->page = 1;
