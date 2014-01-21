@@ -1,9 +1,10 @@
 <?php $sitename = Yii::app()->getConfig("sitename"); ?>
+<?php $adminlang = Yii::app()->session['adminlang']; ?>
+<?php getLanguageRTL(Yii::app()->session["adminlang"]) ? $languageRTL = " dir=\"rtl\" " : $languageRTL = "" ?>
 <?php Yii::app()->getClientScript()->reset(); ?>
 <!DOCTYPE html>
 <html lang="<?php echo $adminlang; ?>"<?php echo $languageRTL;?>>
 <head>
-  <?php echo $meta;?>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,6 +26,7 @@
   <![endif]-->
 </head>
 <body>
+  <!-- Layout file in themes/bootstrap/views/layout/admin.php -->
   <!-- Start of super/adminmenu.php -->
   <div class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
