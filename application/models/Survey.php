@@ -471,4 +471,9 @@ class Survey extends LSActiveRecord
             $this->questionindex = 0;
         }
     }
+
+    public function get_allowed($user_id, $with = array('languagesettings'=>array('condition'=>'surveyls_language=language'), 'owner')) {
+        $this->permission($user_id);
+        return $this->with($with)->findAll();
+    }
 }
