@@ -47,14 +47,22 @@
         </td>
         
         <td class="actions">
-          <div class="btn-group btn-group-sm">
-            <?php if(Permission::model()->hasGlobalPermission('superadmin','read') || Yii::app()->session->loginID == $survey->owner_id): ?>
-              <a class="btn btn-primary btn-small" href="#">Edit</a>
-            <?php endif; ?>
-          </div>
+          <a class="btn btn-primary btn-sm" href="<?php echo $this->createUrl("admin/survey/sa/view/surveyid/" . $survey->sid) ?>">Show</a>
+          
+          <?php if(Permission::model()->hasGlobalPermission('superadmin','read') || Yii::app()->session->loginID == $survey->owner_id): ?>
+            <a class="btn btn-default btn-sm" href="#">Edit</a>
+          <?php endif; ?>
+
+          <?php if ($status_message['status'] === 'c'): ?>
+            <a class="btn btn-danger btn-sm" href="<?php echo $this->createUrl('admin/survey/sa/deactivate/surveyid/' . $survey->sid) ?>">Deactivate</a>
+          <?php endif; ?>
+
+          <?php if ($status_message['status'] === 'e'): ?>
+            <a class="btn btn-success btn-sm" href="<?php echo $this->createUrl('admin/survey/sa/activate/surveyid/' . $survey->sid) ?>">Activate</a>
+          <?php endif; ?>
         </td>
       </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-<pre><?php var_dump($surveys); ?></pre>
+<!-- <pre><?php var_dump($surveys); ?></pre> -->
