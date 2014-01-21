@@ -7855,5 +7855,64 @@ function array_diff_assoc_recursive($array1, $array2) {
     }
     return $difference;
 }
+
+function survey_status($survey, $clang) {
+    $rows = $survey;
+    $current_time = dateShift(date("Y-m-d H:i:s"), "Y-m-d", Yii::app()->getConfig('timeadjust'));
+    $return = array();
+    if ($rows['active'] == "Y" && $rows['expires'] != '' && $rows['expires'] < $current_time) {
+        $return['status'] = 'a';
+        $return['message'] = $clang->gT("This survey is active but expired.");
+    } elseif ($rows['active'] == "Y" && $rows['startdate'] != '' && $rows['startdate'] > dateShift(date("Y-m-d H:i:s"), "Y-m-d", Yii::app()->getConfig('timeadjust'))) {
+        $return['status'] = 'b';
+        $return['message'] = $clang->gT("This survey is active but has a start date.");
+    } elseif ($rows['active'] == "Y") {
+        if (Permission::model()->hasSurveyPermission($rows['sid'], 'surveyactivation', 'update')) {
+            $return['status'] = 'c';
+            $return['message'] = $clang->gT("This survey is active - click here to stop this survey.");
+        } else {
+            $return['status'] = 'd';
+            $return['message'] = $clang->gT("This survey is currently active.");
+        }
+    } else {
+        $condition = "sid={$rows['sid']} AND language='" . $rows['language'] . "'";
+        $questionsCountResult = Question::model()->count($condition);
+
+        if ($questionsCountResult>0 && Permission::model()->hasSurveyPermission($rows['sid'], 'surveyactivation', 'update')) {
+            $return['status'] = 'e';
+            $return['message'] = $clang->gT("This survey is currently not active - click here to activate this survey.");
+        } else {
+            $return['status'] = 'f';
+            $return['message'] = $clang->gT("This survey is currently not active.");
+        }
+    }
+    return $return;
+}
+
+function survey_status_icon($status) {
+    switch($status['status']) {
+        case 'a':
+            return 'glyphicon glyphicon-ok-circle';
+            break;
+        case 'b':
+            return 'glyphicon glyphicon-step-forward';
+            break;
+        case 'c':
+            return 'glyphicon glyphicon-play-circle';
+            break;
+        case 'd':
+            return 'glyphicon glyphicon-play-sign';
+            break;
+        case 'e':
+            return 'glyphicon glyphicon-remove-circle';
+            break;
+        case 'f':
+            return 'glyphicon glyphicon-remove-sign';
+            break;
+        default:
+            
+            break;
+    }
+}
 // Closing PHP tag intentionally omitted - yes, it is okay
 
