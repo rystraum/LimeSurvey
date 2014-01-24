@@ -150,7 +150,12 @@ class SurveyAdmin extends Survey_Common_Action
         $arrayed_data['data'] = $aData;
         $aViewUrls[] = 'newSurvey_view';
 
-        $this->_renderWrappedTemplate('survey', $aViewUrls, $arrayed_data);
+        $theme = Yii::app()->getConfig('admintheme');
+        if ($theme == 'bootstrap') {
+            $this->getController()->render('surveys/new', $arrayed_data);
+        } else {
+            $this->_renderWrappedTemplate('survey', $aViewUrls, $arrayed_data);
+        }
     }
     
     function fakebrowser()
