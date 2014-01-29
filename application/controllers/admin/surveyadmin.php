@@ -301,9 +301,10 @@ class SurveyAdmin extends Survey_Common_Action
         if (isset($qid))
             $qid = sanitize_int($qid);
 
+        $survey = Survey::model()->findByPk($iSurveyID);
         // Reinit LEMlang and LEMsid: ensure LEMlang are set to default lang, surveyid are set to this survey id
         // Ensure Last GetLastPrettyPrintExpression get info from this sid and default lang
-        LimeExpressionManager::SetEMLanguage(Survey::model()->findByPk($iSurveyID)->language);
+        LimeExpressionManager::SetEMLanguage($survey->language);
         LimeExpressionManager::SetSurveyId($iSurveyID);
         LimeExpressionManager::StartProcessingPage(false,true);
 
@@ -312,7 +313,167 @@ class SurveyAdmin extends Survey_Common_Action
         $aData['qid'] = $qid;
         $aData['display']['menu_bars']['surveysummary'] = true;
 
-        $this->_renderWrappedTemplate('survey', array(), $aData);
+        $theme = Yii::app()->getConfig('admintheme');
+        if ($theme == 'bootstrap') {
+            $this->getController()->loadHelper('surveytranslator'); // needed by the template
+            $aData['survey'] = $survey;
+            $aData['clang'] = $this->getController()->lang;
+            $aData['surveyinfo'] = getSurveyInfo($iSurveyID);
+            $aData['startdate'] = $this->_convert_date($aData['surveyinfo']['startdate']);
+            $aData['expdate'] = $this->_convert_date($aData['surveyinfo']['expires']);
+            $aData['aAdditionalLanguages'] = Survey::model()->findByPk($iSurveyID)->additionalLanguages;
+            $aData['additionnalLanguages'] = $this->_additional_languages($aData['aAdditionalLanguages']);
+            $baselang = $aData['surveyinfo']['language'];
+            $aData['activated'] = $aData['surveyinfo']['active'];
+
+            $aData['surveydb'] = "";
+            if ($aData['activated'] == "Y") {
+                $aData['surveydb'] = Yii::app()->db->tablePrefix . "survey_" . $iSurveyID;
+            }
+
+            if (! $aData['surveyinfo']['language']) {
+                $aData['language'] = getLanguageNameFromCode($currentadminlang, false);
+            } else {
+                $aData['language'] = getLanguageNameFromCode($aData['surveyinfo']['language'], false);
+            }
+
+            if ($aData['surveyinfo']['surveyls_url'] != "") {
+                $aData['endurl'] = " <a target='_blank' href=\"" . htmlspecialchars($aData['surveyinfo']['surveyls_url']) . "\" title=\"" . htmlspecialchars($aData['surveyinfo']['surveyls_url']) . "\">".flattenText($aData['surveyinfo']['surveyls_urldescription'])."</a>";
+            } else {
+                $aData['endurl'] = "-";
+            }
+
+            $condition = array('sid' => $iSurveyID, 'parent_qid' => 0, 'language' => $baselang);
+            $aData['sumcount3'] = count( Question::model()->findAllByAttributes($condition) );
+
+            $condition = array('sid' => $iSurveyID, 'language' => $baselang);
+            $aData['sumcount2'] = count( QuestionGroup::model()->findAllByAttributes($condition) );
+
+            $aData['warnings'] = implode('<br />',$this->_generate_warnings($iSurveyID, $aData['sumcount3'], $aData['sumcount2'], $aData['activated']));
+            $aData['hints'] = $this->_generate_survey_summary($aData['surveyinfo']);
+            $aData['tableusage'] = false;
+
+            $this->getController()->render('surveys/show', $aData);
+        } else {
+            $this->_renderWrappedTemplate('survey', array(), $aData);
+        }
+    }
+
+    private function _convert_date($date) {
+        Yii::app()->loadHelper("surveytranslator");
+        $dateformatdetails = getDateFormatData(Yii::app()->session['dateformat']);
+        if (trim($date) != '') {
+            Yii::import('application.libraries.Date_Time_Converter');
+            $datetimeobj = new Date_Time_Converter($date, 'Y-m-d H:i:s');
+            return $datetimeobj->convert($dateformatdetails['phpdate'] . ' H:i');
+        } else {
+            return "-";
+        }
+    }
+
+    private function _additional_languages($aAdditionalLanguages) {
+        // get the rowspan of the Additionnal languages row
+        // is at least 1 even if no additionnal language is present
+        $additionnalLanguagesCount = count($aAdditionalLanguages);
+        $first = true;
+        $language_string = "";
+        if ($additionnalLanguagesCount == 0) {
+            $language_string .= "<td>-</td>\n";
+        } else {
+            foreach ($aAdditionalLanguages as $langname) {
+                if ($langname) {
+                    if (!$first) {
+                        $language_string.= "<tr><td>&nbsp;</td>";
+                    }
+                    $first = false;
+                    $language_string .= "<td>" . getLanguageNameFromCode($langname, false) . "</td></tr>\n";
+                }
+            }
+        }
+        if ($first) {
+            $language_string .= "</tr>";
+        }
+
+        return $language_string;
+    }
+
+    private function _generate_warnings($survey_id, $question_count, $question_group_count, $activated) {
+        $warnings = [];
+        $clang = $this->getController()->lang;
+        if ($activated == "N" && $question_count == 0) {
+            array_push($warnings, $clang->gT("Survey cannot be activated yet."));
+            if ($question_group_count == 0 && Permission::model()->hasSurveyPermission($survey_id, 'surveycontent', 'create')) {
+                array_push($warnings, $clang->gT("You need to add question groups"));
+            }
+
+            if ($question_count == 0 && Permission::model()->hasSurveyPermission($survey_id, 'surveycontent', 'create')) {
+                array_push($warnings, $clang->gT("You need to add questions"));
+            }
+        }
+
+        return $warnings;
+    }
+
+    private function _generate_survey_summary($aSurveyInfo) {
+        $surveysummary2 = "";
+        $clang = $this->getController()->lang;
+        if ($aSurveyInfo['anonymized'] != "N") {
+            $surveysummary2 .= $clang->gT("Responses to this survey are anonymized.") . "<br />";
+        } else {
+            $surveysummary2 .= $clang->gT("Responses to this survey are NOT anonymized.") . "<br />";
+        }
+        
+        if ($aSurveyInfo['format'] == "S") {
+            $surveysummary2 .= $clang->gT("It is presented question by question.") . "<br />";
+        } elseif ($aSurveyInfo['format'] == "G") {
+            $surveysummary2 .= $clang->gT("It is presented group by group.") . "<br />";
+        } else {
+            $surveysummary2 .= $clang->gT("It is presented on one single page.") . "<br />";
+        }
+
+        if ($aSurveyInfo['questionindex'] > 0) {
+            if ($aSurveyInfo['format'] == 'A') {
+                $surveysummary2 .= $clang->gT("No question index will be shown with this format.") . "<br />";
+            } elseif ($aSurveyInfo['questionindex'] == 1) {
+                $surveysummary2 .= $clang->gT("A question index will be shown; participants will be able to jump between viewed questions.") . "<br />";
+            } elseif ($aSurveyInfo['questionindex'] == 2) {
+                $surveysummary2 .= $clang->gT("A full question index will be shown; participants will be able to jump between relevant questions.") . "<br />";
+            }
+        }
+
+        if ($aSurveyInfo['datestamp'] == "Y") {
+            $surveysummary2 .= $clang->gT("Responses will be date stamped.") . "<br />";
+        }
+        
+        if ($aSurveyInfo['ipaddr'] == "Y") {
+            $surveysummary2 .= $clang->gT("IP Addresses will be logged") . "<br />";
+        }
+
+        if ($aSurveyInfo['refurl'] == "Y") {
+            $surveysummary2 .= $clang->gT("Referrer URL will be saved.") . "<br />";
+        }
+        
+        if ($aSurveyInfo['usecookie'] == "Y") {
+            $surveysummary2 .= $clang->gT("It uses cookies for access control.") . "<br />";
+        }
+        
+        if ($aSurveyInfo['allowregister'] == "Y") {
+            $surveysummary2 .= $clang->gT("If tokens are used, the public may register for this survey") . "<br />";
+        }
+        
+        if ($aSurveyInfo['allowsave'] == "Y" && $aSurveyInfo['tokenanswerspersistence'] == 'N') {
+            $surveysummary2 .= $clang->gT("Participants can save partially finished surveys") . "<br />\n";
+        }
+        
+        if ($aSurveyInfo['emailnotificationto'] != '') {
+            $surveysummary2 .= $clang->gT("Basic email notification is sent to:") .' '. htmlspecialchars($aSurveyInfo['emailnotificationto'])."<br />\n";
+        }
+        
+        if ($aSurveyInfo['emailresponseto'] != '') {
+            $surveysummary2 .= $clang->gT("Detailed email notification with response data is sent to:") .' '. htmlspecialchars($aSurveyInfo['emailresponseto'])."<br />\n";
+        }
+
+        return $surveysummary2;
     }
 
     /**
