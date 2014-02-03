@@ -63,7 +63,7 @@ class SurveyAdmin extends Survey_Common_Action
             {
                 $aData['issuperadmin'] = true;
             }
-            
+
             $theme = Yii::app()->getConfig('admintheme');
             if ($theme == 'bootstrap') {
                 if (!Permission::model()->hasGlobalPermission('superadmin','read')) {
@@ -161,7 +161,7 @@ class SurveyAdmin extends Survey_Common_Action
     function fakebrowser()
     {
         $aData['clang'] = $this->getController()->lang;
-        Yii::app()->getController()->render_admin_theme('/survey/newSurveyBrowserMessage', $aData);
+        Yii::app()->getController()->renderPartial('/admin/survey/newSurveyBrowserMessage', $aData);
     }    
 
     /**
@@ -976,7 +976,7 @@ class SurveyAdmin extends Survey_Common_Action
                 $aData['action'] = "editsurveylocalesettings";
                 $aData['clang'] = $clang;
 
-                $aTabContents[$sLang] = $this->getController()->render_admin_theme('/survey/editLocalSettings_view', $aData, true);
+                $aTabContents[$sLang] = $this->getController()->renderPartial('/admin/survey/editLocalSettings_view', $aData, true);
             }
 
 

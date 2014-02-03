@@ -309,7 +309,7 @@ class AdminController extends LSYii_Controller
         if (!empty(Yii::app()->session['dateformat']))
             $aData['formatdata'] = getDateFormatData(Yii::app()->session['dateformat']);
 
-        $sOutput = $this->render_admin_theme('/super/header', $aData, true);
+        $sOutput = $this->renderPartial("/admin/super/header", $aData, true);
         
         
         if ($return)
@@ -358,7 +358,7 @@ class AdminController extends LSYii_Controller
         $aData['imageurl'] = Yii::app()->getConfig("imageurl");
         $aData['url'] = $url;
 
-        return $this->render_admin_theme('/super/footer', $aData, $return);
+        return $this->renderPartial("/admin/super/footer", $aData, $return);
 
     }
 
@@ -378,7 +378,7 @@ class AdminController extends LSYii_Controller
         $aData['class'] = $class;
         $aData['clang'] = $this->lang;
 
-        $this->render_admin_theme('/super/messagebox', $aData);
+        $this->renderPartial('/admin/super/messagebox', $aData);
     }
 
     /**
@@ -417,7 +417,7 @@ class AdminController extends LSYii_Controller
         $aData['surveyid'] = $surveyid;
         $aData['iconsize'] = Yii::app()->getConfig('adminthemeiconsize');
         $aData['sImageURL'] = Yii::app()->getConfig('adminimageurl');
-        $this->render_admin_theme('/super/adminmenu', $aData);
+        $this->renderPartial("/admin/super/adminmenu", $aData);
 
     }
 
@@ -432,6 +432,6 @@ class AdminController extends LSYii_Controller
 
         unset(Yii::app()->session['metaHeader']);
 
-        return $this->render_admin_theme('/endScripts_view', array());
+        return $this->renderPartial('/admin/endScripts_view', array());
     }
 }
