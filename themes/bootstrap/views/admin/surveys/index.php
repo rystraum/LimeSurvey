@@ -26,7 +26,9 @@
         </td>
         <td class="id"><?php echo $survey->sid ?></td>
         <td class="name">
-          <?php echo $survey->defaultlanguage->attributes['surveyls_title'] ?>
+          <a href="<?php echo $this->createUrl("admin/survey/sa/view/surveyid/" . $survey->sid) ?>">
+            <?php echo $survey->defaultlanguage->attributes['surveyls_title'] ?>
+          </a>
         </td>
         <td class="date_created"><?php echo $date_created ?></td>
         
