@@ -17,6 +17,7 @@ class AdminController extends LSYii_Controller
     public $lang = null;
     public $layout = false;
     public $menu_bars = array();
+    public $layout_data = array();
     protected $user_id = 0;
 
     /**

@@ -523,6 +523,7 @@ class Survey_Common_Action extends CAction
         $condition = array('sid' => $iSurveyID, 'language' => $baselang);
 
         $sumresult1 = Survey::model()->with(array('languagesettings'=>array('condition'=>'surveyls_language=language')))->find('sid = :surveyid', array(':surveyid' => $iSurveyID)); //$sumquery1, 1) ; //Checked
+        
         if (is_null($sumresult1))
         {
             Yii::app()->session['flashmessage'] = $clang->gT("Invalid survey ID");
@@ -532,7 +533,7 @@ class Survey_Common_Action extends CAction
         $surveyinfo = array_merge($surveyinfo, $sumresult1->defaultlanguage->attributes);
         $surveyinfo = array_map('flattenText', $surveyinfo);
         //$surveyinfo = array_map('htmlspecialchars', $surveyinfo);
-        $activated = ($surveyinfo['active'] == 'Y');
+        $activated = ($surveyinfo['active'] == 'Y'); 
 
         App()->getClientScript()->registerPackage('jquery-superfish');
         App()->getClientScript()->registerPackage('jquery-cookie');
@@ -648,7 +649,12 @@ class Survey_Common_Action extends CAction
         $aData['iIconSize'] = Yii::app()->getConfig('adminthemeiconsize');
         $aData['sImageURL'] = Yii::app()->getConfig('adminimageurl');
 
-        $this->getController()->renderPartial("/admin/survey/surveybar_view", $aData);
+        $theme = Yii::app()->getConfig('admintheme');
+        if ($theme == 'bootstrap') {
+            return $this->getController()->renderPartial("menu_bars/survey_bar", $aData, true);
+        } else {
+            $this->getController()->renderPartial("/admin/survey/surveybar_view", $aData);
+        }
     }
 
     /**
@@ -680,6 +686,7 @@ class Survey_Common_Action extends CAction
 
         $aAdditionalLanguages = Survey::model()->findByPk($iSurveyID)->additionalLanguages;
         $surveysummary2 = "";
+
         if ($aSurveyInfo['anonymized'] != "N")
         {
             $surveysummary2 .= $clang->gT("Responses to this survey are anonymized.") . "<br />";

@@ -148,6 +148,22 @@
         <?php else: ?>
           <?php echo $clang->gT("Yes"); ?>
         <?php endif; ?>
+
+        <?php
+          if(!$activated) {
+            if($canactivate) {
+              $url = $this->createUrl("admin/survey/sa/activate/surveyid/$surveyid");
+              $text = $clang->gT("Activate this Survey");
+              echo "<a href='$url' class='btn btn-primary btn-sm'>$text</a>";
+            } else {
+              $clang->eT("Survey cannot be activated. Either you have no permission or there are no questions.");
+            }
+          } else {
+            $url = $this->createUrl("admin/survey/sa/deactivate/surveyid/$surveyid");
+            $text = $clang->gT("Stop this survey");
+            echo "<a href='$url' class='btn btn-danger btn-sm'>$text</a>";
+          }
+        ?>
       </td>
     </tr>
     <?php if($activated=="Y") { ?>

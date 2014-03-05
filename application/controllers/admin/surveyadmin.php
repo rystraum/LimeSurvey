@@ -316,6 +316,7 @@ class SurveyAdmin extends Survey_Common_Action
         $theme = Yii::app()->getConfig('admintheme');
         if ($theme == 'bootstrap') {
             $this->getController()->loadHelper('surveytranslator'); // needed by the template
+            $this->getController()->menu_bars['survey_bar'] = true;
             $aData['survey'] = $survey;
             $aData['clang'] = $this->getController()->lang;
             $aData['surveyinfo'] = getSurveyInfo($iSurveyID);
@@ -344,15 +345,22 @@ class SurveyAdmin extends Survey_Common_Action
             }
 
             $condition = array('sid' => $iSurveyID, 'parent_qid' => 0, 'language' => $baselang);
-            $aData['sumcount3'] = count( Question::model()->findAllByAttributes($condition) );
+            $questions = Question::model()->findAllByAttributes($condition);
+            $this->getController()->layout_data['survey_summary']['questions'] = $questions;
+            $aData['sumcount3'] = count( $questions );
 
             $condition = array('sid' => $iSurveyID, 'language' => $baselang);
-            $aData['sumcount2'] = count( QuestionGroup::model()->findAllByAttributes($condition) );
+            $question_groups = QuestionGroup::model()->findAllByAttributes($condition);
+            $this->getController()->layout_data['survey_summary']['question_groups'] = $question_groups;
+            $aData['sumcount2'] = count( $question_groups );
+
+            $this->getController()->layout_data['survey_summary']['question_groups'] = $question_groups;
 
             $aData['warnings'] = implode('<br />',$this->_generate_warnings($iSurveyID, $aData['sumcount3'], $aData['sumcount2'], $aData['activated']));
             $aData['hints'] = $this->_generate_survey_summary($aData['surveyinfo']);
             $aData['tableusage'] = false;
 
+            $this->getController()->layout_data['survey_bar'] = $this->_surveybar($iSurveyID, $gid);
             $this->getController()->render('surveys/show', $aData);
         } else {
             $this->_renderWrappedTemplate('survey', array(), $aData);

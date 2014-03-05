@@ -164,7 +164,20 @@
   </div>
   <div class="container" id="main_container">
     <div class="row" id="super_row">
-      <?php echo $content ?>
+      <?php if( isset($this->menu_bars) && !empty($this->menu_bars) ): ?>
+        <div class="col-md-3">
+          <?php if( isset($this->menu_bars['survey_bar']) ): ?>
+            <?php echo $this->layout_data['survey_bar']; ?>
+          <?php endif; ?>
+        </div>
+        <div class="col-md-9">
+          <?php echo $content ?>
+        </div>
+      <?php else: ?>
+        <div class="col-md-12">
+          <?php echo $content ?>
+        </div>
+      <?php endif; ?>
     </div> <!-- #super_row -->
   </div> <!-- #main_container -->
   <!-- Bootstrap core JavaScript
