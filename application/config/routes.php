@@ -19,6 +19,8 @@ $route['<_sid:\d+>/lang-<_lang:\w+[-\w]+>/*'] = "survey/index/sid/<_sid>/lang/<_
 $route['<_sid:\d+>/tk-<_token:\w+>/*'] = "survey/index/sid/<_sid>/token/<_token>";
 $route['<_sid:\d+>/*'] = "survey/index/sid/<_sid>";
 
+$route['llous/index'] = "llous";
+
 //Admin Routes
 $route['admin/index'] = "admin";
 $route['admin/<action:\w+>/sa/<sa:\w+>/*'] = 'admin/<action>/sa/<sa>';
