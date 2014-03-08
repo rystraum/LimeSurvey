@@ -21,19 +21,19 @@
 * @copyright 2014
 * @access public
 */
-class LlousController extends CController {  
+class LlousController extends LSYii_Controller {  
   protected function _init() {
+    parent::_init();
+  }
 
+  public function run($action) {
+    parent::run($action);
   }
 
   public function actionIndex() {
-    $this->layout = 'bootstrap';
+    $this->layout = 'main';
     $data = array();
     $data['llous'] = Llou::model()->findAll();
-    
-    // $llou = new Llou;
-    // $llou->name = "ZOMG!";
-    // $llou->save();
     
     $this->render('index', $data);
   }
