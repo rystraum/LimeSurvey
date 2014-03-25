@@ -12,9 +12,7 @@
     <ul>
         <li><a href='#general'><?php $clang->eT("General"); ?></a></li>
         <li><a href='#presentation'><?php $clang->eT("Presentation & navigation"); ?></a></li>
-        <li><a href='#publication'><?php $clang->eT("Publication & access control"); ?></a></li>
-        <li><a href='#notification'><?php $clang->eT("Notification & data management"); ?></a></li>
-        <li><a href='#tokens'><?php $clang->eT("Tokens"); ?></a></li>
+        <li><a href='#advanced'><?php $clang->eT("Advanced Options"); ?></a></li>
         <?php if ($action == "newsurvey") { ?>
         <li><a href='#import'><?php $clang->eT("Import"); ?></a></li>
         <li><a href='#copy'><?php $clang->eT("Copy"); ?></a></li>

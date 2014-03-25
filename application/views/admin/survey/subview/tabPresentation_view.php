@@ -1,18 +1,17 @@
-<div id='presentation'><ul>
-        <input type='hidden' name='template' value='default' />
-        <input type='hidden' name='showwelcome' value='N' />
-        <input type='hidden' name='navigationdelay' value='0' />
-        <input type='hidden' name='allowprev' value='Y' />
-        <input type='hidden' name='questionindex' value='1' />
-        <input type='hidden' name='nokeyboard' value='N' />
-        <input type='hidden' name='printanswers' value='Y' />
-        <input type='hidden' name='publicgraphs' value='N' />
-        <input type='hidden' name='autoredirect' value='Y' />
-        <?php if($showxquestions == 'choose'): ?>
-            <input type='hidden' name='showxquestions' value='N' />
-        <?php endif ?>
-
-
+<div id='presentation'>
+    <input type='hidden' name='template' value='default' />
+    <input type='hidden' name='showwelcome' value='N' />
+    <input type='hidden' name='navigationdelay' value='0' />
+    <input type='hidden' name='allowprev' value='Y' />
+    <input type='hidden' name='questionindex' value='1' />
+    <input type='hidden' name='nokeyboard' value='N' />
+    <input type='hidden' name='printanswers' value='Y' />
+    <input type='hidden' name='publicgraphs' value='N' />
+    <input type='hidden' name='autoredirect' value='Y' />
+    <?php if($showxquestions == 'choose'): ?>
+        <input type='hidden' name='showxquestions' value='N' />
+    <?php endif ?>
+    <ul>
         <li><label for='format'><?php $clang->eT("Format:"); ?></label>
             <select id='format' name='format'>
                 <option value='S'
