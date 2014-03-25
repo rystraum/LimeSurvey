@@ -10,23 +10,22 @@
 </script>
 
 <?php
-  if ($action == "editsurveysettings") { 
+  if ($action == "editsurveysettings") {
     $sURL = "admin/database/index/updatesurveysettings"; 
   } else {
     $sURL = "admin/survey/sa/insert";
   }
 ?>
-<?php echo CHtml::form(array($sURL), "post", array("id"=>"addnewsurvey", "name"=>"addnewsurvey", "class"=>"form30")); ?>
+  <?php echo CHtml::form(array($sURL), "post", array("id"=>"addnewsurvey", "name"=>"addnewsurvey", "class"=>"form30")); ?>
   <input type="hidden" id="surveysettingsaction" name="action" value="insertsurvey" />
   <div class="row-fluid">
-    <div class="span6">
+    <div class="span7">
       <fieldset>
-        <legend>General</legend>
-        
+        <legend>General</legend>            
         <div class="control-group">
           <label class="control-label" for="surveyls_title"><?php $clang->eT("Title") ?></label>
           <div class="controls">
-            <input type="text" size="82" maxlength="200" id="surveyls_title" name="surveyls_title" required="required" autofocus="autofocus"/>
+            <input type="text" style="width: 75%" maxlength="200" id="surveyls_title" name="surveyls_title" required="required" autofocus="autofocus" />
             <span class="help-inline annotation"><?php $clang->eT("Required") ?></span>
           </div>
         </div>
@@ -48,7 +47,7 @@
         </div>
         
         <div class="control-group">
-          <label for="endtext"><?php $clang->eT("End message") ;?> </label>
+          <label for="endtext"><?php $clang->eT("End message") ?> </label>
           <div class="controls">
             <textarea cols="80" id="endtext" rows="10" name="endtext"></textarea>
             <?php echo getEditor("survey-endtext", "endtext", "[" . $clang->gT("End message:", "js") . "]", "", "", "", $action) ?>
@@ -56,12 +55,12 @@
         </div>
         
         <div class="control-group">
-          <button type="submit" class="btn btn-primary" ><?php $clang->eT("Save") ?></button>
+          <button type="submit" class="btn btn-primary btn-large" ><?php $clang->eT("Save") ?></button>
         </div>
       </fieldset>
-    </div>
+    </div> <!-- .span7 -->
 
-    <div class="span6">
+    <div class="span5">
       <fieldset>
         <legend><?php $clang->eT("Presentation & navigation") ?></legend>
         <input type='hidden' name='template' value='default' />
@@ -140,16 +139,16 @@
           <div class="controls">
             <?php if($showgroupinfo == 'both'): ?>
               <input type="hidden" name="showgroupinfo" id="showgroupinfo" value="B" />
-              <input type="text" name="dis_showgroupinfo" id="dis_showgroupinfo" disabled="disabled" value="<?php $clang->et('Show both (Forced by the system administrator)') ?>" size="70" />
+              <input type="text" name="dis_showgroupinfo" id="dis_showgroupinfo" disabled="disabled" value="<?php $clang->et('Show both (Forced by the system administrator)') ?>" size="30" />
             <?php elseif($showgroupinfo == 'name'): ?>
               <input type="hidden" name="showgroupinfo" id="showgroupinfo" value="N" />
-              <input type="text" name="dis_showgroupinfo" id="dis_showgroupinfo" disabled="disabled" value="<?php $clang->et('Show group name only (Forced by the system administrator)') ?>" size="70" />
+              <input type="text" name="dis_showgroupinfo" id="dis_showgroupinfo" disabled="disabled" value="<?php $clang->et('Show group name only (Forced by the system administrator)') ?>" size="30" />
             <?php elseif($showgroupinfo == 'description'): ?>
               <input type="hidden" name="showgroupinfo" id="showgroupinfo" value="D" />
-              <input type="text" name="dis_showgroupinfo" id="dis_showgroupinfo" disabled="disabled" value="<?php $clang->et('Show group description only (Forced by the system administrator)') ?>" size="70" />
+              <input type="text" name="dis_showgroupinfo" id="dis_showgroupinfo" disabled="disabled" value="<?php $clang->et('Show group description only (Forced by the system administrator)') ?>" size="30" />
             <?php elseif($showgroupinfo == 'none'): ?>
               <input type="hidden" name="showgroupinfo" id="showgroupinfo" value="X" />
-              <input type="text" name="dis_showgroupinfo" id="dis_showgroupinfo" disabled="disabled" value="<?php $clang->et('Hide both (Forced by the system administrator)') ?>" size="70" /></div>
+              <input type="text" name="dis_showgroupinfo" id="dis_showgroupinfo" disabled="disabled" value="<?php $clang->et('Hide both (Forced by the system administrator)') ?>" size="30" /></div>
             <?php else: ?>
               <?php
                 $sel_showgri = array( 'B' => '' , 'D' => '' , 'N' => '' , 'X' => '' );
@@ -177,16 +176,16 @@
           <div class="controls">
             <?php if($showqnumcode == 'none'): ?>
               <input type="hidden" name="showqnumcode" id="showqnumcode" value="X" />
-              <input type="text" name="dis_showqnumcode" id="dis_showqnumcode" disabled="disabled" value="<?php $clang->et('Hide both (Forced by the system administrator)') ?>" size="70" />
+              <input type="text" name="dis_showqnumcode" id="dis_showqnumcode" disabled="disabled" value="<?php $clang->et('Hide both (Forced by the system administrator)') ?>" size="30" />
             <?php elseif($showqnumcode == 'number'): ?>
               <input type="hidden" name="showqnumcode" id="showqnumcode" value="N" />
-              <input type="text" name="dis_showqnumcode" id="dis_showqnumcode" disabled="disabled" value="<?php $clang->eT('Show question number only (Forced by the system administrator)') ; ?>" size="70" />
+              <input type="text" name="dis_showqnumcode" id="dis_showqnumcode" disabled="disabled" value="<?php $clang->eT('Show question number only (Forced by the system administrator)') ; ?>" size="30" />
             <?php elseif($showqnumcode == 'code'): ?>
               <input type="hidden" name="showqnumcode" id="showqnumcode" value="C" />
-              <input type="text" name="dis_showqnumcode" id="dis_showqnumcode" disabled="disabled" value="<?php $clang->et('Show question code only (Forced by the system administrator)') ?>" size="70" />
+              <input type="text" name="dis_showqnumcode" id="dis_showqnumcode" disabled="disabled" value="<?php $clang->et('Show question code only (Forced by the system administrator)') ?>" size="30" />
             <?php elseif($showqnumcode == 'both'): ?>
               <input type="hidden" name="showqnumcode" id="showqnumcode" value="B" />
-              <input type="text" name="dis_showqnumcode" id="dis_showqnumcode" disabled="disabled" value="<?php $clang->et('Show both (Forced by the system administrator)') ?>" size="70" />
+              <input type="text" name="dis_showqnumcode" id="dis_showqnumcode" disabled="disabled" value="<?php $clang->et('Show both (Forced by the system administrator)') ?>" size="30" />
             <?php else: ?>
               <?php 
                 $sel_showqnc = array( 'B' => '' , 'C' => '' , 'N' => '' , 'X' => '' );
@@ -215,7 +214,7 @@
           <div class="controls">
             <?php if($shownoanswer == 0): ?>
               <input type="hidden" name="shownoanswer" id="shownoanswer" value="N" />
-              <input type="text" name="dis_shownoanswer" id="dis_shownoanswer" disabled="disabled" value="<?php $clang->et('Off (Forced by the system administrator)') ?>" size="70" />
+              <input type="text" name="dis_shownoanswer" id="dis_shownoanswer" disabled="disabled" value="<?php $clang->et('Off (Forced by the system administrator)') ?>" size="30" />
             <?php elseif($shownoanswer == 2): ?>
               <?php 
                 $sel_showno = array( 'Y' => '' , 'N' => '' );
@@ -234,7 +233,7 @@
               </select>
             <?php else: ?>
               <input type="hidden" name="shownoanswer" id="shownoanswer" value="Y" />
-              <input type="text" name="dis_shownoanswer" id="dis_shownoanswer" disabled="disabled" value="<?php $clang->et('On (Forced by the system administrator)') ?>" size="70" />
+              <input type="text" name="dis_shownoanswer" id="dis_shownoanswer" disabled="disabled" value="<?php $clang->et('On (Forced by the system administrator)') ?>" size="30" />
             <?php endif ?>
           </div>
         </div>
@@ -253,14 +252,14 @@
         <div class="control-group">
           <label for='emailnotificationto'><?php $clang->et("Send basic admin notification email to:") ?></label>
           <div class="controls">
-            <input size='70' type='email' value="<?php echo htmlspecialchars($esrow['emailnotificationto']); ?>" id='emailnotificationto' name='emailnotificationto' />
+            <input size="30" type='email' value="<?php echo htmlspecialchars($esrow['emailnotificationto']); ?>" id='emailnotificationto' name='emailnotificationto' />
           </div>
         </div>
 
         <div class="control-group">
           <label for='emailresponseto'><?php $clang->et("Send detailed admin notification email to:") ?></label>
           <div class="controls">
-            <input size='70' type='email' value="<?php echo htmlspecialchars($esrow['emailresponseto']); ?>" id='emailresponseto' name='emailresponseto' />
+            <input size="30" type='email' value="<?php echo htmlspecialchars($esrow['emailresponseto']); ?>" id='emailresponseto' name='emailresponseto' />
           </div>
         </div>
 
@@ -365,6 +364,6 @@
           </select>
         </div>
       </fieldset>
-    </div>
+    </div> <!-- .span5 -->
   </div>
 </form>

@@ -7,24 +7,17 @@
     standardtemplaterooturl='<?php echo Yii::app()->getConfig('standardtemplaterooturl');?>';
     templaterooturl='<?php echo Yii::app()->getConfig('usertemplaterooturl');?>';
 </script>
-<div class='header ui-widget-header'><?php $clang->eT("Create, import, or copy survey"); ?></div>
-<?php $this->renderPartial('/admin/survey/partial/new_survey', $data) ?>
-<?php
-    // $this->renderPartial('/admin/survey/subview/tab_view',$data);
-    // $this->renderPartial('/admin/survey/subview/tabGeneralNewSurvey_view',$data);
-    // $this->renderPartial('/admin/survey/subview/tabAdvanced_view',$data);
-?>
 
-<input type='hidden' id='surveysettingsaction' name='action' value='insertsurvey' />
-</form>
+<div class='header ui-widget-header'><?php $clang->eT("Create, import, or copy survey"); ?></div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+        <?php $this->renderPartial('/admin/survey/partial/new_survey', $data) ?>
+    </div> <!-- .span12 -->
+  </div> <!-- .row-fluid -->
+</div> <!-- .container-fluid -->
+
 <?php
     // $this->renderPartial('/admin/survey/subview/tabImport_view',$data);
     // $this->renderPartial('/admin/survey/subview/tabCopy_view',$data);
 ?>
-</div>
-
-<p><button id='btnSave' onclick="if (isEmpty(document.getElementById('surveyls_title'), '<?php $clang->eT("Error: You have to enter a title for this survey.", 'js');?>')) { document.getElementById('addnewsurvey').submit();}" class='standardbtn' >
-        <?php $clang->eT("Save");?>
-    </button>
-</p>
-
