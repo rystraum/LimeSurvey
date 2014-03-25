@@ -13,9 +13,9 @@ $(document).ready(function(){
           <?php $clang->eT("Default administration page") ?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><a href="<?php echo $this->createUrl("admin/user/sa/index") ?>"><?php $clang->eT("Manage survey administrators") ?></a></li>
+          <li><a href="<?php echo $this->createUrl("admin/user/sa/index") ?>"><i class="icon-user"></i> <?php $clang->eT("Manage survey administrators") ?></a></li>
           <?php if(Permission::model()->hasGlobalPermission('usergroups','read')): ?>
-            <li><a href="<?php echo $this->createUrl("admin/usergroups/sa/index") ?>"><?php $clang->eT("Create/edit user groups")?></a></li>
+            <li><a href="<?php echo $this->createUrl("admin/usergroups/sa/index") ?>"><i class="fa fa-users"></i> <?php $clang->eT("Create/edit user groups")?></a></li>
           <?php endif ?>
 
           <?php if(Permission::model()->hasGlobalPermission('settings','read')): ?>
@@ -51,19 +51,11 @@ $(document).ready(function(){
           <?php endif ?>
         </ul>
       </li>
-
-      <li class="dropdown">
-        <a href="<?php echo $this->createUrl("/admin/survey/sa/index") ?>" class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-          <?php $clang->eT("Surveys") ?> <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><a href="<?php echo $this->createUrl("admin/survey/sa/index") ?>"><?php $clang->eT("Detailed list of surveys") ?></a></li>
-
-          <?php if (Permission::model()->hasGlobalPermission('surveys','create')): ?>
-            <li><a href="<?php echo $this->createUrl("admin/survey/sa/newsurvey") ?>"><?php $clang->eT("Create, import, or copy a survey") ?></a></li>
-          <?php endif ?>
-        </ul>
-      </li>
+      
+      <li><a href="<?php echo $this->createUrl("admin/survey/sa/index") ?>"><?php $clang->eT("Detailed list of surveys") ?></a></li>
+      <?php if (Permission::model()->hasGlobalPermission('surveys','create')): ?>
+        <li><a href="<?php echo $this->createUrl("admin/survey/sa/newsurvey") ?>"><?php $clang->eT("Create, import, or copy a survey") ?></a></li>
+      <?php endif ?>
     </ul>
 
     <form class="navbar-form pull-left">
