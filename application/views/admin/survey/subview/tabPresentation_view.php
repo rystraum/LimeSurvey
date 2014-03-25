@@ -1,4 +1,5 @@
 <div id='presentation'>
+    <?php $clang->eT("Presentation & navigation"); ?>
     <input type='hidden' name='template' value='default' />
     <input type='hidden' name='showwelcome' value='N' />
     <input type='hidden' name='navigationdelay' value='0' />
@@ -194,6 +195,5 @@
                         " size="70" /></li>
                 <?php    break;
             }; ?>
-
-
-    </ul></div>
+    </ul>
+</div>

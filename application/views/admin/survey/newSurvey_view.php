@@ -11,7 +11,6 @@
 <?php
     $this->renderPartial('/admin/survey/subview/tab_view',$data);
     $this->renderPartial('/admin/survey/subview/tabGeneralNewSurvey_view',$data);
-    $this->renderPartial('/admin/survey/subview/tabPresentation_view',$data);
     $this->renderPartial('/admin/survey/subview/tabAdvanced_view',$data);
 ?>
 
