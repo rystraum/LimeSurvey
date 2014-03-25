@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the LimeSurvey 2.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2014-03-25 15:27+0800\n"
+"PO-Revision-Date: 2014-03-25 15:51+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5218,7 +5218,7 @@ msgstr ""
 
 #: application/views/admin/database/database_view.php:77
 msgid "Survey could not be updated"
-msgstr ""
+msgstr "Form could not be updated"
 
 #: application/views/admin/dataentry/active_html_view.php:28
 msgid "Finalize response submission"
@@ -5745,11 +5745,11 @@ msgstr ""
 #: application/views/admin/survey/importSurvey_view.php:34
 #: application/views/admin/survey/listSurveys_view.php:7
 msgid "Surveys"
-msgstr ""
+msgstr "Forms"
 
 #: application/views/admin/globalSettings_view.php:31
 msgid "Active surveys"
-msgstr ""
+msgstr "Active forms"
 
 #: application/views/admin/globalSettings_view.php:34
 msgid "Deactivated result tables"
@@ -6023,7 +6023,7 @@ msgstr ""
 
 #: application/views/admin/globalSettings_view.php:328
 msgid "Survey preview only for administration users"
-msgstr ""
+msgstr "Form preview only for administration users"
 
 #: application/views/admin/globalSettings_view.php:339
 msgid "Filter HTML for XSS:"
@@ -6060,7 +6060,7 @@ msgstr ""
 #: application/views/admin/globalSettings_view.php:433
 #: application/views/admin/globalSettings_view.php:452
 msgid "Survey admin can choose"
-msgstr ""
+msgstr "Form admin can choose"
 
 #: application/views/admin/globalSettings_view.php:400
 msgid "Repeating headings in array questions every X subquestions:"
@@ -6471,7 +6471,7 @@ msgstr "Only previous pages answers are available"
 
 #: application/views/admin/limeReplacementFields_view.php:127
 msgid "Survey mode is set to %s:"
-msgstr ""
+msgstr "Form mode is set to %s:"
 
 #: application/views/admin/limeReplacementFields_view.php:127
 #: application/views/admin/survey/subview/tabPresentation_view.php:16
@@ -6654,13 +6654,13 @@ msgstr ""
 #: application/views/admin/participants/displayParticipants_view.php:74
 #: application/views/admin/participants/displayParticipants_view.php:197
 msgid "Survey links"
-msgstr ""
+msgstr "Form links"
 
 #: application/views/admin/participants/displayParticipants_view.php:75
 #: application/views/admin/participants/displayParticipants_view.php:92
 #: application/views/admin/participants/displayParticipants_view.php:198
 msgid "Survey name"
-msgstr ""
+msgstr "Form name"
 
 #: application/views/admin/participants/displayParticipants_view.php:77
 #: application/views/admin/participants/displayParticipants_view.php:200
@@ -6712,7 +6712,7 @@ msgstr ""
 
 #: application/views/admin/participants/displayParticipants_view.php:93
 msgid "Survey ID"
-msgstr ""
+msgstr "Form ID"
 
 #: application/views/admin/participants/displayParticipants_view.php:95
 #: application/views/admin/participants/sharePanel_view.php:13
@@ -7100,7 +7100,7 @@ msgstr ""
 #: application/views/admin/quotas/newanswertwo_view.php:8
 #: application/views/admin/quotas/newanswer_view.php:1
 msgid "Survey quota"
-msgstr ""
+msgstr "Form quota"
 
 #: application/views/admin/quotas/newanswererror_view.php:1
 #: application/views/admin/quotas/newanswertwo_view.php:2
@@ -7154,7 +7154,7 @@ msgstr ""
 
 #: application/views/admin/quotas/viewquotas_view.php:9
 msgid "Survey quotas"
-msgstr ""
+msgstr "Form quotas"
 
 #: application/views/admin/quotas/viewquotas_view.php:15
 #: application/views/admin/survey/listSurveys_view.php:46
@@ -7271,7 +7271,7 @@ msgstr ""
 #: application/extensions/Menu/MenuWidget.php:112
 #: application/views/admin/super/adminmenu.php:96
 msgid "Surveys:"
-msgstr ""
+msgstr "Forms:"
 
 #: application/extensions/Menu/MenuWidget.php:123
 #: application/views/admin/super/adminmenu.php:101
@@ -7281,7 +7281,7 @@ msgstr ""
 #: application/extensions/Menu/MenuWidget.php:561
 #: application/views/admin/super/adminmenu.php:109
 msgid "Create, import, or copy a survey"
-msgstr ""
+msgstr "Create, import, or copy a form"
 
 #: application/views/admin/super/firststeps.php:2
 msgid "Welcome to %s!"
@@ -7926,7 +7926,7 @@ msgstr ""
 
 #: application/views/admin/survey/activateSurvey_view.php:7
 msgid "Survey does not pass consistency check"
-msgstr ""
+msgstr "Form does not pass consistency check"
 
 #: application/views/admin/survey/activateSurvey_view.php:9
 msgid "The following problems have been found:"
@@ -7934,7 +7934,7 @@ msgstr ""
 
 #: application/views/admin/survey/activateSurvey_view.php:26
 msgid "The survey cannot be activated until these problems have been resolved."
-msgstr ""
+msgstr "The form cannot be activated until these problems have been resolved."
 
 #: application/views/admin/survey/activateSurvey_view.php:38
 #: application/views/admin/survey/deactivateSurvey_view.php:6
@@ -7946,6 +7946,8 @@ msgid ""
 "You should only activate a survey when you are absolutely certain that your "
 "survey setup is finished and will not need changing."
 msgstr ""
+"You should only activate a form when you are absolutely certain that your "
+"form setup is finished and will not need changing."
 
 #: application/views/admin/survey/activateSurvey_view.php:41
 msgid "Once a survey is activated you can no longer:"
@@ -7965,7 +7967,7 @@ msgstr ""
 
 #: application/views/admin/survey/activateSurvey_view.php:43
 msgid "The following settings cannot be changed when the survey is active."
-msgstr ""
+msgstr "The following settings cannot be changed when the form is active."
 
 #: application/views/admin/survey/activateSurvey_view.php:45
 msgid "Please check these settings now, then click the button below."
@@ -8009,6 +8011,10 @@ msgid ""
 "will need to deactivate this survey, which will move all data that has "
 "already been entered into a separate archived table."
 msgstr ""
+"Please note that once this form has collected responses and you want to add "
+"or remove question groups or individual questions, you will need to "
+"deactivate this form, which will move all data that has already been entered "
+"into a separate archived table."
 
 #: application/views/admin/survey/activateSurvey_view.php:137
 msgid "Save / Activate survey"
@@ -8016,7 +8022,7 @@ msgstr ""
 
 #: application/views/admin/survey/copySurvey_view.php:16
 msgid "Survey import summary"
-msgstr ""
+msgstr "Form import summary"
 
 #: application/views/admin/survey/copySurvey_view.php:21
 #: application/views/admin/survey/importSurvey_view.php:35
@@ -8058,17 +8064,17 @@ msgstr ""
 #: application/views/admin/survey/copySurvey_view.php:60
 #: application/views/admin/survey/importSurvey_view.php:92
 msgid "Copy of survey is completed."
-msgstr ""
+msgstr "Copy of form is completed."
 
 #: application/views/admin/survey/copySurvey_view.php:62
 #: application/views/admin/survey/importSurvey_view.php:95
 msgid "Go to survey"
-msgstr ""
+msgstr "Go to form"
 
 #: application/views/admin/survey/deactivateSurvey_view.php:4
 #: application/views/admin/survey/surveybar_view.php:27
 msgid "Stop this survey"
-msgstr ""
+msgstr "Stop this form"
 
 #: application/views/admin/survey/deactivateSurvey_view.php:9
 msgid "Expiration"
@@ -8095,6 +8101,8 @@ msgid ""
 "An expired survey is not accessible to participants (they only see a message "
 "that the survey has expired)."
 msgstr ""
+"An expired form is not accessible to participants (they only see a message "
+"that the form has expired)."
 
 #: application/views/admin/survey/deactivateSurvey_view.php:15
 msgid ""
@@ -8121,11 +8129,11 @@ msgstr ""
 
 #: application/views/admin/survey/deactivateSurvey_view.php:32
 msgid "Expire survey"
-msgstr ""
+msgstr "Expire form"
 
 #: application/views/admin/survey/deactivateSurvey_view.php:37
 msgid "Deactivate survey"
-msgstr ""
+msgstr "Deactivate form"
 
 #: application/views/admin/survey/deactivateSurvey_view.php:48
 msgid "Deactivate Survey"
@@ -8159,33 +8167,39 @@ msgstr ""
 #: application/views/admin/survey/deleteSurvey_view.php:35
 #: application/views/admin/survey/surveybar_view.php:105
 msgid "Delete survey"
-msgstr ""
+msgstr "Delete form"
 
 #: application/views/admin/survey/deleteSurvey_view.php:9
 msgid "You have not selected a survey to delete"
-msgstr ""
+msgstr "You have not selected a form to delete"
 
 #: application/views/admin/survey/deleteSurvey_view.php:19
 msgid "You are about to delete this survey"
-msgstr ""
+msgstr "You are about to delete this form"
 
 #: application/views/admin/survey/deleteSurvey_view.php:20
 msgid ""
 "This process will delete this survey, and all related groups, questions "
 "answers and conditions."
 msgstr ""
+"This process will delete this form, and all related groups, questions "
+"answers and conditions."
 
 #: application/views/admin/survey/deleteSurvey_view.php:21
 msgid ""
 "It will also delete any resources/files that have been uploaded for this "
 "survey."
 msgstr ""
+"It will also delete any resources/files that have been uploaded for this "
+"form."
 
 #: application/views/admin/survey/deleteSurvey_view.php:22
 msgid ""
 "We recommend that before you delete this survey you export the entire survey "
 "from the main administration screen."
 msgstr ""
+"We recommend that before you delete this form, export the entire form from "
+"the main administration screen."
 
 #: application/views/admin/survey/deleteSurvey_view.php:26
 msgid ""
@@ -8193,6 +8207,9 @@ msgid ""
 "survey, these responses (and files) will be deleted. We recommend that you "
 "export the responses before deleting this survey."
 msgstr ""
+"This form is active and a responses table exists. If you delete this form, "
+"these responses (and files) will be deleted. We recommend that you export "
+"the responses before deleting this form."
 
 #: application/views/admin/survey/deleteSurvey_view.php:31
 msgid ""
@@ -8200,14 +8217,17 @@ msgid ""
 "tokens table will be deleted. We recommend that you export or backup these "
 "tokens before deleting this survey."
 msgstr ""
+"This form has an associated tokens table. If you delete this form this "
+"tokens table will be deleted. We recommend that you export or backup these "
+"tokens before deleting this form."
 
 #: application/views/admin/survey/editLocalSettings_main_view.php:1
 msgid "Edit survey text elements"
-msgstr ""
+msgstr "Edit form text elements"
 
 #: application/views/admin/survey/editLocalSettings_view.php:2
 msgid "Survey title"
-msgstr ""
+msgstr "Form title"
 
 #: application/views/admin/survey/editLocalSettings_view.php:11
 #: application/views/admin/survey/subview/tabGeneralNewSurvey_view.php:27
@@ -8243,7 +8263,7 @@ msgstr ""
 
 #: application/views/admin/survey/editSurvey_view.php:1
 msgid "Edit survey settings"
-msgstr ""
+msgstr "Edit form settings"
 
 #: application/views/admin/survey/editSurvey_view.php:34
 #: application/views/admin/survey/editSurvey_view.php:35
@@ -8253,7 +8273,7 @@ msgstr ""
 
 #: application/views/admin/survey/editSurvey_view.php:35
 msgid "Save & edit survey text elements"
-msgstr ""
+msgstr "Save & edit form text elements"
 
 #: application/views/admin/survey/editSurvey_view.php:40
 msgid "Parameter name:"
@@ -8270,7 +8290,7 @@ msgstr ""
 
 #: application/views/admin/survey/importSurveyResources_view.php:1
 msgid "Import survey resources"
-msgstr ""
+msgstr "Import form resources"
 
 #: application/views/admin/survey/importSurveyResources_view.php:14
 #: application/views/admin/survey/importSurveyResources_view.php:23
@@ -8306,21 +8326,23 @@ msgstr ""
 
 #: application/views/admin/survey/importSurvey_view.php:88
 msgid "Import of survey is completed."
-msgstr ""
+msgstr "Import of form is completed."
 
 #: application/views/admin/survey/listSurveys_view.php:5
 msgid "Are you sure you want to delete these surveys?"
-msgstr ""
+msgstr "Are you sure you want to delete these forms?"
 
 #: application/views/admin/survey/listSurveys_view.php:42
 msgid "Are you sure you want to expire these surveys?"
-msgstr ""
+msgstr "Are you sure you want to expire these forms?"
 
 #: application/views/admin/survey/listSurveys_view.php:43
 msgid ""
 "This function creates a ZIP archive of several survey archives and can take "
 "some time - please be patient! Do you want to continue?"
 msgstr ""
+"This function creates a ZIP archive of several form archives and can take "
+"some time - please be patient! Do you want to continue?"
 
 #: application/views/admin/survey/listSurveys_view.php:46
 msgid "Date created"
@@ -8355,11 +8377,11 @@ msgstr ""
 
 #: application/views/admin/survey/newSurvey_view.php:10
 msgid "Create, import, or copy survey"
-msgstr ""
+msgstr "Create, import, or copy form"
 
 #: application/views/admin/survey/newSurvey_view.php:28
 msgid "Error: You have to enter a title for this survey."
-msgstr ""
+msgstr "Error: You have to enter a title for this form."
 
 #: application/views/admin/survey/organizeGroupsAndQuestions_view.php:5
 msgid "Organize question groups/questions"
@@ -8379,11 +8401,11 @@ msgstr ""
 
 #: application/views/admin/survey/subview/tabCopy_view.php:4
 msgid "Select survey to copy:"
-msgstr ""
+msgstr "Select form to copy:"
 
 #: application/views/admin/survey/subview/tabCopy_view.php:7
 msgid "New survey title:"
-msgstr ""
+msgstr "New form title:"
 
 #: application/views/admin/survey/subview/tabCopy_view.php:10
 #: application/views/admin/survey/subview/tabImport_view.php:7
@@ -8396,7 +8418,7 @@ msgstr ""
 
 #: application/views/admin/survey/subview/tabCopy_view.php:14
 msgid "Exclude survey permissions?"
-msgstr ""
+msgstr "Exclude form permissions?"
 
 #: application/views/admin/survey/subview/tabCopy_view.php:16
 msgid "Exclude answers?"
@@ -8438,6 +8460,8 @@ msgid ""
 "This is the base language of your survey and it can't be changed later. You "
 "can add more languages after you have created the survey."
 msgstr ""
+"This is the base language of your form and it can't be changed later. You "
+"can add more languages after you have created the survey."
 
 #: application/views/admin/survey/subview/tabGeneralNewSurvey_view.php:17
 msgid "*This setting cannot be changed later!"
@@ -8449,7 +8473,7 @@ msgstr "Bounce email:"
 
 #: application/views/admin/survey/subview/tabImport_view.php:9
 msgid "Import survey"
-msgstr ""
+msgstr "Import form"
 
 #: application/views/admin/survey/subview/tabNotification_view.php:5
 msgid "Send basic admin notification email to:"
@@ -8529,7 +8553,7 @@ msgstr ""
 
 #: application/views/admin/survey/subview/tabNotification_view.php:169
 msgid "Survey name-[SID]/Group name"
-msgstr ""
+msgstr "Form name-[SID]/Group name"
 
 #: application/views/admin/survey/subview/tabPanelIntegration_view.php:9
 msgid "Parameter"
@@ -8695,7 +8719,7 @@ msgstr ""
 
 #: application/views/admin/survey/subview/tabPublication_view.php:4
 msgid "List survey publicly:"
-msgstr ""
+msgstr "List form publicly:"
 
 #: application/views/admin/survey/subview/tabPublication_view.php:18
 #: application/views/admin/survey/surveySummary_view.php:90
@@ -8808,7 +8832,7 @@ msgstr ""
 
 #: application/views/admin/survey/surveySummary_view.php:12
 msgid "Survey URL"
-msgstr ""
+msgstr "Form URL"
 
 #: application/views/admin/survey/surveySummary_view.php:122
 msgid "Additional languages:"
@@ -8825,11 +8849,11 @@ msgstr ""
 
 #: application/views/admin/survey/surveySummary_view.php:143
 msgid "Survey currently active"
-msgstr ""
+msgstr "Form currently active"
 
 #: application/views/admin/survey/surveySummary_view.php:152
 msgid "Survey table name"
-msgstr ""
+msgstr "Form table name"
 
 #: application/views/admin/survey/surveySummary_view.php:161
 msgid "Hints"
@@ -8850,17 +8874,19 @@ msgstr ""
 
 #: application/views/admin/survey/surveybar_view.php:12
 msgid "Activate this Survey"
-msgstr ""
+msgstr "Activate this Form"
 
 #: application/views/admin/survey/surveybar_view.php:15
 msgid ""
 "Survey cannot be activated. Either you have no permission or there are no "
 "questions."
 msgstr ""
+"Form cannot be activated. Either you have no permission or there are no "
+"questions."
 
 #: application/views/admin/survey/surveybar_view.php:55
 msgid "Survey properties"
-msgstr ""
+msgstr "Form properties"
 
 #: application/extensions/Menu/MenuWidget.php:246
 #: application/views/admin/survey/surveybar_view.php:58
@@ -8881,7 +8907,7 @@ msgstr ""
 #: application/views/admin/survey/surveybar_view.php:84
 #: application/views/admin/survey/surveybar_view.php:87
 msgid "Survey logic file"
-msgstr ""
+msgstr "Form logic file"
 
 #: application/views/admin/survey/surveybar_view.php:102
 msgid "Tools"
@@ -8895,7 +8921,7 @@ msgstr ""
 
 #: application/views/admin/survey/surveybar_view.php:112
 msgid "Currently there are no additional languages configured for this survey."
-msgstr ""
+msgstr "Currently there are no additional languages configured for this form."
 
 #: application/views/admin/survey/surveybar_view.php:118
 msgid "Expression Manager"
@@ -8909,7 +8935,7 @@ msgstr ""
 
 #: application/views/admin/survey/surveybar_view.php:126
 msgid "Currently there are no conditions configured for this survey."
-msgstr ""
+msgstr "Currently there are no conditions configured for this form."
 
 #: application/views/admin/survey/surveybar_view.php:148
 msgid "Display / Export"
@@ -8921,7 +8947,7 @@ msgstr ""
 
 #: application/views/admin/survey/surveybar_view.php:157
 msgid "Survey structure (.lss)"
-msgstr ""
+msgstr "Form structure (.lss)"
 
 #: application/views/admin/survey/surveybar_view.php:167
 msgid "You can only archive active surveys."
@@ -8948,7 +8974,7 @@ msgstr ""
 
 #: application/views/admin/survey/surveybar_view.php:222
 msgid "This survey is not active - no responses are available."
-msgstr ""
+msgstr "This form is not active - no responses are available."
 
 #: application/views/admin/survey/surveybar_view.php:229
 #: application/views/admin/survey/surveybar_view.php:232
@@ -8957,7 +8983,7 @@ msgstr ""
 
 #: application/views/admin/survey/surveybar_view.php:231
 msgid "This survey is not active, data entry is not allowed"
-msgstr ""
+msgstr "This form is not active, data entry is not allowed"
 
 #: application/views/admin/survey/surveybar_view.php:238
 #: application/views/admin/survey/surveybar_view.php:241
@@ -8966,7 +8992,7 @@ msgstr ""
 
 #: application/views/admin/survey/surveybar_view.php:240
 msgid "This survey is not active - no responses are available"
-msgstr ""
+msgstr "This form is not active - no responses are available"
 
 #: application/views/admin/survey/surveybar_view.php:252
 msgid "Question group/question organizer disabled"
@@ -9235,7 +9261,7 @@ msgstr ""
 
 #: application/views/admin/token/bounce.php:5
 msgid "Survey bounce email:"
-msgstr ""
+msgstr "Form bounce email:"
 
 #: application/views/admin/token/bounce.php:7
 msgid "Bounce settings to be used"
@@ -10621,11 +10647,11 @@ msgstr ""
 #: application/helpers/admin/export/HtmlWriter.php:67
 #: application/views/admin/templates/templateeditor_printoutput_view.php:1
 msgid "Survey name (ID)"
-msgstr ""
+msgstr "Form name (ID)"
 
 #: application/controllers/PrintanswersController.php:122
 msgid "Survey name (ID):"
-msgstr ""
+msgstr "Form name (ID):"
 
 #: application/controllers/admin/conditionsaction.php:1731
 #: application/controllers/admin/conditionsaction.php:2091
@@ -10679,7 +10705,7 @@ msgstr ""
 
 #: application/controllers/RegisterController.php:215
 msgid "Survey administrator"
-msgstr ""
+msgstr "Form administrator"
 
 #: application/controllers/Statistics_userController.php:392
 msgid "Please wait ..."
@@ -11107,11 +11133,11 @@ msgstr ""
 
 #: application/controllers/admin/checkintegrity.php:714
 msgid "Survey ID %d saved at %s containing %d record(s) (%s)"
-msgstr ""
+msgstr "Form ID %d saved at %s containing %d record(s) (%s)"
 
 #: application/controllers/admin/checkintegrity.php:775
 msgid "Survey ID %d saved at %s containing %d record(s)"
-msgstr ""
+msgstr "Form ID %d saved at %s containing %d record(s)"
 
 #: application/controllers/admin/conditionsaction.php:69
 #: application/controllers/admin/conditionsaction.php:85
@@ -12061,11 +12087,11 @@ msgstr ""
 
 #: application/controllers/admin/database.php:931
 msgid "Survey text elements successfully saved."
-msgstr ""
+msgstr "Form text elements successfully saved."
 
 #: application/controllers/admin/database.php:1138
 msgid "Survey settings were successfully saved."
-msgstr ""
+msgstr "Form settings were successfully saved."
 
 #: application/controllers/admin/database.php:1142
 msgid "Error:"
@@ -12073,7 +12099,7 @@ msgstr ""
 
 #: application/controllers/admin/database.php:1142
 msgid "Survey could not be updated."
-msgstr ""
+msgstr "Form could not be updated."
 
 #: application/controllers/admin/dataentry.php:207
 #: application/controllers/admin/labels.php:100
@@ -12538,7 +12564,7 @@ msgstr ""
 #: application/controllers/admin/limereplacementfields.php:300
 #: application/controllers/admin/limereplacementfields.php:330
 msgid "Survey expiration date"
-msgstr ""
+msgstr "Form expiration date"
 
 #: application/controllers/admin/limereplacementfields.php:224
 #: application/controllers/admin/limereplacementfields.php:243
@@ -12953,7 +12979,7 @@ msgstr ""
 
 #: application/controllers/admin/surveyadmin.php:720
 msgid "Survey deleted."
-msgstr ""
+msgstr "Form deleted."
 
 #: application/controllers/admin/surveyadmin.php:834
 msgid "Import survey data"
@@ -12961,7 +12987,7 @@ msgstr ""
 
 #: application/controllers/admin/surveyadmin.php:835
 msgid "Survey structure import summary"
-msgstr ""
+msgstr "Form structure import summary"
 
 #: application/controllers/admin/surveyadmin.php:850
 #: application/views/admin/survey/copySurvey_view.php:1
@@ -12971,7 +12997,7 @@ msgstr ""
 
 #: application/controllers/admin/surveyadmin.php:851
 msgid "Survey copy summary"
-msgstr ""
+msgstr "Form copy summary"
 
 #: application/controllers/admin/surveyadmin.php:900
 msgid "No survey ID has been provided. Cannot copy survey"
@@ -13009,17 +13035,17 @@ msgstr ""
 
 #: application/controllers/admin/surveyadmin.php:1462
 msgid "Survey could not be created because it did not have a title"
-msgstr ""
+msgstr "Form could not be created because it did not have a title"
 
 #: application/controllers/admin/surveyadmin.php:1619
 msgid "Survey was successfully added."
-msgstr ""
+msgstr "Form was successfully added."
 
 #: application/controllers/admin/surveypermission.php:41
 #: application/extensions/Menu/MenuWidget.php:258
 #: application/views/admin/survey/surveybar_view.php:66
 msgid "Survey permissions"
-msgstr ""
+msgstr "Form permissions"
 
 #: application/controllers/admin/surveypermission.php:48
 #: application/views/admin/emailtemplates/email_language_template_tab.php:37
@@ -13210,10 +13236,11 @@ msgstr ""
 msgid ""
 "Survey permissions for all users in this group were successfully updated."
 msgstr ""
+"Form permissions for all users in this group were successfully updated."
 
 #: application/controllers/admin/surveypermission.php:630
 msgid "Survey permissions were successfully updated."
-msgstr ""
+msgstr "Form permissions were successfully updated."
 
 #: application/controllers/admin/surveypermission.php:634
 msgid "Failed to update survey permissions!"
@@ -13674,7 +13701,7 @@ msgstr ""
 
 #: application/controllers/admin/translate.php:448
 msgid "Survey title and description"
-msgstr ""
+msgstr "Form title and description"
 
 #: application/controllers/admin/translate.php:463
 #: application/helpers/expressions/em_manager_helper.php:8963
@@ -14103,7 +14130,7 @@ msgstr ""
 
 #: application/core/Survey_Common_Action.php:846
 msgid "Survey cannot be activated yet."
-msgstr ""
+msgstr "Form cannot be activated yet."
 
 #: application/core/Survey_Common_Action.php:849
 msgid "You need to add question groups"
@@ -14257,7 +14284,7 @@ msgstr ""
 
 #: application/controllers/admin/surveyadmin.php:474
 msgid "Survey has been activated. Results table has been successfully created."
-msgstr ""
+msgstr "Form has been activated. Results table has been successfully created."
 
 #: application/controllers/admin/surveyadmin.php:479
 msgid ""
@@ -14450,7 +14477,7 @@ msgstr ""
 #: application/views/admin/survey/listSurveys_view.php:46
 #: application/views/admin/survey/surveybar_view.php:3
 msgid "Survey"
-msgstr ""
+msgstr "Form"
 
 #: application/helpers/admin/statistics_helper.php:3042
 #: application/helpers/admin/statistics_helper.php:3060
@@ -14979,7 +15006,7 @@ msgstr ""
 
 #: application/helpers/common_helper.php:1448
 msgid "Survey registration confirmation"
-msgstr ""
+msgstr "Form registration confirmation"
 
 #: application/helpers/common_helper.php:1449
 msgid ""
