@@ -39,98 +39,13 @@
         </div>
         <?php $clang->eT("You should only activate a survey when you are absolutely certain that your survey setup is finished and will not need changing."); ?><br /><br />
         <?php $clang->eT("Once a survey is activated you can no longer:"); ?><ul><li><?php $clang->eT("Add or delete groups"); ?></li><li><?php $clang->eT("Add or delete questions"); ?></li><li><?php $clang->eT("Add or delete subquestions or change their codes"); ?></li></ul>
-        <div class='warningheader'>
-            <?php $clang->eT("The following settings cannot be changed when the survey is active.");?>
-        </div>
-        <?php $clang->eT("Please check these settings now, then click the button below.");?>
-        <?php echo CHtml::form(array("admin/survey/sa/activate/surveyid/{$surveyid}/"), 'post', array('class'=>'form44')); ?>
         
-            <ul>
-                <li><label for='anonymized'><?php $clang->eT("Anonymized responses?"); ?>
-
-                        <script type="text/javascript"><!--
-                            function alertPrivacy()
-                            {
-                                if (document.getElementById('anonymized').value == 'Y')
-                                {
-                                    alert('<?php $clang->eT("Warning"); ?>: <?php $clang->eT("If you turn on the -Anonymized responses- option and create a tokens table, LimeSurvey will mark your completed tokens only with a 'Y' instead of date/time to ensure the anonymity of your participants.","js"); ?>');
-                                }
-                            }
-                            //--></script></label>
-
-                    <select id='anonymized' name='anonymized' onchange='alertPrivacy();'>
-                        <option value='Y'
-                            <?php if ($aSurveysettings['anonymized'] == "Y") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php $clang->eT("Yes"); ?></option>
-                        <option value='N'
-                            <?php if ($aSurveysettings['anonymized'] != "Y") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php $clang->eT("No"); ?></option>
-                    </select>
-                </li>
-
-                <li><label for='datestamp'><?php $clang->eT("Date stamp?"); ?></label>
-                    <select id='datestamp' name='datestamp' onchange='alertPrivacy();'>
-                        <option value='Y'
-                            <?php if ($aSurveysettings['datestamp'] == "Y") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php $clang->eT("Yes"); ?></option>
-                        <option value='N'
-                            <?php if ($aSurveysettings['datestamp'] != "Y") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php $clang->eT("No"); ?></option>
-                    </select>
-                </li>
-
-
-                <li><label for='ipaddr'><?php $clang->eT("Save IP address?"); ?></label>
-
-                    <select name='ipaddr' id='ipaddr'>
-                        <option value='Y'
-                            <?php if ($aSurveysettings['ipaddr'] == "Y") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php $clang->eT("Yes"); ?></option>
-                        <option value='N'
-                            <?php if ($aSurveysettings['ipaddr'] != "Y") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php $clang->eT("No"); ?></option>
-                    </select>
-                </li>
-
-
-                <li><label for='refurl'><?php $clang->eT("Save referrer URL?"); ?></label>
-                    <select name='refurl' id='refurl'>
-                        <option value='Y'
-                            <?php if ($aSurveysettings['refurl'] == "Y") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php $clang->eT("Yes"); ?></option>
-                        <option value='N'
-                            <?php if ($aSurveysettings['refurl'] != "Y") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php $clang->eT("No"); ?></option>
-                    </select>
-                </li>
-
-                <li><label for='savetimings'><?php $clang->eT("Save timings?"); ?></label>
-                    <select id='savetimings' name='savetimings'>
-                        <option value='Y'
-                            <?php if (!isset($aSurveysettings['savetimings']) || !$aSurveysettings['savetimings'] || $aSurveysettings['savetimings'] == "Y") { ?> selected='selected' <?php } ?>
-                            ><?php $clang->eT("Yes"); ?></option>
-                        <option value='N'
-                            <?php if (isset($aSurveysettings['savetimings']) && $aSurveysettings['savetimings'] == "N") { ?>  selected='selected' <?php } ?>
-                            ><?php $clang->eT("No"); ?></option>
-                    </select>
-                </li>
-            </ul>
+        <?php echo CHtml::form(array("admin/survey/sa/activate/surveyid/{$surveyid}/"), 'post', array('class'=>'form44')); ?>
+            <input type='hidden' name='anonymized' value='N' />
+            <input type='hidden' name='datestamp' value='Y' />
+            <input type='hidden' name='ipaddr' value='Y' />
+            <input type='hidden' name='refurl' value='Y' />
+            <input type='hidden' name='savetimings' value='Y' />
 
             <?php $clang->eT("Please note that once responses have collected with this survey and you want to add or remove groups/questions or change one of the settings above, you will need to deactivate this survey, which will move all data that has already been entered into a separate archived table."); ?><br /><br />
             <input type='hidden' name='ok' value='Y' />

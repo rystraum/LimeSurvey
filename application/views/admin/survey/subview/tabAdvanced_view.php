@@ -4,7 +4,7 @@
     <input type='hidden' name='ipaddr' value='Y' />
     <input type='hidden' name='refurl' value='Y' />
     <input type='hidden' name='savetimings' value='Y' />
-    <input type='hidden' name='assements' value='N' />
+    <input type='hidden' name='assessments' value='N' />
     <input type='hidden' name='googleanalyticsapikey' value='' />
     <input type='hidden' name='googleanalyticsstyle' value='0' />
 
