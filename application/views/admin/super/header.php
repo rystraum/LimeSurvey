@@ -26,6 +26,7 @@
     <title><?php echo $sitename;?></title>
     <link rel="shortcut icon" href="<?php echo $baseurl;?>styles/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="<?php echo $baseurl;?>styles/favicon.ico" type="image/x-icon" />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <?php echo $firebug ?>
     <?php $this->widget('ext.LimeScript.LimeScript'); ?>
     <?php $this->widget('ext.LimeDebug.LimeDebug'); ?>
@@ -37,5 +38,5 @@
         var userlanguage='<?php echo $adminlang; ?>';
     </script>
     <?php } ?>
-<div class='wrapper'>
+<div class="container-fluid">
     <?php $this->widget('ext.FlashMessage.FlashMessage'); ?>
