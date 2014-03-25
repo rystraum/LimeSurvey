@@ -39,6 +39,7 @@ CKEDITOR.editorConfig = function( config )
     
     config.toolbar_inline =
     [
+        ['Undo','Redo','-','PasteFromWord'],
         ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
         ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
@@ -46,7 +47,6 @@ CKEDITOR.editorConfig = function( config )
         '/',
         ['Styles','Format'],
         ['TextColor','BGColor'],
-        ['Undo','Redo','-','PasteFromWord'],
         ['Image','Flash','Table','HorizontalRule'],
     ];
 
@@ -60,9 +60,9 @@ CKEDITOR.editorConfig = function( config )
         ['Source']
     ];
 
-    config.extraPlugins = "ajax,limereplacementfields";
+    // config.extraPlugins = "ajax,limereplacementfields";
 };
 
 (function () {
-    CKEDITOR.plugins.addExternal('limereplacementfields', CKEDITOR.basePath + '../../scripts/admin/limereplacementfields/', 'plugin.js');
+    // CKEDITOR.plugins.addExternal('limereplacementfields', CKEDITOR.basePath + '../../scripts/admin/limereplacementfields/', 'plugin.js');
 })();

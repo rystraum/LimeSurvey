@@ -62,13 +62,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						evt.data.dialog = 'editlimereplacementfields';
 				});
 
-			editor.addCss(
-				'.cke_limereplacementfields' +
-				'{' +
-					'background-color: #ffff00;' +
-					( CKEDITOR.env.gecko ? 'cursor: default;' : '' ) +
-				'}'
-			);
+			// editor.addCss(
+			// 	'.cke_limereplacementfields' +
+			// 	'{' +
+			// 		'background-color: #ffff00;' +
+			// 		( CKEDITOR.env.gecko ? 'cursor: default;' : '' ) +
+			// 	'}'
+			// );
 
 			editor.on( 'contentDom', function()
 				{
