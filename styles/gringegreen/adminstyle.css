@@ -96,14 +96,7 @@ legend {
 }
 
 .maintitle {
-    font-size: 14pt;
-    font-weight: 700;
-    color: #8CCE00;
-    text-align: left;
-    padding:0.2em 1em 0.2em 0.2em;
-    border-bottom: 1px solid #eee;
-    width:96%;
-    margin:0 auto;
+    color: #8CCE00 !important;
 }
 
 table.statisticstable {
@@ -1849,4 +1842,13 @@ td.LEMerror  {
 
 .ui-tabs .action-buttons button {
 	margin: 0 0.5em;
+}
+
+#main-nav .navbar-form label {
+    padding: 10px;
+    text-shadow: 0 1px 0 #ffffff;
+}
+
+#main-nav .navbar-form select {
+    margin-top: 0;
 }

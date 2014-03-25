@@ -38,4 +38,3 @@
     <?php } ?>
 <div class='wrapper'>
     <?php $this->widget('ext.FlashMessage.FlashMessage'); ?>
-    <div class='maintitle'><?php echo $sitename; ?></div>

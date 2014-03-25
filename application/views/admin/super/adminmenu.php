@@ -1,122 +1,88 @@
-<div class='menubar'>
-    <div class='menubar-title ui-widget-header'>
-        <div class='menubar-title-left'>
-            <strong><?php $clang->eT("Administration");?></strong>
-            <?php
-                if(Yii::app()->session['loginID'])
-                { ?>
-                --  <?php $clang->eT("Logged in as:");?><strong>
-                    <a href="<?php echo $this->createUrl("/admin/user/sa/personalsettings"); ?>">
-                        <?php echo Yii::app()->session['user'];?> <img src='<?php echo $sImageURL;?>profile_edit.png' alt='<?php $clang->eT("Edit your personal preferences");?>' /></a>
-                </strong>
-                <?php } ?>
-        </div>
-        <?php
-            if($showupdate)
-            { ?>
-            <div class='menubar-title-right'><a href='<?php echo $this->createUrl("admin/globalsettings");?>'><?php echo sprintf($clang->ngT('Update available: %s','Updates available: %s',count($aUpdateVersions)),$sUpdateText);?></a></div>
-            <?php } ?>
-    </div>
-    <div class='menubar-main'>
-        <div class='menubar-left'>
-            <a href="<?php echo $this->createUrl("/admin/survey/sa/index"); ?>">
-                <img src='<?php echo $sImageURL;?>home.png' alt='<?php $clang->eT("Default administration page");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("a[href~='"+document.location.pathname+"']").parents('.nav li').addClass('active');
+});
+</script>
 
-            <img src='<?php echo $sImageURL;?>blank.gif' alt='' width='11' />
-            <img src='<?php echo $sImageURL;?>separator.gif' id='separator1' class='separator' alt='' />
+<div class="navbar" id="main-nav">
+  <div class="navbar-inner">
+    <a class="brand maintitle" href="#"><?php echo Yii::app()->getConfig("sitename") ?></a>
+    <ul class="nav">
+      <li class="dropdown">
+        <a href="<?php echo $this->createUrl("/admin/index") ?>" class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+          <?php $clang->eT("Default administration page") ?> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><a href="<?php echo $this->createUrl("admin/user/sa/index") ?>"><?php $clang->eT("Manage survey administrators") ?></a></li>
+          <?php if(Permission::model()->hasGlobalPermission('usergroups','read')): ?>
+            <li><a href="<?php echo $this->createUrl("admin/usergroups/sa/index") ?>"><?php $clang->eT("Create/edit user groups")?></a></li>
+          <?php endif ?>
 
-            <a href="<?php echo $this->createUrl("admin/user/sa/index"); ?>">
-                <img src='<?php echo $sImageURL;?>security.png' alt='<?php $clang->eT("Manage survey administrators");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
-            <?php
-                if(Permission::model()->hasGlobalPermission('usergroups','read'))
-                {?>
-                <a href="<?php echo $this->createUrl("admin/usergroups/sa/index"); ?>">
-                    <img src='<?php echo $sImageURL;?>usergroup.png' alt='<?php $clang->eT("Create/edit user groups");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
-                <?php
-                }
-                if(Permission::model()->hasGlobalPermission('settings','read'))
-                { ?>
-                <a href="<?php echo $this->createUrl("admin/globalsettings"); ?>">
-                    <img src='<?php echo $sImageURL;?>global.png' alt='<?php $clang->eT("Global settings");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
-                <img src='<?php echo $sImageURL;?>separator.gif' class='separator' alt='' />
-                <?php }
-                if(Permission::model()->hasGlobalPermission('settings','read'))
-                { ?>
-                <a href="<?php echo $this->createUrl("admin/checkintegrity"); ?>">
-                    <img src='<?php echo $sImageURL;?>checkdb.png' alt='<?php $clang->eT("Check Data Integrity");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
-                <?php
-                }
-                if(Permission::model()->hasGlobalPermission('superadmin','read'))
-                {
+          <?php if(Permission::model()->hasGlobalPermission('settings','read')): ?>
+            <li class="separator"></li>
+            <li><a href="<?php echo $this->createUrl("admin/globalsettings") ?>"><?php $clang->eT("Global settings") ?></a></li>
+            <li><a href="<?php echo $this->createUrl("admin/checkintegrity") ?>"><?php $clang->eT("Check Data Integrity") ?></a></li>
+          <?php endif ?>
 
-                    if (in_array(Yii::app()->db->getDriverName(), array('mysql', 'mysqli')) || Yii::app()->getConfig('demoMode') == true)
-                    {
+          <?php if(Permission::model()->hasGlobalPermission('superadmin','read')): ?>
+            <li>
+              <?php if (in_array(Yii::app()->db->getDriverName(), array('mysql', 'mysqli')) || Yii::app()->getConfig('demoMode') == true): ?>
+                <a href="<?php echo $this->createUrl("admin/dumpdb") ?>"><?php $clang->eT("Backup Entire Database") ?></a>
+              <?php else: ?>
+                <a href="#"><?php $clang->eT("The database export is only available for MySQL databases. For other database types please use the according backup mechanism to create a database dump.") ?></a>
+              <?php endif ?>
+            </li>
+          <?php endif ?>
 
-                    ?>
+          <?php if(Permission::model()->hasGlobalPermission('labelsets','read')): ?>
+            <li><a href="<?php echo $this->createUrl("admin/labels/sa/view") ?>" ><?php $clang->eT("Edit label sets");?></a></li>
+          <?php endif ?>
 
-                    <a href="<?php echo $this->createUrl("admin/dumpdb"); ?>" >
-                        <img src='<?php echo $sImageURL;?>backup.png' alt='<?php $clang->eT("Backup Entire Database");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/>
-                    </a>
+          <?php if(Permission::model()->hasGlobalPermission('templates','read')): ?>
+            <li><a href="<?php echo $this->createUrl("admin/templates/sa/view") ?>"><?php $clang->eT("Template Editor") ?></a></li>
+          <?php endif ?>
 
-                    <?php } else { ?>
-                    <img src='<?php echo $sImageURL; ?>backup_disabled.png' alt='<?php $clang->eT("The database export is only available for MySQL databases. For other database types please use the according backup mechanism to create a database dump."); ?>' />
-                    <?php } ?>
+          <?php if(Permission::model()->hasGlobalPermission('participantpanel','read')): ?>
+            <li><a href="<?php echo $this->createUrl("admin/participants/sa/index") ?>" ><?php $clang->eT("Central participant database/panel") ?></a></li>
+          <?php endif ?>
 
-                <img src='<?php echo $sImageURL; ?>separator.gif' class='separator' alt='' />
+          <?php if(Permission::model()->hasGlobalPermission('superadmin','read')): ?>
+            <li><a href="<?php echo $this->createUrl("plugins/") ?>" ><?php $clang->eT("Plugin manager") ?></a></li>
+          <?php endif ?>
+        </ul>
+      </li>
 
-                <?php
-                }
-                if(Permission::model()->hasGlobalPermission('labelsets','read'))
-                {
-                ?>
+      <li class="dropdown">
+        <a href="<?php echo $this->createUrl("/admin/survey/sa/index") ?>" class="dropdown-toggle" data-toggle="dropdown" data-target="#">
+          <?php $clang->eT("Surveys") ?> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><a href="<?php echo $this->createUrl("admin/survey/sa/index") ?>"><?php $clang->eT("Detailed list of surveys") ?></a></li>
 
-                <a href="<?php echo $this->createUrl("admin/labels/sa/view"); ?>" >
-                    <img src='<?php echo $sImageURL;?>labels.png'  alt='<?php $clang->eT("Edit label sets");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
-                <img src='<?php echo $sImageURL;?>separator.gif' class='separator' alt='' />
-                <?php }
-                if(Permission::model()->hasGlobalPermission('templates','read'))
-                { ?>
-                <a href="<?php echo $this->createUrl("admin/templates/sa/view"); ?>">
-                    <img src='<?php echo $sImageURL;?>templates.png' alt='<?php $clang->eT("Template Editor");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
-                <?php } ?>
-            <img src='<?php echo $sImageURL;?>separator.gif' class='separator' alt='' />
-            <?php
-                if(Permission::model()->hasGlobalPermission('participantpanel','read'))
-                { 	 ?>
-                <a href="<?php echo $this->createUrl("admin/participants/sa/index"); ?>" >
-                    <img src='<?php echo $sImageURL;?>cpdb.png' alt='<?php $clang->eT("Central participant database/panel");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
-                <?php }
-                if(Permission::model()->hasGlobalPermission('superadmin','read'))
-                {   ?>
-            <a href="<?php echo $this->createUrl("plugins/"); ?>" >
-                <img src='<?php echo $sImageURL;?>plugin.png' alt='<?php $clang->eT("Plugin manager");?>' width='<?php echo $iconsize;?>' height='<?php echo $iconsize;?>'/></a>
-                <?php }?>
-        </div>
-        <div class='menubar-right'>
-            <label for='surveylist'><?php $clang->eT("Surveys:");?></label>
-            <select id='surveylist' name='surveylist' onchange="if (this.options[this.selectedIndex].value!='') {window.open('<?php echo $this->createUrl("/admin/survey/sa/view/surveyid/"); ?>/'+this.options[this.selectedIndex].value,'_top')} else {window.open('<?php echo $this->createUrl("/admin/survey/sa/index/");?>','_top')}">
-                <?php echo getSurveyList(false, $surveyid); ?>
-            </select>
-            <a href="<?php echo $this->createUrl("admin/survey/sa/index"); ?>">
-                <img src='<?php echo $sImageURL;?>surveylist.png' alt='<?php $clang->eT("Detailed list of surveys");?>' />
-            </a>
+          <?php if (Permission::model()->hasGlobalPermission('surveys','create')): ?>
+            <li><a href="<?php echo $this->createUrl("admin/survey/sa/newsurvey") ?>"><?php $clang->eT("Create, import, or copy a survey") ?></a></li>
+          <?php endif ?>
+        </ul>
+      </li>
+    </ul>
 
-            <?php
-                if (Permission::model()->hasGlobalPermission('surveys','create'))
-                { ?>
+    <form class="navbar-form pull-left">
+      <label for='surveylist'><?php $clang->eT("Surveys:") ?></label>
+      <select name='surveylist' onchange="if (this.options[this.selectedIndex].value!='') {window.open('<?php echo $this->createUrl("/admin/survey/sa/view/surveyid/"); ?>/'+this.options[this.selectedIndex].value,'_top')} else {window.open('<?php echo $this->createUrl("/admin/survey/sa/index/");?>','_top')}">
+          <?php echo getSurveyList(false, $surveyid) ?>
+      </select>
+    </form>
 
-                <a href="<?php echo $this->createUrl("admin/survey/sa/newsurvey"); ?>">
-                    <img src='<?php echo $sImageURL;?>add.png' alt='<?php $clang->eT("Create, import, or copy a survey");?>' /></a>
-                <?php } ?>
-
-
-            <img id='separator2' src='<?php echo $sImageURL;?>separator.gif' class='separator' alt='' />
-            <a href="<?php echo $this->createUrl("admin/authentication/sa/logout"); ?>" >
-                <img src='<?php echo $sImageURL;?>logout.png' alt='<?php $clang->eT("Logout");?>' /></a>
-
-            <a href="http://manual.limesurvey.org" target="_blank">
-                <img src='<?php echo $sImageURL;?>showhelp.png' alt='<?php $clang->eT("LimeSurvey online manual");?>' /></a>
-        </div>
-    </div>
+    <ul class="nav pull-right">
+        <?php if(Yii::app()->session['loginID']): ?>
+            <li>
+                <a href="<?php echo $this->createUrl("/admin/user/sa/personalsettings"); ?>">
+                    <?php $clang->eT("Logged in as:") ?>
+                    <?php echo Yii::app()->session['user']?>
+                </a>
+            </li>
+        <?php endif ?>
+        <li><a href="<?php echo $this->createUrl("admin/authentication/sa/logout") ?>" ><?php $clang->eT("Logout") ?></a></li>
+    </ul>
+  </div>
 </div>
-<p style='margin:0;font-size:1px;line-height:1px;height:1px;'>&nbsp;</p>
