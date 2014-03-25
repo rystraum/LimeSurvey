@@ -84,8 +84,8 @@ th, p, div {
 }
 
 fieldset {
-    padding:4px 8px 4px 8px;
-    margin: 3px;
+    padding: 1em;
+    margin: 1em;
     border-color:#DDD;
     border-style: solid;
     border-width: 1px;
@@ -93,6 +93,10 @@ fieldset {
 
 legend {
     font-weight: bold;
+    padding: 0 .75em;
+    margin-left: -0.5em;
+    border-bottom: none;
+    font-size: 1.5em;
 }
 
 .maintitle {
@@ -1208,6 +1212,17 @@ textarea.updater-changelog {
     float: left;
 }
 
+.form30 label {
+    color: #666;
+    line-height: 1.5;
+    padding: 0;
+}
+
+.form30 .annotation {
+    color: #ff0000;
+    vertical-align: middle;
+}
+
 .form30newtabs div div div div li{
     list-style-type: none;
     clear:left;
@@ -1707,12 +1722,6 @@ ui-jqgrid-btable table, .ui-pg-table table{
    width:160px;
 }
 
-legend{
-    margin:1em;
-}
-
-
-
 
 /* Expression Manager - Show Logic File */
 
@@ -1851,4 +1860,20 @@ td.LEMerror  {
 
 #main-nav .navbar-form select {
     margin-top: 0;
+}
+
+legend + .control-group {
+    margin-top: 0;
+}
+
+.dropdown-menu .active > a {
+    color: #fff;
+}
+
+.dropdown-menu .active > a:hover {
+    color: #ccc;
+}
+
+.control-group {
+    margin-bottom: 1em;
 }

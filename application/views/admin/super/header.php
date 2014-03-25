@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <?php 
         App()->getClientScript()->registerPackage('jqueryui');
+        App()->getComponent('bootstrap')->the_init();
         App()->getClientScript()->registerPackage('jquery-cookie');
         App()->getClientScript()->registerPackage('jquery-superfish');
         App()->getClientScript()->registerPackage('qTip2');

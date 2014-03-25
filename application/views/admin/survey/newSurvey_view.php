@@ -8,17 +8,18 @@
     templaterooturl='<?php echo Yii::app()->getConfig('usertemplaterooturl');?>';
 </script>
 <div class='header ui-widget-header'><?php $clang->eT("Create, import, or copy survey"); ?></div>
+<?php $this->renderPartial('/admin/survey/partial/new_survey', $data) ?>
 <?php
-    $this->renderPartial('/admin/survey/subview/tab_view',$data);
-    $this->renderPartial('/admin/survey/subview/tabGeneralNewSurvey_view',$data);
-    $this->renderPartial('/admin/survey/subview/tabAdvanced_view',$data);
+    // $this->renderPartial('/admin/survey/subview/tab_view',$data);
+    // $this->renderPartial('/admin/survey/subview/tabGeneralNewSurvey_view',$data);
+    // $this->renderPartial('/admin/survey/subview/tabAdvanced_view',$data);
 ?>
 
 <input type='hidden' id='surveysettingsaction' name='action' value='insertsurvey' />
 </form>
 <?php
-    $this->renderPartial('/admin/survey/subview/tabImport_view',$data);
-    $this->renderPartial('/admin/survey/subview/tabCopy_view',$data);
+    // $this->renderPartial('/admin/survey/subview/tabImport_view',$data);
+    // $this->renderPartial('/admin/survey/subview/tabCopy_view',$data);
 ?>
 </div>
 

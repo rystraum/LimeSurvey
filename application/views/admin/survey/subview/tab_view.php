@@ -31,4 +31,4 @@
             $sURL = "admin/survey/sa/insert";
         }
     ?>
-    <?php echo CHtml::form(array($sURL), 'post', array('id'=>'addnewsurvey', 'name'=>'addnewsurvey', 'class'=>'form30')); ?>
+    <?php echo CHtml::form(array($sURL), 'post', array('id'=>'addnewsurvey', 'name'=>'addnewsurvey', 'class'=>'form30 form-horizontal')); ?>
