@@ -36,7 +36,7 @@
         </li>
 
         <li>
-            <label for='usecookie'><?php $clang->eT("Set cookie to prevent repeated participation?"); ?></label>
+            <label for='usecookie'><?php $clang->eT("Prevent repeated participation?"); ?></label>
             <select name='usecookie' id='usecookie'>
                 <option value='Y' <?php if ($esrow['usecookie'] == "Y") { echo "selected='selected'"; } ?>>
                     <?php $clang->eT("Yes"); ?>
