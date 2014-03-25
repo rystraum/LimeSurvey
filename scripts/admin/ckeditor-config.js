@@ -9,9 +9,9 @@ CKEDITOR.editorConfig = function( config )
     config.filebrowserImageUploadUrl = CKEDITOR.basePath+'../kcfinder/upload.php?type=images';
     config.filebrowserFlashUploadUrl = CKEDITOR.basePath+'../kcfinder/upload.php?type=flash';
 
-    config.skin = 'ls-office2003';
+    config.skin = 'moono';
     config.toolbarCanCollapse = false;
-    config.resize_enabled = false;
+    config.resize_enabled = true;
     config.autoParagraph = false;
     config.entities = false;    
 	
@@ -39,24 +39,16 @@ CKEDITOR.editorConfig = function( config )
     
     config.toolbar_inline =
     [
-        ['Maximize','Createlimereplacementfields'],
-        ['Cut','Copy','Paste','PasteText','PasteFromWord'],
-        ['Undo','Redo','-','Find','Replace','-','SelectAll','RemoveFormat','Source'],
-        ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar'],
-        '/',
         ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
-        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
+        ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
-        ['BidiLtr', 'BidiRtl'],
         ['Link','Unlink','Anchor','Iframe'],
         '/',
-        ['Styles','Format','Font','FontSize'],
+        ['Styles','Format'],
         ['TextColor','BGColor'],
-        [ 'ShowBlocks','Templates'],
+        ['Undo','Redo','-','PasteFromWord'],
+        ['Image','Flash','Table','HorizontalRule'],
     ];
-
-
-   
 
    config.toolbar_inline2 =
     [
@@ -68,11 +60,7 @@ CKEDITOR.editorConfig = function( config )
         ['Source']
     ];
 
-
     config.extraPlugins = "ajax,limereplacementfields";
-
-    
-
 };
 
 (function () {
