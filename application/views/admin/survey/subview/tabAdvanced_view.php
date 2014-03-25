@@ -1,5 +1,5 @@
 <div id='advanced'>
-    <h2>Notifications</h2>
+    <h2><?php $clang->eT("Notification & data management"); ?></h2>
     <input type='hidden' name='datestamp' value='Y' />
     <input type='hidden' name='ipaddr' value='Y' />
     <input type='hidden' name='refurl' value='Y' />
@@ -32,7 +32,7 @@
         </li>
     </ul>
 
-    <h2>Publication</h2>
+    <h2><?php $clang->eT("Publication & access control"); ?></h2>
     <input type='hidden' name='usecaptcha' value='D' />
     <ul>
         <li>
@@ -82,7 +82,7 @@
         </li>
     </ul>
 
-    <h2>Tokens</h2>
+    <h2><?php $clang->eT("Tokens"); ?></h2>
     <input type='hidden' name='anonymized' value='N' />
     <input type='hidden' name='htmlemail' value='Y' />
     <input type='hidden' name='sendconfirmation' value='Y' />
