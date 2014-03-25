@@ -1,4 +1,16 @@
 <div id='presentation'><ul>
+        <input type='hidden' name='template' value='default' />
+        <input type='hidden' name='showwelcome' value='N' />
+        <input type='hidden' name='navigationdelay' value='0' />
+        <input type='hidden' name='allowprev' value='Y' />
+        <input type='hidden' name='questionindex' value='1' />
+        <input type='hidden' name='nokeyboard' value='N' />
+        <input type='hidden' name='printanswers' value='Y' />
+        <input type='hidden' name='publicgraphs' value='N' />
+        <input type='hidden' name='autoredirect' value='Y' />
+        <?php if($showxquestions == 'choose'): ?>
+            <input type='hidden' name='showxquestions' value='N' />
+        <?php endif ?>
 
 
         <li><label for='format'><?php $clang->eT("Format:"); ?></label>
@@ -24,101 +36,6 @@
             </select>
         </li>
 
-
-        <li><label for='template'><?php $clang->eT("Template:"); ?></label>
-            <select id='template' name='template'>
-                <?php foreach (array_keys(getTemplateList()) as $tname) {
-
-                        if (Permission::model()->hasGlobalPermission('superadmin','read') || Permission::model()->hasGlobalPermission('templates','read') || hasTemplateManageRights(Yii::app()->session["loginID"], $tname) == 1) { ?>
-                        <option value='<?php echo $tname; ?>'
-                            <?php if ($esrow['template'] && htmlspecialchars($tname) == $esrow['template']) { ?>
-                                selected='selected'
-                                <?php   } elseif (!$esrow['template'] && $tname == "default") { ?>
-                                selected='selected'
-                                <?php } ?>
-                            ><?php echo $tname; ?></option>
-                        <?php }
-                } ?>
-            </select>
-        </li>
-
-        <li><label for='preview'><?php $clang->eT("Template Preview:"); ?></label>
-            <img alt='<?php $clang->eT("Template preview image"); ?>' name='preview' id='preview' src='<?php echo getTemplateURL($esrow['template']); ?>/preview.png' />
-        </li>
-
-
-        <li><label for='showwelcome'><?php $clang->eT("Show welcome screen?") ; ?></label>
-            <select id='showwelcome' name='showwelcome'>
-                <option value='Y'
-                    <?php if (!$esrow['showwelcome'] || $esrow['showwelcome'] == "Y") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("Yes") ; ?>
-                </option>
-                <option value='N'
-                    <?php if ($esrow['showwelcome'] == "N") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("No") ; ?>
-                </option>
-            </select>
-        </li>
-
-
-
-        <li><label for='navigationdelay'><?php $clang->eT("Navigation delay (seconds):"); ?></label>
-            <input type='text' value="<?php echo $esrow['navigationdelay']; ?>" name='navigationdelay' id='navigationdelay' size='12' maxlength='2' onkeypress="return goodchars(event,'0123456789')" />
-        </li>
-
-
-        <li><label for='allowprev'><?php $clang->eT("Show [<< Prev] button"); ?></label>
-            <select id='allowprev' name='allowprev'>
-                <option value='Y'
-                    <?php if (!isset($esrow['allowprev']) || !$esrow['allowprev'] || $esrow['allowprev'] == "Y") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("Yes"); ?>
-                </option>
-                <option value='N'
-                    <?php if (isset($esrow['allowprev']) && $esrow['allowprev'] == "N") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("No"); ?>
-                </option>
-            </select>
-        </li>
-
-        <li><label for='questionindex'><?php $clang->eT("Show question index / allow jumping"); ?></label>
-			<?php
-				$data = array(
-					0 => gT('Disabled'),
-					1 => gT('Incremental'),
-					2 => gT('Full')
-				);
-				echo CHtml::dropDownList('questionindex', $esrow['questionindex'], $data, array(
-					'id' => 'questionindex'
-				));
-			?>
-        </li>
-
-
-        <li><label for='nokeyboard'><?php $clang->eT("Keyboard-less operation"); ?></label>
-            <select id='nokeyboard' name='nokeyboard'>
-                <option value='Y'
-                    <?php if (!isset($esrow['nokeyboard']) || !$esrow['nokeyboard'] || $esrow['nokeyboard'] == "Y") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("Yes"); ?>
-                </option>
-                <option value='N'
-                    <?php if (isset($esrow['nokeyboard']) && $esrow['nokeyboard'] == "N") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("No"); ?>
-                </option>
-            </select>
-        </li>
-
         <li><label for='showprogress'><?php $clang->eT("Show progress bar"); ?></label>
             <select id='showprogress' name='showprogress'>
                 <option value='Y'
@@ -132,24 +49,6 @@
                         selected='selected'
                         <?php } ?>
                     ><?php $clang->eT("No"); ?></option>
-            </select>
-        </li>
-
-
-        <li><label for='printanswers'><?php $clang->eT("Participants may print answers?"); ?></label>
-            <select id='printanswers' name='printanswers'>
-                <option value='Y'
-                    <?php if (!isset($esrow['printanswers']) || !$esrow['printanswers'] || $esrow['printanswers'] == "Y") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("Yes"); ?>
-                </option>
-                <option value='N'
-                    <?php if (isset($esrow['printanswers']) && $esrow['printanswers'] == "N") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("No"); ?>
-                </option>
             </select>
         </li>
 
@@ -170,75 +69,6 @@
                 </option>
             </select>
         </li>
-
-
-        <li><label for='publicgraphs'><?php $clang->eT("Show graphs in public statistics?"); ?></label>
-            <select id='publicgraphs' name='publicgraphs'>
-                <option value='Y'
-                    <?php if (!isset($esrow['publicgraphs']) || !$esrow['publicgraphs'] || $esrow['publicgraphs'] == "Y") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("Yes"); ?>
-                </option>
-                <option value='N'
-                    <?php if (isset($esrow['publicgraphs']) && $esrow['publicgraphs'] == "N") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("No"); ?></option>
-            </select>
-        </li>
-
-
-        <li><label for='autoredirect'><?php $clang->eT("Automatically load URL when survey complete?"); ?></label>
-            <select id='autoredirect' name='autoredirect'>
-                <option value='Y'
-                    <?php if (isset($esrow['autoredirect']) && $esrow['autoredirect'] == "Y") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("Yes"); ?>
-                </option>
-                <option value='N'
-                    <?php if (!isset($esrow['autoredirect']) || $esrow['autoredirect'] != "Y") { ?>
-                        selected='selected'
-                        <?php } ?>
-                    ><?php $clang->eT("No"); ?>
-                </option>
-            </select>
-        </li>
-
-        <!-- $show_dis_pre =<li><label for="dis_showxquestions"><?php $clang->eT('Show "There are X questions in this survey"'); ?></label> <input type="hidden" name="showxquestions" id="" value="
-        $show_dis_mid = " /> <input type="text" name="dis_showxquestions" id="dis_showxquestions" disabled="disabled" value="
-        $show_dis_post = " size="70" /></li> -->
-        <?php switch ($showxquestions) {
-                case 'show': ?>
-                <li><label for="dis_showxquestions"><?php $clang->eT('Show "There are X questions in this survey"'); ?></label> <input type="hidden" name="showxquestions" id="" value="Y" /> <input type="text" name="dis_showxquestions" id="dis_showxquestions" disabled="disabled" value="
-                        <?php $clang->eT('Yes (Forced by the system administrator)'); ?>
-                        " size="70" /></li>
-                <?php   break;
-                case 'hide': ?>
-                <li><label for="dis_showxquestions"><?php $clang->eT('Show "There are X questions in this survey"'); ?></label> <input type="hidden" name="showxquestions" id="" value="N" /> <input type="text" name="dis_showxquestions" id="dis_showxquestions" disabled="disabled" value="
-                        <?php $clang->eT('No (Forced by the system administrator)'); ?>
-                        " size="70" /></li>
-                <?php  break;
-                case 'choose':
-                default:
-                    $sel_showxq = array( 'Y' => '' , 'N' => '' );
-                    if (isset($esrow['showxquestions'])) {
-                        $set_showxq = $esrow['showxquestions'];
-                        $sel_showxq[$set_showxq] = ' selected="selected"';
-                    }
-                    if (empty($sel_showxq['Y']) && empty($sel_showxq['N'])) {
-                        $sel_showxq['Y'] = ' selected="selected"';
-                    }; ?>
-                <li><label for="showxquestions"><?php $clang->eT('Show "There are X questions in this survey"'); ?></label>
-                    <select id="showxquestions" name="showxquestions">
-                        <option value="Y" <?php echo $sel_showxq['Y']; ?>><?php $clang->eT('Yes'); ?></option>
-                        <option value="N" <?php echo $sel_showxq['N']; ?>><?php $clang->eT('No'); ?></option>
-                    </select>
-                </li>
-                <?php unset($sel_showxq,$set_showxq);
-                    break;
-            }; ?>
 
         <!--            // Show {GROUPNAME} and/or {GROUPDESCRIPTION} block
         $show_dis_pre =<li><label for="dis_showgroupinfo"><?php $clang->eT('Show group name and/or group description'); ?></label> <input type="hidden" name="showgroupinfo" id="showgroupinfo" value="
