@@ -8,7 +8,7 @@
     <input type='hidden' name='printanswers' value='Y' />
     <input type='hidden' name='publicgraphs' value='N' />
     <input type='hidden' name='autoredirect' value='Y' />
-    <?php if($showxquestions == 'choose'): ?>
+    <?php if(($showxquestions !== 'show') || ($showxquestions !== 'hide')): ?>
         <input type='hidden' name='showxquestions' value='N' />
     <?php endif ?>
     <ul>
