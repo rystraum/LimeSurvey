@@ -98,6 +98,12 @@ class Bootstrap extends CApplicationComponent
 		if (Yii::app() instanceof CConsoleApplication)
 			return;
 
+		// $this->the_init();
+
+		parent::init();
+	}
+
+	public function the_init() {
 		if ($this->coreCss !== false)
 			$this->registerCoreCss();
 
@@ -112,8 +118,6 @@ class Bootstrap extends CApplicationComponent
 
 		if ($this->enableJS !== false)
 			$this->registerCoreScripts();
-
-		parent::init();
 	}
 
 	/**
