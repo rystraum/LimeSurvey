@@ -505,6 +505,7 @@ function GetItemIndex(objListBox, strId)
 
 function UpdateLanguageIDs(mylangs,confirmtxt)
 {
+    return true;
     document.getElementById("languageids").value = '';
 
     var lbBox = document.getElementById("additional_languages");

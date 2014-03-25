@@ -11,17 +11,18 @@
 
 <div id='tabs'>
     <ul>
-        <li><a href='#general'><?php $clang->eT("General"); ?></a></li>
-        <li><a href='#advanced'><?php $clang->eT("Advanced Options"); ?></a></li>
-        
         <?php if ($action == "newsurvey"): ?>
+            <li><a href='#general'><?php $clang->eT("General"); ?></a></li>
+            <li><a href='#advanced'><?php $clang->eT("Advanced Options"); ?></a></li>
             <li><a href='#import'><?php $clang->eT("Import"); ?></a></li>
             <li><a href='#copy'><?php $clang->eT("Copy"); ?></a></li>
+        
         <?php elseif ($action == "editsurveysettings"): ?>
+            <li><a href='#advanced'><?php $clang->eT("Advanced Options"); ?></a></li>
             <li><a href='#panelintegration'><?php $clang->eT("Panel integration"); ?></a></li>
             <li><a href='#resources'><?php $clang->eT("Resources"); ?></a></li>
+        
         <?php endif ?>
-
     </ul>
     <?php
         if ($action == "editsurveysettings") { 

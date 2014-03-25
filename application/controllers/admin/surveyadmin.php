@@ -171,6 +171,15 @@ class SurveyAdmin extends Survey_Common_Action
         $esrow = array();
         $esrow = self::_fetchSurveyInfo('editsurvey', $iSurveyID);
         $aData['esrow'] = $esrow;
+        
+        $owner = User::model()->findByPk($esrow->owner_id)->attributes;
+        if (getGlobalSetting('bounceaccounttype') != 'off') {
+            $owner['bounce_email'] = getGlobalSetting('siteadminbounce');
+        } else {
+            $owner['bounce_email'] = $owner['email'];
+        }
+        
+        $aData['owner'] = $owner;
 
         $aData = array_merge($aData, $this->_generalTabEditSurvey($iSurveyID, $esrow));
         $aData = array_merge($aData, $this->_tabPresentationNavigation($esrow));
