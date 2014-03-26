@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the LimeSurvey 2.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2014-03-26 18:24+0800\n"
+"PO-Revision-Date: 2014-03-26 20:02+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12317,10 +12317,13 @@ msgid ""
 "confirmation e-mail. Please make sure to save your password, since we will "
 "not be able to retrieve it for you."
 msgstr ""
+"Your form responses have been saved successfully.  You will be sent a "
+"confirmation e-mail. Please make sure to save your password, since we will "
+"not be able to retrieve it for you."
 
 #: application/controllers/admin/dataentry.php:1815
 msgid "A token entry for the saved survey has been created too."
-msgstr ""
+msgstr "A token entry for the saved form has been created too."
 
 #: application/controllers/admin/dataentry.php:1823
 #: application/libraries/Save.php:197
@@ -12365,10 +12368,12 @@ msgid ""
 "Reload your survey by clicking on the following link (or pasting it into "
 "your browser):"
 msgstr ""
+"Reload your form by clicking on the following link (or pasting it into your "
+"browser):"
 
 #: application/controllers/admin/dataentry.php:1837
 msgid "An email has been sent with details about your saved survey"
-msgstr ""
+msgstr "An email has been sent with details about your saved form"
 
 #: application/controllers/admin/dataentry.php:1961
 msgid "Only answer this if the following conditions are met:"
@@ -12635,28 +12640,28 @@ msgstr ""
 #: application/controllers/admin/limereplacementfields.php:273
 #: application/controllers/admin/limereplacementfields.php:290
 msgid "Name of the survey"
-msgstr ""
+msgstr "Name of the form"
 
 #: application/controllers/admin/limereplacementfields.php:232
 #: application/controllers/admin/limereplacementfields.php:252
 #: application/controllers/admin/limereplacementfields.php:274
 #: application/controllers/admin/limereplacementfields.php:291
 msgid "Description of the survey"
-msgstr ""
+msgstr "Description of the form"
 
 #: application/controllers/admin/limereplacementfields.php:238
 #: application/controllers/admin/limereplacementfields.php:258
 #: application/controllers/admin/limereplacementfields.php:280
 #: application/controllers/admin/limereplacementfields.php:297
 msgid "Name of the survey administrator"
-msgstr ""
+msgstr "Name of the form administrator"
 
 #: application/controllers/admin/limereplacementfields.php:239
 #: application/controllers/admin/limereplacementfields.php:259
 #: application/controllers/admin/limereplacementfields.php:281
 #: application/controllers/admin/limereplacementfields.php:298
 msgid "Email address of the survey administrator"
-msgstr ""
+msgstr "Email address of the form administrator"
 
 #: application/controllers/admin/limereplacementfields.php:247
 msgid "Answers from this response"
@@ -12834,7 +12839,7 @@ msgstr ""
 
 #: application/controllers/admin/printablesurvey.php:1511
 msgid "There are {NUMBEROFQUESTIONS} questions in this survey"
-msgstr ""
+msgstr "There are {NUMBEROFQUESTIONS} questions in this form"
 
 #: application/controllers/admin/printablesurvey.php:1660
 msgid "Please choose at least %s items."
@@ -13002,7 +13007,7 @@ msgstr "Form deleted."
 
 #: application/controllers/admin/surveyadmin.php:834
 msgid "Import survey data"
-msgstr ""
+msgstr "Import form data"
 
 #: application/controllers/admin/surveyadmin.php:835
 msgid "Survey structure import summary"
@@ -13012,7 +13017,7 @@ msgstr "Form structure import summary"
 #: application/views/admin/survey/copySurvey_view.php:1
 #: application/views/admin/survey/subview/tabCopy_view.php:23
 msgid "Copy survey"
-msgstr ""
+msgstr "Copy form"
 
 #: application/controllers/admin/surveyadmin.php:851
 msgid "Survey copy summary"
@@ -13020,7 +13025,7 @@ msgstr "Form copy summary"
 
 #: application/controllers/admin/surveyadmin.php:900
 msgid "No survey ID has been provided. Cannot copy survey"
-msgstr ""
+msgstr "No form ID has been provided. Cannot copy form."
 
 #: application/controllers/admin/surveyadmin.php:1049
 msgid "The new question group/question order was successfully saved."
@@ -13051,6 +13056,8 @@ msgid ""
 "The survey was successfully expired by setting an expiration date in the "
 "survey settings."
 msgstr ""
+"The form was successfully expired by setting an expiration date in the form "
+"settings."
 
 #: application/controllers/admin/surveyadmin.php:1462
 msgid "Survey could not be created because it did not have a title"
@@ -13183,7 +13190,7 @@ msgstr ""
 
 #: application/controllers/admin/surveypermission.php:329
 msgid "Set survey permissions"
-msgstr ""
+msgstr "Set form permissions"
 
 #: application/controllers/admin/surveypermission.php:338
 msgid "Username already exists."
@@ -13191,11 +13198,11 @@ msgstr ""
 
 #: application/controllers/admin/surveypermission.php:410
 msgid "Edit survey permissions for user %s"
-msgstr ""
+msgstr "Edit form permissions for user %s"
 
 #: application/controllers/admin/surveypermission.php:416
 msgid "Edit survey permissions for group %s"
-msgstr ""
+msgstr "Edit form permissions for group %s"
 
 #: application/controllers/admin/surveypermission.php:423
 #: application/views/admin/user/setuserpermissions.php:7
@@ -13373,7 +13380,7 @@ msgstr ""
 
 #: application/controllers/admin/templates.php:771
 msgid "Printable survey page"
-msgstr ""
+msgstr "Printable form page"
 
 #: application/controllers/admin/templates.php:884
 msgid "Template Sample"
@@ -13381,7 +13388,7 @@ msgstr ""
 
 #: application/controllers/admin/templates.php:886
 msgid "This is a sample survey description. It could be quite long."
-msgstr ""
+msgstr "This is a sample form description. It could be quite long."
 
 #: application/controllers/admin/templates.php:887
 msgid "But this one isn't."
@@ -13413,12 +13420,12 @@ msgstr ""
 
 #: application/controllers/admin/templates.php:960
 msgid "You have not provided a survey identification number"
-msgstr ""
+msgstr "You have not provided a form identification number"
 
 #: application/controllers/admin/templates.php:962
 #: application/views/surveys/publicSurveyList.php:34
 msgid "The following surveys are available:"
-msgstr ""
+msgstr "The following forms are available:"
 
 #: application/controllers/admin/templates.php:1011
 #: application/controllers/admin/templates.php:1012
@@ -13427,15 +13434,15 @@ msgstr ""
 
 #: application/controllers/admin/templates.php:1136
 msgid "Submit your survey."
-msgstr ""
+msgstr "Submit your form."
 
 #: application/controllers/admin/templates.php:1140
 msgid "This is the survey end message."
-msgstr ""
+msgstr "This is the form end message."
 
 #: application/views/admin/dataentry/active_html_view.php:94
 msgid "The survey you selected does not exist"
-msgstr ""
+msgstr "The form you selected does not exist"
 
 #: application/controllers/admin/tokens.php:234
 msgid ""
@@ -13461,7 +13468,7 @@ msgstr ""
 
 #: application/controllers/admin/tokens.php:451
 msgid "Do survey"
-msgstr ""
+msgstr "Do form"
 
 #: application/controllers/admin/tokens.php:457
 msgid "Delete token entry"
@@ -14080,12 +14087,12 @@ msgstr ""
 #: application/core/Survey_Common_Action.php:685
 #: application/views/admin/survey/subview/tabTokens_view.php:22
 msgid "Responses to this survey are anonymized."
-msgstr ""
+msgstr "Responses to this form are anonymized."
 
 #: application/core/Survey_Common_Action.php:689
 #: application/views/admin/survey/subview/tabTokens_view.php:20
 msgid "Responses to this survey are NOT anonymized."
-msgstr ""
+msgstr "Responses to this form are NOT anonymized."
 
 #: application/core/Survey_Common_Action.php:693
 msgid "It is presented question by question."
@@ -14128,11 +14135,11 @@ msgstr ""
 
 #: application/core/Survey_Common_Action.php:736
 msgid "If tokens are used, the public may register for this survey"
-msgstr ""
+msgstr "If tokens are used, the public may register for this form"
 
 #: application/core/Survey_Common_Action.php:740
 msgid "Participants can save partially finished surveys"
-msgstr ""
+msgstr "Participants can save partially finished forms"
 
 #: application/core/Survey_Common_Action.php:744
 msgid "Basic email notification is sent to:"
@@ -14192,7 +14199,7 @@ msgstr ""
 #: application/helpers/SurveyRuntimeHelper.php:631
 #: application/views/admin/templates/templateeditor_completed_view.php:4
 msgid "Your survey responses have been recorded."
-msgstr ""
+msgstr "Your form responses have been recorded."
 
 #: application/helpers/SurveyRuntimeHelper.php:644
 msgid "Print your answers."
@@ -14200,15 +14207,15 @@ msgstr ""
 
 #: application/helpers/SurveyRuntimeHelper.php:660
 msgid "View the statistics for this survey."
-msgstr ""
+msgstr "View the statistics for this form."
 
 #: application/helpers/SurveyRuntimeHelper.php:730
 msgid "Sorry. There is no matching survey."
-msgstr ""
+msgstr "Sorry. There is no matching form."
 
 #: application/helpers/SurveyRuntimeHelper.php:747
 msgid "Invalid group number for this survey: "
-msgstr ""
+msgstr "Invalid group number for this form: "
 
 #: application/helpers/SurveyRuntimeHelper.php:753
 msgid ""
@@ -14218,13 +14225,15 @@ msgstr ""
 
 #: application/helpers/SurveyRuntimeHelper.php:771
 msgid "Submit your answers"
-msgstr ""
+msgstr "Submit your answers"
 
 #: application/helpers/SurveyRuntimeHelper.php:772
 msgid ""
 "There are no more questions. Please press the <Submit> button to finish this "
 "survey."
 msgstr ""
+"There are no more questions. Please press the <Submit> button to finish this "
+"form."
 
 #: application/helpers/qanda_helper.php:482
 #: application/helpers/SurveyRuntimeHelper.php:1007
@@ -14295,7 +14304,7 @@ msgstr ""
 #: application/views/admin/survey/activateSurvey_view.php:5
 #: application/views/admin/survey/activateSurvey_view.php:35
 msgid "Activate Survey"
-msgstr "Activate survey"
+msgstr "Activate Form"
 
 #: application/controllers/admin/surveyadmin.php:466
 msgid "Database error!!"
@@ -14315,6 +14324,7 @@ msgstr ""
 msgid ""
 "This survey allows public registration. A token table must also be created."
 msgstr ""
+"This form allows public registration. A token table must also be created."
 
 #: application/controllers/admin/surveyadmin.php:486
 #: application/views/admin/token/tokenwarning.php:23
@@ -14323,7 +14333,7 @@ msgstr ""
 
 #: application/controllers/admin/surveyadmin.php:490
 msgid "This survey is now active, and responses can be recorded."
-msgstr ""
+msgstr "This form is now active, and responses can be recorded."
 
 #: application/controllers/admin/surveyadmin.php:491
 msgid "Open-access mode"
@@ -14331,7 +14341,7 @@ msgstr ""
 
 #: application/controllers/admin/surveyadmin.php:491
 msgid "No invitation code is needed to complete the survey."
-msgstr ""
+msgstr "No invitation code is needed to complete the form."
 
 #: application/controllers/admin/surveyadmin.php:491
 msgid ""
@@ -14430,7 +14440,7 @@ msgstr ""
 
 #: application/helpers/admin/import_helper.php:2281
 msgid "This file is not a LimeSurvey survey file. Import failed."
-msgstr ""
+msgstr "This file is not a LimeSurvey survey file. Import failed."
 
 #: application/helpers/admin/import_helper.php:2610
 #: application/helpers/admin/import_helper.php:2619
@@ -14453,11 +14463,13 @@ msgid ""
 "A group in the CSV/SQL file is not part of the same survey. The import of "
 "the survey was stopped."
 msgstr ""
+"A group in the CSV/SQL file is not part of the same form. The import of the "
+"form was stopped."
 
 #: application/helpers/admin/import_helper.php:3345
 #: application/views/admin/quotas/newquota_view.php:37
 msgid "Sorry your responses have exceeded a quota on this survey."
-msgstr ""
+msgstr "Sorry your responses have exceeded a quota on this form."
 
 #: application/helpers/admin/import_helper.php:3518
 msgid "This is not a valid LimeSurvey survey structure XML file."
@@ -14508,7 +14520,7 @@ msgstr ""
 #: application/helpers/admin/statistics_helper.php:3061
 #: application/helpers/admin/statistics_helper.php:3079
 msgid "Total records in survey:"
-msgstr ""
+msgstr "Total records in form:"
 
 #: application/helpers/admin/statistics_helper.php:3051
 #: application/helpers/admin/statistics_helper.php:3065
