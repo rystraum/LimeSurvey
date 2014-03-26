@@ -1187,6 +1187,31 @@ function getGroupList3($gid,$surveyid)
     return $groupselecter;
 }
 
+function rawGroupListLang($gid, $language, $surveyid) {
+    $clang = Yii::app()->lang;
+
+    $groupselecter="";
+    if (!$surveyid) {$surveyid=returnGlobal('sid',true);}
+
+    $gidresult = QuestionGroup::model()->findAll(array('condition'=>'sid=:surveyid AND language=:language',
+    'order'=>'group_order',
+    'params'=>array(':surveyid'=>$surveyid,':language'=>$language)));   //Checked)
+    
+    $groups = array();
+    foreach ($gidresult as $gv) {
+        $gv = $gv->attributes;
+        $gv['link'] = Yii::app()->getController()->createUrl("/admin/survey/sa/view/surveyid/".$surveyid."/gid/".$gv['gid']);
+        if (strip_tags($gv['group_name'])) {
+            $gv['group_name'] = htmlspecialchars(strip_tags($gv['group_name']));
+        } else {
+            $gv['group_name'] = htmlspecialchars($gv['group_name']);
+        }
+        $groups[] = $gv;
+    }
+
+    return $groups;
+}
+
 /**
 * put your comment there...
 *

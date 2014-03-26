@@ -633,9 +633,11 @@ class Survey_Common_Action extends CAction
             $aData['permission'] = false;
         }
 
+        $aData['raw_groups'] = array();
         if (getGroupListLang($gid, $baselang, $iSurveyID))
         {
             $aData['groups'] = getGroupListLang($gid, $baselang, $iSurveyID);
+            $aData['raw_groups'] = rawGroupListLang($gid, $baselang, $iSurveyID);
         }
         else
         {
