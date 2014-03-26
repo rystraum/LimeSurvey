@@ -1941,5 +1941,9 @@ legend + .control-group {
 }
 
 .limegreen {
-    color: rgb(133,189,0);
+    color: rgb(133,189,0) !important;
+}
+
+.red {
+    color: #ff0000 !important;
 }

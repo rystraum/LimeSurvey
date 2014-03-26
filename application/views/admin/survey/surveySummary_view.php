@@ -103,35 +103,6 @@
     </tr>
     <tr>
         <td>
-            <strong><?php $clang->eT("Template:");?></strong>
-        </td>
-        <td>
-            <?php echo $surveyinfo['template'];?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <strong><?php $clang->eT("Base language:");?></strong>
-        </td>
-        <td>
-            <?php echo $language;?>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <strong><?php $clang->eT("Additional languages:");?></strong>
-        </td>
-            <?php echo $additionnalLanguages;?>
-    <tr>
-        <td>
-            <strong><?php $clang->eT("End URL");?>:</strong>
-        </td>
-        <td>
-            <?php echo $endurl;?>
-        </td>
-    </tr>
-    <tr>
-        <td>
             <strong><?php $clang->eT("Number of questions/groups");?>:</strong>
         </td>
         <td>
@@ -156,6 +127,14 @@
         </td>
     </tr>
     <?php } ?>
+    <tr>
+        <td>
+            <strong><?php $clang->eT("End URL");?>:</strong>
+        </td>
+        <td>
+            <?php echo $endurl;?>
+        </td>
+    </tr>
     <tr>
         <td>
             <strong><?php $clang->eT("Hints");?>:</strong>

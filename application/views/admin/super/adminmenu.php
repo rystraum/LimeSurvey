@@ -6,7 +6,7 @@ $(document).ready(function(){
 
 <div class="navbar" id="main-nav">
   <div class="navbar-inner">
-    <a class="brand maintitle" href="#"><?php echo Yii::app()->getConfig("sitename") ?></a>
+    <a class="brand maintitle" href="<?php echo $this->createUrl("/admin/index") ?>"><?php echo Yii::app()->getConfig("sitename") ?></a>
     <ul class="nav">
       <li class="dropdown">
         <a href="<?php echo $this->createUrl("/admin/index") ?>" class="dropdown-toggle" data-toggle="dropdown" data-target="#">

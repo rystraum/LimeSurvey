@@ -64,19 +64,21 @@
       <ul class="nav nav-list">
         <li class="nav-header">Actions</li>
         <li><a href="<?php echo $this->createUrl("admin/survey/sa/view/surveyid/$surveyid") ?>"><i class="fa fa-eye limegreen"></i> Form details</a></li>
-        <li>
-          <?php if($canactivate && !$activated): ?>
-            <a href="<?php echo $this->createUrl("admin/survey/sa/activate/surveyid/$surveyid"); ?>">
-              <i class="fa fa-rocket fa-fw limegreen"></i> <?php $clang->eT("Activate this Survey") ?>
-            </a>
-          <?php else: ?>
-            <a href="#"><?php $clang->eT("Survey cannot be activated. Either you have no permission or there are no questions.") ?></a>
-          <?php endif ?>
-
-          <?php if($canactivate && $activated): ?>
-            <a href="<?php echo $this->createUrl("admin/survey/sa/deactivate/surveyid/$surveyid"); ?>"><?php $clang->eT("Stop this survey") ?></a>
-          <?php endif ?>        
-        </li>
+        <?php if($canactivate): ?>
+          <li>
+            <?php if($activated): ?>
+              <a href="<?php echo $this->createUrl("admin/survey/sa/deactivate/surveyid/$surveyid"); ?>">
+                <i class="fa fa-exclamation red fa-fw"></i> <?php $clang->eT("Stop this survey") ?>
+              </a>
+            <?php else: ?>
+              <a href="<?php echo $this->createUrl("admin/survey/sa/activate/surveyid/$surveyid"); ?>">
+                <i class="fa fa-rocket fa-fw limegreen"></i> <?php $clang->eT("Activate this Survey") ?>
+              </a>
+            <?php endif ?>        
+          </li>
+        <?php else: ?>
+          <li><a href="#" class="red"><?php $clang->eT("Survey cannot be activated. Either you have no permission or there are no questions.") ?></a></li>
+        <?php endif ?>
         
         <?php if($activated || $surveycontent): ?>
           <?php if($onelanguage): ?>
@@ -101,21 +103,10 @@
           <?php endif ?>
         <?php endif ?>
 
-        <?php if($surveycontent): ?>
-          <?php 
-            if($activated):
-              $url = '#';
-              $msg = $clang->gT("Question group/question organizer disabled") . $clang->gT("This survey is currently active.");
-              $img = $sImageURL . 'organize_disabled.png';
-            else:
-              $url = $this->createUrl("admin/survey/sa/organize/surveyid/$surveyid");
-              $msg = $clang->gT("Reorder question groups / questions");
-              $img = $sImageURL . 'organize.png';
-            endif;
-          ?>
+        <?php if($surveycontent && !$activated): ?>
           <li>
-            <a href="<?php echo $url ?>">
-              <img src='<?php echo $img ?>' /> <?php echo $msg ?>
+            <a href="<?php echo $this->createUrl("admin/survey/sa/organize/surveyid/$surveyid") ?>">
+              <img src='<?php echo $sImageURL . "organize.png" ?>' /> <?php $clang->eT("Reorder question groups / questions") ?>
             </a>
           </li>
         <?php endif ?>

@@ -49,7 +49,7 @@
 
             <?php $clang->eT("Please note that once responses have collected with this survey and you want to add or remove groups/questions or change one of the settings above, you will need to deactivate this survey, which will move all data that has already been entered into a separate archived table."); ?><br /><br />
             <input type='hidden' name='ok' value='Y' />
-            <input type='submit' value="<?php $clang->eT("Save / Activate survey"); ?>" />
+            <input type='submit' class="btn btn-primary" value="<?php $clang->eT("Save / Activate survey"); ?>" />
         </form>
     </div><br />&nbsp;
     <?php } ?>
