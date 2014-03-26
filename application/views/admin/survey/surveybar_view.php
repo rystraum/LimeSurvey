@@ -49,15 +49,11 @@
 
           <li class="divider"></li>
 
-          <?php if(Permission::model()->hasSurveyPermission($surveyid,'surveycontent','create')): ?>
+          <?php if(Permission::model()->hasSurveyPermission($surveyid,'surveycontent','create') && !$activated): ?>
             <li>
-              <?php if($activated): ?>
-                <a href="#"><?php $clang->eT("Disabled") ?> - <?php $clang->eT("This survey is currently active.") ?></a>
-              <?php else: ?>
-                <a href="<?php echo $this->createUrl("admin/questiongroups/sa/add/surveyid/$surveyid"); ?>">
-                  <i class="fa limegreen fa-plus-circle"></i> <?php $clang->eT("Add new group to survey") ?>
-                </a>
-              <?php endif ?>
+              <a href="<?php echo $this->createUrl("admin/questiongroups/sa/add/surveyid/$surveyid"); ?>">
+                <i class="fa limegreen fa-plus-circle"></i> <?php $clang->eT("Add new group to survey") ?>
+              </a>
             </li>
           <?php endif ?>
         </ul>
@@ -67,6 +63,7 @@
     <div class="well">
       <ul class="nav nav-list">
         <li class="nav-header">Actions</li>
+        <li><a href="<?php echo $this->createUrl("admin/survey/sa/view/surveyid/$surveyid") ?>"><i class="fa fa-eye limegreen"></i> Form details</a></li>
         <li>
           <?php if($canactivate && !$activated): ?>
             <a href="<?php echo $this->createUrl("admin/survey/sa/activate/surveyid/$surveyid"); ?>">
