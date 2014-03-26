@@ -1,4 +1,6 @@
-<div class='menubar surveybar'>
+<div class="row-fluid">
+    <div class="span2">
+        <div class='menubar surveybar'>
     <div class='menubar-title ui-widget-header'>
         <strong><?php $clang->eT("Survey"); ?></strong>
         <span class='basic'><?php echo $surveyinfo['surveyls_title']."(".$clang->gT("ID").":".$surveyid.")"; ?></span>
@@ -93,7 +95,7 @@
                             </li>
                             <?php } ?>
                         <?php } ?>
-                	</ul>
+                    </ul>
                 </li>
             <?php } ?>
             
@@ -139,7 +141,7 @@
                                 </ul>
                         </li>
                         <?php } ?>
-                	</ul>
+                    </ul>
                 </li>
             <?php } ?> 
             
@@ -151,7 +153,7 @@
                         <li><a href='#'>
                             <img src='<?php echo $sImageURL;?>export_30.png' alt='' /> <?php $clang->eT("Export...");?></a>
                             <?php } ?>
-                       		<ul>
+                            <ul>
                             <?php if($surveyexport) { ?>
                                 <li><a href='<?php echo $this->createUrl("admin/export/sa/survey/action/exportstructurexml/surveyid/$surveyid");?>' >
                                     <img src='<?php echo $sImageURL;?>export_30.png' alt='' /> <?php $clang->eT("Survey structure (.lss)");?></a>
@@ -207,13 +209,13 @@
                                 </ul></li>
                             <?php }
                     } ?>
-                	</ul>
+                    </ul>
                 </li>
             <?php } ?> 
             
             <?php if($respstatsread || $responsescreate || $responsesread) { ?>
-            	<li><a href='#'><img src='<?php echo $sImageURL;?>responses.png' alt='<?php $clang->eT("Responses");?>' width="<?php echo $iIconSize;?>" height="<?php echo $iIconSize;?>"/></a>
-            		<ul>
+                <li><a href='#'><img src='<?php echo $sImageURL;?>responses.png' alt='<?php $clang->eT("Responses");?>' width="<?php echo $iIconSize;?>" height="<?php echo $iIconSize;?>"/></a>
+                    <ul>
                     <?php if($respstatsread) {
                             if($activated) { ?>
                             <li><a href='<?php echo $this->createUrl("admin/responses/sa/index/surveyid/$surveyid/");?>' >
@@ -241,7 +243,7 @@
                                 <img src='<?php echo $sImageURL;?>saved_disabled_30.png' alt='' /> <?php $clang->eT("Partial (saved) responses");?></a></li>
                             <?php }
                     } ?>
-                	</ul>
+                    </ul>
                 </li>
             <?php } ?>    
 
@@ -338,3 +340,5 @@
         </div>
     </div>
 </div>
+    </div>
+    <div class="span10">

@@ -1,4 +1,6 @@
-    <div class="push"></div>
+      </div> <!-- /.span8 -->
+  </div> <!-- /.row -->
+  <div class="push"></div>
 </div>
 <div class='footer'>
     <div style='float:left;width:110px;text-align:left;'>
