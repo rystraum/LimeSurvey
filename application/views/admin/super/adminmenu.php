@@ -10,7 +10,7 @@ $(document).ready(function(){
     <ul class="nav">
       <li class="dropdown">
         <a href="<?php echo $this->createUrl("/admin/index") ?>" class="dropdown-toggle" data-toggle="dropdown" data-target="#">
-          <?php $clang->eT("Default administration page") ?> <b class="caret"></b>
+          <i class="fa fa-dashboard"></i> <?php $clang->eT("Default administration page") ?> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <li><a href="<?php echo $this->createUrl("admin/user/sa/index") ?>"><i class="icon-user"></i> <?php $clang->eT("Manage survey administrators") ?></a></li>
@@ -20,14 +20,14 @@ $(document).ready(function(){
 
           <?php if(Permission::model()->hasGlobalPermission('settings','read')): ?>
             <li class="separator"></li>
-            <li><a href="<?php echo $this->createUrl("admin/globalsettings") ?>"><?php $clang->eT("Global settings") ?></a></li>
-            <li><a href="<?php echo $this->createUrl("admin/checkintegrity") ?>"><?php $clang->eT("Check Data Integrity") ?></a></li>
+            <li><a href="<?php echo $this->createUrl("admin/globalsettings") ?>"><i class="fa fa-wrench"></i> <?php $clang->eT("Global settings") ?></a></li>
+            <li><a href="<?php echo $this->createUrl("admin/checkintegrity") ?>"><i class="fa fa-stethoscope"></i> <?php $clang->eT("Check Data Integrity") ?></a></li>
           <?php endif ?>
 
           <?php if(Permission::model()->hasGlobalPermission('superadmin','read')): ?>
             <li>
               <?php if (in_array(Yii::app()->db->getDriverName(), array('mysql', 'mysqli')) || Yii::app()->getConfig('demoMode') == true): ?>
-                <a href="<?php echo $this->createUrl("admin/dumpdb") ?>"><?php $clang->eT("Backup Entire Database") ?></a>
+                <a href="<?php echo $this->createUrl("admin/dumpdb") ?>"><i class="fa fa-cloud-download"></i> <?php $clang->eT("Backup Entire Database") ?></a>
               <?php else: ?>
                 <a href="#"><?php $clang->eT("The database export is only available for MySQL databases. For other database types please use the according backup mechanism to create a database dump.") ?></a>
               <?php endif ?>
@@ -35,26 +35,26 @@ $(document).ready(function(){
           <?php endif ?>
 
           <?php if(Permission::model()->hasGlobalPermission('labelsets','read')): ?>
-            <li><a href="<?php echo $this->createUrl("admin/labels/sa/view") ?>" ><?php $clang->eT("Edit label sets");?></a></li>
+            <li><a href="<?php echo $this->createUrl("admin/labels/sa/view") ?>" ><i class="fa fa-table"></i> <?php $clang->eT("Edit label sets");?></a></li>
           <?php endif ?>
 
           <?php if(Permission::model()->hasGlobalPermission('templates','read')): ?>
-            <li><a href="<?php echo $this->createUrl("admin/templates/sa/view") ?>"><?php $clang->eT("Template Editor") ?></a></li>
+            <li><a href="<?php echo $this->createUrl("admin/templates/sa/view") ?>"><i class="fa fa-clipboard"></i> <?php $clang->eT("Template Editor") ?></a></li>
           <?php endif ?>
 
           <?php if(Permission::model()->hasGlobalPermission('participantpanel','read')): ?>
-            <li><a href="<?php echo $this->createUrl("admin/participants/sa/index") ?>" ><?php $clang->eT("Central participant database/panel") ?></a></li>
+            <li><a href="<?php echo $this->createUrl("admin/participants/sa/index") ?>"><i class="fa fa-ticket"></i> <?php $clang->eT("Central participant database/panel") ?></a></li>
           <?php endif ?>
 
           <?php if(Permission::model()->hasGlobalPermission('superadmin','read')): ?>
-            <li><a href="<?php echo $this->createUrl("plugins/") ?>" ><?php $clang->eT("Plugin manager") ?></a></li>
+            <li><a href="<?php echo $this->createUrl("plugins/") ?>" ><i class="fa fa-gear"></i> <?php $clang->eT("Plugin manager") ?></a></li>
           <?php endif ?>
         </ul>
       </li>
-      
-      <li><a href="<?php echo $this->createUrl("admin/survey/sa/index") ?>"><?php $clang->eT("Detailed list of surveys") ?></a></li>
+
+      <li><a href="<?php echo $this->createUrl("admin/survey/sa/index") ?>"><i class="fa fa-list"></i> <?php $clang->eT("Detailed list of surveys") ?></a></li>
       <?php if (Permission::model()->hasGlobalPermission('surveys','create')): ?>
-        <li><a href="<?php echo $this->createUrl("admin/survey/sa/newsurvey") ?>"><?php $clang->eT("Create, import, or copy a survey") ?></a></li>
+        <li><a href="<?php echo $this->createUrl("admin/survey/sa/newsurvey") ?>"><i class="fa fa-plus"></i> <?php $clang->eT("Create, import, or copy a survey") ?></a></li>
       <?php endif ?>
     </ul>
 
@@ -74,7 +74,7 @@ $(document).ready(function(){
                 </a>
             </li>
         <?php endif ?>
-        <li><a href="<?php echo $this->createUrl("admin/authentication/sa/logout") ?>" ><?php $clang->eT("Logout") ?></a></li>
+        <li><a href="<?php echo $this->createUrl("admin/authentication/sa/logout") ?>" ><i class="icon-off"></i> <?php $clang->eT("Logout") ?></a></li>
     </ul>
   </div>
 </div>
