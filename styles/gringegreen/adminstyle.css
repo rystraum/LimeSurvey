@@ -1877,3 +1877,69 @@ legend + .control-group {
 .control-group {
     margin-bottom: 1em;
 }
+
+#sidebar div.panel {
+    padding: 0.5em;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    border-radius: 1px;
+}
+
+#sidebar div.panel .basic {
+    float: right;
+}
+
+#sidebar div.panel dl {
+    font-size: 80%;
+    margin-bottom: 0;
+}
+
+#sidebar div.well {
+    padding: 8px 0;
+}
+
+#sidebar div.well .nav-list img {
+    max-width: 16px;
+}
+
+#sidebar div.well .nav-list > li > a {
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-top: -1px;
+}
+
+#sidebar div.well .nav-list > li > a:first-child {
+    margin-top: 0;
+    margin-bottom: -1px;
+}
+
+#sidebar div.panel-header {
+    border-bottom: 1px solid #eee;
+    margin: 0 -0.5em;
+    padding: 0 0.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#question_groups {
+    background-color: #fff000;
+}
+
+#sidebar #question_groups.well .nav-list > li > a {
+    border-top: 0;
+    border-bottom: 1px solid #888;
+    padding: 3px;
+    margin-left: 3px;
+    display: inline-block;
+}
+
+#question_groups a {
+}
+
+#question_groups a:hover {
+
+}
+
+.limegreen {
+    color: rgb(133,189,0);
+}
