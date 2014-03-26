@@ -29,12 +29,12 @@
             </tr><tr>
                 <td>
                     <?php echo CHtml::form(array("admin/survey/sa/expire/surveyid/{$surveyid}/"), 'post'); ?>
-                        <p><input type='submit' value='<?php $clang->eT("Expire survey"); ?>'/></p>
+                        <p><input type='submit' class='btn btn-primary' value='<?php $clang->eT("Expire survey"); ?>'/></p>
                     </form>
                 </td>
                 <td>
                     <?php echo CHtml::form(array("admin/survey/sa/deactivate/surveyid/{$surveyid}/"), 'post'); ?>
-                        <p><input type='submit' value='<?php $clang->eT("Deactivate survey"); ?>' onclick="<?php echo convertGETtoPOST($this->createUrl("admin/survey/sa/deactivate/".$surveyid)."?action=deactivate&amp;ok=Y&amp;sid=$surveyid"); ?>" /></p>
+                        <p><input type='submit' class='btn btn-danger' value='<?php $clang->eT("Deactivate survey"); ?>' onclick="<?php echo convertGETtoPOST($this->createUrl("admin/survey/sa/deactivate/".$surveyid)."?action=deactivate&amp;ok=Y&amp;sid=$surveyid"); ?>" /></p>
                         <input type='hidden' value='Y' name='ok' />
                     </form>
                 </td>
