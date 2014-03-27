@@ -2350,7 +2350,7 @@ class tokens extends Survey_Common_Action
             $this->_renderWrappedTemplate('token', array('message' =>array(
             'title' => $clang->gT("Token control"),
             'message' => $clang->gT("A token table has been created for this survey.") . " (\"" . Yii::app()->db->tablePrefix . "tokens_$iSurveyId\")<br /><br />\n"
-            . "<input type='submit' value='"
+            . "<input type='submit' class='btn btn-primary' value='"
             . $clang->gT("Continue") . "' onclick=\"window.open('" . $this->getController()->createUrl("admin/tokens/sa/index/surveyid/$iSurveyId") . "', '_top')\" />\n"
             )));
         }

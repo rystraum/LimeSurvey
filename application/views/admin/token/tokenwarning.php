@@ -20,8 +20,8 @@
             $clang->eT("Do you want to create a token table for this survey?");
         ?>
         <br /><br />
-        <input type='submit' value='<?php $clang->eT("Initialise tokens"); ?>' onclick="window.open('<?php echo $this->createUrl("admin/tokens/sa/index/surveyid/$surveyid/createtable/Y"); ?>', '_top')" />
-        <input type='submit' value='<?php $clang->eT("No, thanks."); ?>' onclick="window.open('<?php echo$this->createUrl("admin/survey/sa/view/surveyid/$surveyid"); ?>', '_top')" /></div>
+        <input type='submit' class='btn btn-primary' value='<?php $clang->eT("Initialise tokens"); ?>' onclick="window.open('<?php echo $this->createUrl("admin/tokens/sa/index/surveyid/$surveyid/createtable/Y"); ?>', '_top')" />
+        <input type='submit' class='btn btn-link' value='<?php $clang->eT("No, thanks."); ?>' onclick="window.open('<?php echo$this->createUrl("admin/survey/sa/view/surveyid/$surveyid"); ?>', '_top')" /></div>
     <?php
     }
     else

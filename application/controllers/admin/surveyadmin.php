@@ -491,7 +491,7 @@ class SurveyAdmin extends Survey_Common_Action
                 if ($survey->allowregister=='Y')
                 {
                     $aViewUrls['output'] .= $clang->gT("This survey allows public registration. A token table must also be created.")."<br /><br />\n"
-                    ."<input type='submit' value='".$clang->gT("Initialise tokens")."' onclick=\"".convertGETtoPOST(Yii::app()->getController()->createUrl("admin/tokens/sa/index/surveyid/".$iSurveyID))."\" />\n";
+                    ."<input type='submit' class='btn btn-primary' value='".$clang->gT("Initialise tokens")."' onclick=\"".convertGETtoPOST(Yii::app()->getController()->createUrl("admin/tokens/sa/index/surveyid/".$iSurveyID))."\" />\n";
                 }
                 else
                 {
