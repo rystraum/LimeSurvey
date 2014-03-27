@@ -585,7 +585,7 @@ function templatereplace($line, $replacements = array(), &$redata = array(), $de
         {
             $_registerform .="<tr><td align='right'>" . $clang->gT("Security Question") . ":</td><td><table><tr><td valign='middle'><img src='".Yii::app()->getController()->createUrl('/verification/image/sid/'.$surveyid)."' alt='' /></td><td valign='middle'><input type='text' size='5' maxlength='3' name='loadsecurity' value='' /></td></tr></table></td></tr>\n";
         }
-        $_registerform .= "<tr><td></td><td><input id='registercontinue' class='submit button' type='submit' value='" . $clang->gT("Continue") . "' />"
+        $_registerform .= "<tr><td></td><td><input id='registercontinue' class='btn btn-primary' type='submit' value='" . $clang->gT("Continue") . "' />"
         . "</td></tr>\n"
         . "</table>\n";
 
@@ -597,6 +597,30 @@ function templatereplace($line, $replacements = array(), &$redata = array(), $de
 
 
         $_registerform .= "</form>\n";
+        $_registerform .= '
+        <div class="container-fluid">
+            <div class="row">
+                <div class="span6 offset3">
+                    <form style="margin-top: 20px" class="form-horizontal">
+                        <fieldset>
+                            <span class="help-block">If you already have a token, input it here.</span>
+                            <div class="control-group">
+                                <label class="control-label" for="token">Token</label>
+                                <div class="controls">
+                                    <input type="text" name="token" id="token" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div class="controls">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        ';
     }
     else
     {
