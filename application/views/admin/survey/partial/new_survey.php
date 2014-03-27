@@ -46,6 +46,15 @@
           </div>
         </div>
         
+        <?php $end_url = Yii::app()->getConfig('api_url') ?>
+        <?php $end_url = $end_url . '?survey_id={SID}&response_id={SAVEDID}&token={TOKEN}&lang={LANG}' ?>
+        <div class="control-group">
+          <label for="url"><?php $clang->eT("End URL:") ?></label>
+          <div class="controls">
+            <input type='text' style="width: 40%" maxlength='2000' id='url' name='url' value="<?php echo $end_url ?>" />
+          </div>
+        </div>
+
         <div class="control-group">
           <label for="endtext"><?php $clang->eT("End message") ?> </label>
           <div class="controls">

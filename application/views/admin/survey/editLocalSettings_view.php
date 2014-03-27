@@ -1,6 +1,6 @@
 <ul>
     <li><label for='short_title_<?php echo $esrow['surveyls_language']; ?>'><?php $clang->eT("Survey title"); ?>:</label>
-        <input type='text' size='80' id='short_title_<?php echo $esrow['surveyls_language']; ?>' name='short_title_<?php echo $esrow['surveyls_language']; ?>' value="<?php echo $esrow['surveyls_title']; ?>" />
+        <input type='text' style="width: 40%" id='short_title_<?php echo $esrow['surveyls_language']; ?>' name='short_title_<?php echo $esrow['surveyls_language']; ?>' value="<?php echo $esrow['surveyls_title']; ?>" />
     </li>
     <li><label for='description_<?php echo $esrow['surveyls_language']; ?>'><?php $clang->eT("Description:"); ?></label>
         <div class='htmleditor'>
@@ -14,6 +14,14 @@
          </div>
         <?php echo getEditor("survey-welc","welcome_".$esrow['surveyls_language'], "[".$clang->gT("Welcome:", "js")."](".$esrow['surveyls_language'].")",$surveyid,'','',$action); ?>
     </li>
+
+    <?php $end_url = Yii::app()->getConfig('api_url') ?>
+    <?php $end_url = $end_url . '?survey_id={SID}&response_id={SAVEDID}&token={TOKEN}&lang={LANG}' ?>
+    <li>
+        <label for='url_<?php echo $esrow['surveyls_language']; ?>'><?php $clang->eT("End URL:"); ?></label>
+        <input type='text' style="width: 40%" maxlength='2000' id='url_<?php echo $esrow['surveyls_language']; ?>' name='url_<?php echo $esrow['surveyls_language']; ?>' value="<?php echo ($esrow['surveyls_url']!="")?$esrow['surveyls_url']:"http://"; ?>" />
+    </li>
+
     <li><label for='endtext_<?php echo $esrow['surveyls_language']; ?>'><?php $clang->eT("End message:"); ?></label>
         <div class='htmleditor'>
         <textarea cols='80' rows='15' id='endtext_<?php echo $esrow['surveyls_language']; ?>' name='endtext_<?php echo $esrow['surveyls_language']; ?>'><?php echo $esrow['surveyls_endtext']; ?></textarea>
