@@ -72,7 +72,7 @@
               </a>
             <?php else: ?>
               <a href="<?php echo $this->createUrl("admin/survey/sa/activate/surveyid/$surveyid"); ?>">
-                <i class="fa fa-rocket fa-fw limegreen"></i> <?php $clang->eT("Activate this Survey") ?>
+                <i class="fa fa-rocket fa-fw primary-blue"></i> <?php $clang->eT("Activate this Survey") ?>
               </a>
             <?php endif ?>        
           </li>

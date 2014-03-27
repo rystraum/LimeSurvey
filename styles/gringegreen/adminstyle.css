@@ -1947,3 +1947,7 @@ legend + .control-group {
 .red {
     color: #ff0000 !important;
 }
+
+.primary-blue {
+    color: #0044cc !important;
+}
