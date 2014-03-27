@@ -12,7 +12,7 @@
     <?php if(($showxquestions !== 'show') || ($showxquestions !== 'hide')): ?>
         <input type='hidden' name='showxquestions' value='N' />
     <?php endif ?>
-    <ul>
+    <ul>        
         <li><label for='format'><?php $clang->eT("Format:"); ?></label>
             <select id='format' name='format'>
                 <option value='S'
@@ -205,16 +205,13 @@
     <input type='hidden' name='assessments' value='N' />
     <input type='hidden' name='googleanalyticsapikey' value='' />
     <input type='hidden' name='googleanalyticsstyle' value='0' />
+    <input type='hidden' id='adminemail' name='adminemail' value='<?php echo htmlspecialchars($owner['email']) ?>' />
+    <input type='hidden' id='emailnotificationto' name='emailnotificationto' value="<?php echo htmlspecialchars($owner['email']) ?>" />
 
     <ul>
         <li>
-            <label for='emailnotificationto'><?php $clang->eT("Send basic admin notification email to:"); ?></label>
-            <input size='70' type='email' value="<?php echo htmlspecialchars($esrow['emailnotificationto']); ?>" id='emailnotificationto' name='emailnotificationto' />
-        </li>
-
-        <li>
             <label for='emailresponseto'><?php $clang->eT("Send detailed admin notification email to:"); ?></label>
-            <input size='70' type='email' value="<?php echo htmlspecialchars($esrow['emailresponseto']); ?>" id='emailresponseto' name='emailresponseto' />
+            <input type='email' value="<?php echo htmlspecialchars($esrow['emailresponseto']); ?>" id='emailresponseto' name='emailresponseto' />
         </li>
 
         <li>

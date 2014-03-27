@@ -257,13 +257,8 @@
         <input type='hidden' name='assessments' value='N' />
         <input type='hidden' name='googleanalyticsapikey' value='' />
         <input type='hidden' name='googleanalyticsstyle' value='0' />
-
-        <div class="control-group">
-          <label for='emailnotificationto'><?php $clang->et("Send basic admin notification email to:") ?></label>
-          <div class="controls">
-            <input size="30" type='email' value="<?php echo htmlspecialchars($esrow['emailnotificationto']); ?>" id='emailnotificationto' name='emailnotificationto' />
-          </div>
-        </div>
+        <input type='hidden' id='adminemail' name='adminemail' value='<?php echo htmlspecialchars($owner['email']) ?>' />
+        <input type='hidden' id='emailnotificationto' name='emailnotificationto' value="<?php echo htmlspecialchars($owner['email']) ?>" />
 
         <div class="control-group">
           <label for='emailresponseto'><?php $clang->et("Send detailed admin notification email to:") ?></label>
