@@ -649,6 +649,10 @@ class Survey_Common_Action extends CAction
         $aData['GidNext'] = $GidNext = getGidNext($iSurveyID, $gid);
         $aData['iIconSize'] = Yii::app()->getConfig('adminthemeiconsize');
         $aData['sImageURL'] = Yii::app()->getConfig('adminimageurl');
+        
+        if($aData['activated']) {
+            $aData['responses_count'] = SurveyDynamic::countAllAndPartial($iSurveyID);
+        }
 
         $this->getController()->renderPartial("/admin/survey/surveybar_view", $aData);
     }

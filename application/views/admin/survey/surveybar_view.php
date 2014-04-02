@@ -1,38 +1,48 @@
 <div class="row-fluid">
   <div class="span2" id="sidebar">
     <div class="panel">
-      <div class="panel-header">
-        <strong><?php $clang->eT("Survey") ?></strong>
-        <span class='basic'><?php echo $surveyinfo['surveyls_title']." (".$clang->gT("ID").":".$surveyid.")"; ?></span>
-      </div>
       <dl>
-        <dt>Status</dt>
-        <dd>
+        <dt class="pull-left">
+          <a href="<?php echo $this->createUrl("admin/survey/sa/view/surveyid/$surveyid") ?>">
+            <?php echo $surveyinfo['surveyls_title']." (".$clang->gT("ID").":".$surveyid.")" ?>
+          </a>
+        </dt>
+        <dd class="clearfix"></dd>
+        <dt class="pull-left">Status</dt>
+        <dd class="status pull-right">
           <?php if(!$activated): ?>
-            <?php $clang->eT("This survey is currently not active") ?>
+            <?php // $clang->eT("This survey is currently not active") ?>
+            <span class="label label-important">Inactive</span>
           <?php else: ?>
             <?php if($expired): ?>
-              <?php $clang->eT("This survey is active but expired.") ?>
+              <span class="label label-warning">Expired</span>
+              <?php // $clang->eT("This survey is active but expired.") ?>
             <?php elseif($notstarted): ?>
-              <?php $clang->eT("This survey is active but has a start date.") ?>
+              <?php // $clang->eT("This survey is active but has a start date.") ?>
+              <span class="label label-info">Starting</span>
             <?php else: ?>
-              <?php $clang->eT("This survey is currently active.") ?>
+              <?php // $clang->eT("This survey is currently active.") ?>
+              <span class="label label-success">Active</span>
             <?php endif ?>
           <?php endif ?>
         </dd>
-        <dt>Responses</dt>
-        <dd>
+        <dt class="clearfix"></dt>
+        <dt class="pull-left">Responses</dt>
+        <dd class="pull-right">
           <?php if($activated): ?>
             <?php if($respstatsread || $responsescreate || $responsesread): ?>
-              Responses can be viewed.
+              <a href='<?php echo $this->createUrl("admin/responses/sa/index/surveyid/$surveyid/") ?>' >
+                <?php echo $responses_count['cntall'] ?> responses
+              </a>
             <?php else: ?>
               You do not have permission to view responses.
             <?php endif ?>
           <?php else: ?>
-            Responses will be available for viewing once form has been activated.
+            Available when activated.
           <?php endif ?>
         </dd>
       </dl>
+      <div class="clearfix"></div>
     </div>
 
     <?php if($permission): ?>
@@ -63,7 +73,6 @@
     <div class="well">
       <ul class="nav nav-list">
         <li class="nav-header">Actions</li>
-        <li><a href="<?php echo $this->createUrl("admin/survey/sa/view/surveyid/$surveyid") ?>"><i class="fa fa-eye limegreen"></i> Form details</a></li>
         <?php if($canactivate): ?>
           <li>
             <?php if($activated): ?>
@@ -79,12 +88,12 @@
         <?php else: ?>
           <li><a href="#" class="red"><?php $clang->eT("Survey cannot be activated. Either you have no permission or there are no questions.") ?></a></li>
         <?php endif ?>
-        
+
         <?php if($activated || $surveycontent): ?>
           <?php if($onelanguage): ?>
             <li>
               <a accesskey='d' target='_blank' href="<?php echo $this->createUrl("survey/index/sid/$surveyid/newtest/Y/lang/$baselang"); ?>" >
-                <img src='<?php echo $sImageURL ?>do_30.png' alt=''/> <?php echo $icontext ?>
+                <i class="fa fa-gear fa-fw limegreen"></i> <?php echo $icontext ?>
               </a>
             </li>
           <?php else: ?>
@@ -115,6 +124,14 @@
           <li>
             <a href="<?php echo $this->createUrl("admin/tokens/sa/index/surveyid/$surveyid"); ?>">
               <img src='<?php echo $sImageURL ?>tokens_30.png' /> <?php $clang->eT("Token management") ?>
+            </a>
+          </li>
+        <?php endif ?>
+
+        <?php if ($surveydelete): ?>
+          <li>
+            <a href="<?php echo $this->createUrl("admin/survey/sa/delete/surveyid/{$surveyid}"); ?>">
+              <i class="fa fa-trash-o fa-fw red"></i> <?php $clang->eT("Delete survey") ?>
             </a>
           </li>
         <?php endif ?>
@@ -226,7 +243,7 @@
 
         <li class="divider"></li>
 
-        <li class="nav-header"><?php $clang->eT("Tools") ?></li>
+        <li class="nav-header hideable"><?php $clang->eT("Tools") ?></li>
 
         <?php if(Permission::model()->hasSurveyPermission($surveyid,'surveycontent','read')): ?>
           <?php if($onelanguage): ?>
@@ -276,14 +293,6 @@
               </ul>
             </li>
           <?php endif ?>
-        <?php endif ?>
-        
-        <?php if ($surveydelete): ?>
-          <li>
-            <a href="<?php echo $this->createUrl("admin/survey/sa/delete/surveyid/{$surveyid}"); ?>">
-              <img src='<?php echo $sImageURL ?>delete_30.png' alt=''/> <?php $clang->eT("Delete survey") ?>
-            </a>
-          </li>
         <?php endif ?>
         
         <?php if ($surveytranslate): ?>

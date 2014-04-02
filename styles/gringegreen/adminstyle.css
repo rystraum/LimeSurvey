@@ -1906,6 +1906,11 @@ legend + .control-group {
     border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
     margin-top: -1px;
+    color: #999;
+}
+
+#sidebar div.well .nav-list > li > a:hover {
+    color: #000;
 }
 
 #sidebar div.well .nav-list > li > a:first-child {
@@ -1933,6 +1938,10 @@ legend + .control-group {
     display: inline-block;
 }
 
+#sidebar .status .label {
+    font-size: 90%;
+}
+
 #question_groups a {
 }
 
@@ -1950,4 +1959,8 @@ legend + .control-group {
 
 .primary-blue {
     color: #0044cc !important;
+}
+
+#sidebar .active a {
+    color: #fff !important;
 }
