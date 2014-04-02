@@ -1926,23 +1926,14 @@ legend + .control-group {
     margin-bottom: 0.5em;
 }
 
-#question_groups {
-    background-color: #fff000;
-}
-
-#sidebar #question_groups.well .nav-list > li > a {
-    border-top: 0;
-    border-bottom: 1px solid #888;
-    padding: 3px;
-    margin-left: 3px;
-    display: inline-block;
-}
-
 #sidebar .status .label {
     font-size: 90%;
 }
 
-#question_groups a {
+#question_groups a.btn {
+    color: white;
+    margin: 8px 8px 0 8px;
+    width: 80%;
 }
 
 #question_groups a:hover {

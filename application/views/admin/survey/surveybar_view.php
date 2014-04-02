@@ -57,17 +57,13 @@
           <?php else: ?>
             <li class="nav-header">No groups</li>
           <?php endif ?>
-
-          <li class="divider"></li>
-
-          <?php if(Permission::model()->hasSurveyPermission($surveyid,'surveycontent','create') && !$activated): ?>
-            <li>
-              <a href="<?php echo $this->createUrl("admin/questiongroups/sa/add/surveyid/$surveyid"); ?>">
-                <i class="fa limegreen fa-plus-circle"></i> <?php $clang->eT("Add new group to survey") ?>
-              </a>
-            </li>
-          <?php endif ?>
         </ul>
+
+        <?php if(Permission::model()->hasSurveyPermission($surveyid,'surveycontent','create') && !$activated): ?>
+          <a href="<?php echo $this->createUrl("admin/questiongroups/sa/add/surveyid/$surveyid") ?>" class="btn btn-primary">
+            <i class="fa limegreen fa-plus-circle"></i> <?php $clang->eT("Add new group to survey") ?>
+          </a>
+        <?php endif ?>
       </div>
     <?php endif ?>
 
