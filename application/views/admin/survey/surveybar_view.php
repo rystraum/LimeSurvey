@@ -33,6 +33,7 @@
             <?php if($respstatsread || $responsescreate || $responsesread): ?>
               <a href='<?php echo $this->createUrl("admin/responses/sa/index/surveyid/$surveyid/") ?>' >
                 <?php echo $responses_count['cntall'] ?> responses
+                <i class="fa fa-fw fa-sign-in"></i>
               </a>
             <?php else: ?>
               You do not have permission to view responses.
@@ -72,7 +73,7 @@
 
     <div class="well">
       <ul class="nav nav-list">
-        <li class="nav-header">Actions</li>
+        <li class="nav-header hideable">Actions</li>
         <?php if($canactivate): ?>
           <li>
             <?php if($activated): ?>
@@ -136,9 +137,9 @@
           </li>
         <?php endif ?>
 
-        <?php if($activated && ($respstatsread || $responsescreate || $responsesread)): ?>
+        <?php if(false && $activated && ($respstatsread || $responsescreate || $responsesread)): ?>
           <li class="divider"></li>
-          <li class="nav-header"><?php $clang->eT("Responses") ?></li>
+          <li class="nav-header hideable"><?php $clang->eT("Responses") ?></li>
           <?php if($respstatsread): ?>
             <li>
               <a href='<?php echo $this->createUrl("admin/responses/sa/index/surveyid/$surveyid/") ?>' >
@@ -166,7 +167,7 @@
 
         <li class="divider"></li>
 
-        <li class="nav-header"><?php $clang->eT("Survey properties") ?></li>
+        <li class="nav-header hideable"><?php $clang->eT("Survey properties") ?></li>
         <?php if($surveylocale) { ?>
           <li>
             <a href='<?php echo $this->createUrl("admin/survey/sa/editlocalsettings/surveyid/$surveyid") ?>'>
@@ -207,14 +208,6 @@
           </li>
         <?php } ?>
         
-        <?php if($surveylocale) { ?>
-          <li>
-            <a href='<?php echo $this->createUrl("admin/emailtemplates/sa/index/surveyid/$surveyid") ?>' >
-              <img src='<?php echo $sImageURL ?>emailtemplates_30.png' alt=''/> <?php $clang->eT("Email templates") ?>
-            </a>
-          </li>
-        <?php } ?>
-        
         <?php if(false) { // if($surveycontent) { ?>
           <?php if($onelanguage) { ?>
             <li>
@@ -243,7 +236,15 @@
 
         <li class="divider"></li>
 
-        <li class="nav-header hideable"><?php $clang->eT("Tools") ?></li>
+        <li class="nav-header hideable hidden-hideable"><?php $clang->eT("Tools") ?></li>
+
+        <?php if($surveylocale) { ?>
+          <li>
+            <a href='<?php echo $this->createUrl("admin/emailtemplates/sa/index/surveyid/$surveyid") ?>' >
+              <img src='<?php echo $sImageURL ?>emailtemplates_30.png' alt=''/> <?php $clang->eT("Email templates") ?>
+            </a>
+          </li>
+        <?php } ?>
 
         <?php if(Permission::model()->hasSurveyPermission($surveyid,'surveycontent','read')): ?>
           <?php if($onelanguage): ?>
@@ -329,7 +330,7 @@
           </li>
           
           <li class="divider"></li>
-          <li class="nav-header"><?php $clang->eT("Regenerate question codes") ?></li>
+          <li class="nav-header hideable hidden-hideable"><?php $clang->eT("Regenerate question codes") ?></li>
           <li>
             <a href="<?php echo $this->createUrl("/admin/survey/regenquestioncodes/surveyid/{$surveyid}/subaction/straight"); ?>">
               <img src='<?php echo $sImageURL ?>resetsurveylogic_30.png' alt=''/><?php $clang->eT("Straight") ?>
@@ -344,7 +345,7 @@
         
         <li class="divider"></li>
 
-        <li class="nav-header"><?php $clang->eT("Export...") ?></a></li>
+        <li class="nav-header hideable hidden-hideable"><?php $clang->eT("Export...") ?></a></li>
         <?php if($surveyexport): ?>
           <li>
             <a href='<?php echo $this->createUrl("admin/export/sa/survey/action/exportstructurexml/surveyid/$surveyid") ?>' >
@@ -380,4 +381,18 @@
       </ul>
     </div>
   </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    var toggle_hide = function() {
+      var $target = $(this);
+      $target.nextUntil('li.divider').slideToggle();
+      $('i', $target).toggleClass('fa-toggle-down fa-toggle-up');
+    }
+
+    var icon = $('<i class="fa fa-toggle-up fa-lg fa-fw pull-right"></i>');
+    $('.hideable').append(icon);
+    $('.hideable').click(toggle_hide);
+    $('.hidden-hideable').click();
+  });
+</script>
   <div class="span10">

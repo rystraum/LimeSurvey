@@ -1964,3 +1964,9 @@ legend + .control-group {
 #sidebar .active a {
     color: #fff !important;
 }
+
+.hideable i {
+    line-height: 1;
+    margin-top: 2px;
+    cursor: pointer;
+}
