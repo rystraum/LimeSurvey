@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the LimeSurvey 2.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2014-03-26 20:02+0800\n"
+"PO-Revision-Date: 2014-04-04 04:07+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -7856,16 +7856,16 @@ msgstr ""
 
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:12
 msgid "Preview current question group"
-msgstr ""
+msgstr "Preview"
 
 #: application/extensions/Menu/MenuWidget.php:371
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:32
 msgid "Edit current question group"
-msgstr ""
+msgstr "Edit"
 
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:39
 msgid "Check survey logic for current question group"
-msgstr ""
+msgstr "Check question group logic"
 
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:50
 msgid ""
@@ -7876,7 +7876,7 @@ msgstr ""
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:51
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:59
 msgid "Delete current question group"
-msgstr ""
+msgstr "Delete group"
 
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:58
 msgid ""
@@ -7886,7 +7886,7 @@ msgstr ""
 
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:69
 msgid "Export this question group"
-msgstr ""
+msgstr "Export question group"
 
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:73
 msgid "Questions:"
@@ -7918,7 +7918,7 @@ msgstr ""
 #: application/extensions/Menu/MenuWidget.php:389
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:118
 msgid "Add new question to group"
-msgstr ""
+msgstr "New Question"
 
 #: application/views/admin/survey/QuestionGroups/questiongroupbar_view.php:123
 msgid "Hide details of this group"
