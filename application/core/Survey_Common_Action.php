@@ -464,9 +464,6 @@ class Survey_Common_Action extends CAction
         // Check if other questions/groups are dependent upon this group
         $condarray = getGroupDepsForConditions($iSurveyID, "all", $gid, "by-targgid");
 
-        $groupsummary = "<div class='menubar'>\n"
-        . "<div class='menubar-title ui-widget-header'>\n";
-
         //$sumquery1 = "SELECT * FROM ".db_table_name('surveys')." inner join ".db_table_name('surveys_languagesettings')." on (surveyls_survey_id=sid and surveyls_language=language) WHERE sid=$iSurveyID"; //Getting data for this survey
         $sumresult1 = Survey::model()->with(array('languagesettings'=>array('condition'=>'surveyls_language=language')))->findByPk($iSurveyID); //$sumquery1, 1) ; //Checked //  if surveyid is invalid then die to prevent errors at a later time
         $surveyinfo = $sumresult1->attributes;
@@ -504,9 +501,8 @@ class Survey_Common_Action extends CAction
             $aData['iIconSize'] = Yii::app()->getConfig('adminthemeiconsize');
             $aData['imageurl'] = Yii::app()->getConfig('adminimageurl');
 
-            $groupsummary .= $this->getController()->renderPartial('/admin/survey/QuestionGroups/questiongroupbar_view', $aData, true);
+            $groupsummary = $this->getController()->renderPartial('/admin/survey/QuestionGroups/questiongroupbar_view', $aData, true);
         }
-        $groupsummary .= "\n</table>\n";
 
         $finaldata['display'] = $groupsummary;
         $this->getController()->renderPartial('/survey_view', $finaldata);
