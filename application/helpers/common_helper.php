@@ -554,6 +554,19 @@ function getQuestions($surveyid,$gid,$selectedqid)
     return $sQuestionselecter;
 }
 
+function get_raw_questions($surveyid, $group_id) {
+    $clang = Yii::app()->lang;
+    $s_lang = Survey::model()->findByPk($surveyid)->language;
+    $qrows = Question::model()->findAllByAttributes(array('sid' => $surveyid, 'gid' => $group_id, 'language' => $s_lang, 'parent_qid' => 0),array('order'=>'question_order'));
+    $questions = array();
+    foreach ($qrows as $qrow) {
+        $row = $qrow->attributes;
+        $row['url'] = Yii::app()->getController()->createUrl("/admin/survey/sa/view/surveyid/".$surveyid."/gid/".$group_id."/qid/".$qrow['qid']);
+        $questions[] = $row;
+    }
+    return $questions;
+}
+
 /**
 * getGidPrevious() returns the Gid of the group prior to the current active group
 *
