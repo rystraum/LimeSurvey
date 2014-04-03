@@ -1878,6 +1878,16 @@ legend + .control-group {
     margin-bottom: 1em;
 }
 
+#sidebar {
+    max-width: 14.893617021276595%;
+    float: left;
+}
+
+#sidebar .expandable {
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
 #sidebar div.panel {
     padding: 0.5em;
     margin-bottom: 20px;
