@@ -14,7 +14,11 @@ if ($adding || $copying) {
 <?php PrepareEditorScript(true, $this); ?>
 
 <script type='text/javascript'><?php echo $qTypeOutput; ?></script>
-
+<?php if($adding || $copying): ?>
+    <script type="text/javascript">
+        $("#question_group_details, #questions-table").hide();
+    </script>
+<?php endif ?>
 <div class='header ui-widget-header'>
     <?php 
     if ($adding) { ?>

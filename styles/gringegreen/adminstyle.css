@@ -2047,3 +2047,7 @@ legend + .control-group {
 #sidebar.unexpanded span.unhovered {
     display: none;
 }
+
+#question_group_menu li.navbar-search {
+    margin-top: 2px;
+}

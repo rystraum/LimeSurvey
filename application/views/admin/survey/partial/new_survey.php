@@ -275,6 +275,7 @@
           <label for='emailresponseto'><?php $clang->et("Send detailed admin notification email to:") ?></label>
           <div class="controls">
             <input size="30" type='email' value="<?php echo htmlspecialchars($esrow['emailresponseto']); ?>" id='emailresponseto' name='emailresponseto' />
+            <span class="help-block">Separate multiple e-mail addresses by semi-colon (;)</span>
           </div>
         </div>
 
