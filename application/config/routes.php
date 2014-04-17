@@ -30,12 +30,15 @@ $route['admin/<action:\w+>/<sa:\w+>/*'] = 'admin/<action>/sa/<sa>';
 $route['admin/labels/<_action:\w+>'] = "admin/labels/index/<_action>";
 $route['admin/labels/<_action:\w+>/<_lid:\d+>'] = "admin/labels/index/<_action>/<_lid>";
 
-$route['<_controller:\w+>/<_action:\w+>'] = '<_controller>/<_action>';
-
 //Expression Manager tests
 $route['admin/expressions'] = "admin/expressions/index";
 
 //optout
 $route['optout/<_sid:\d+>/(:any)/(:any)'] = "optout/index/<_sid>/$2/$3";
 
+$route[] =  array(
+  'class' => 'application.components.findSurveyUrlRule',
+  'connectionID' => 'db',
+);
+$route['<_controller:\w+>/<_action:\w+>'] = '<_controller>/<_action>';
 return $route;
