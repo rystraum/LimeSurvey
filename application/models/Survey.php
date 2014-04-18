@@ -351,6 +351,11 @@ class Survey extends LSActiveRecord
         return $tokens[$iSurveyID];
     }
 
+    public function check_for_duplicate_custom_url($custom_url) {
+        $dup = self::model()->findByAttributes(array('custom_url' => $custom_url));
+        return !empty($dup);
+    }
+
 
     /**
     * Creates a new survey - does some basic checks of the suppplied data

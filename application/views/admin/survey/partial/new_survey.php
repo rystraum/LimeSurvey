@@ -56,6 +56,14 @@
             <?php echo getEditor("survey-welc", "welcome", "[" . $clang->gT("Welcome message:", "js") . "]", "", "", "", $action) ?>
           </div>
         </div>
+
+        <div class="control-group">
+          <label for="endtext"><?php $clang->eT("End message") ?> </label>
+          <div class="controls">
+            <textarea cols="80" id="endtext" rows="10" name="endtext"></textarea>
+            <?php echo getEditor("survey-endtext", "endtext", "[" . $clang->gT("End message:", "js") . "]", "", "", "", $action) ?>
+          </div>
+        </div>
         
         <?php $end_url = Yii::app()->getConfig('api_url') ?>
         <?php $end_url = $end_url . '?survey_id={SID}&response_id={SAVEDID}&token={TOKEN}&lang={LANG}' ?>
@@ -67,13 +75,64 @@
         </div>
 
         <div class="control-group">
-          <label for="endtext"><?php $clang->eT("End message") ?> </label>
+          <label for="url"><?php $clang->eT("Custom URL:") ?></label>
           <div class="controls">
-            <textarea cols="80" id="endtext" rows="10" name="endtext"></textarea>
-            <?php echo getEditor("survey-endtext", "endtext", "[" . $clang->gT("End message:", "js") . "]", "", "", "", $action) ?>
+            <input type='text' style="width: 40%" maxlength='255' id='custom_url' name='custom_url' value="" />
+            <span class="help-inline annotate custom_url">
+              At least 5 alpha-numeric characters.
+            </span>
           </div>
+          <span class="help-inline custom_url_help_text">
+            Your form's URL will be generated upon creation.
+          </span>
         </div>
-        
+        <script type="text/javascript">
+          $(document).ready(function() {
+            var check_url = function() {
+              var check_custom_url = custom_url.value;
+              var request_url = '<?php echo Yii::app()->getConfig("api_url") ?>/check_url.json';
+              var $curl_span = $('span.custom_url');
+              $.ajax({
+                url: request_url,
+                data: { url: check_custom_url },
+                success: function(data, status, xhr) {
+                  if(data.survey_found) {
+                    $curl_span.html('<i class="fa fa-times-circle-o warning"></i> Already taken');
+                  } else {
+                    $curl_span.html('<i class="fa fa-check-circle-o success"></i> Available');
+                  }
+                },
+                dataType: 'json'
+              })
+              .fail(function(data, status, xhr) {
+                console.log('error', status, data);
+              });
+
+              $("#custom_url_placeholder").append(status);
+            }
+            
+            var check_url_timer = null;
+            $("#custom_url").on('keyup', function(event) {
+              var value = this.value;
+              value = value.toLowerCase().replace(' ','_');
+              
+              this.value = value;
+
+              if(value.length > 4) {
+                $('.custom_url_help_text').html('Your Form URL would be: <?php echo Yii::app()->getBaseUrl(true) ?>/<span id="custom_url_placeholder"></span>');
+                $("#custom_url_placeholder").html(value);
+                $('span.custom_url').html('<i class="fa fa-refresh fa-spin"></i> Checking');
+                clearTimeout(check_url_timer);
+                check_url_timer = setTimeout(check_url, 1000);
+              } else {
+                clearTimeout(check_url_timer);
+                $('span.custom_url').html('At least 5 alpha-numeric characters.');
+                $('.custom_url_help_text').html("Your form's URL will be generated upon creation.");
+              }
+            })
+          });
+        </script>
+
         <div class="control-group">
           <button type="submit" class="btn btn-primary btn-large" ><?php $clang->eT("Save") ?></button>
         </div>

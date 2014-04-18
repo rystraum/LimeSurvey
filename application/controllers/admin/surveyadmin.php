@@ -1463,6 +1463,7 @@ class SurveyAdmin extends Survey_Common_Action
     */
     function insert($iSurveyID=null)
     {
+        $clang = $this->getController()->lang;
         if (Permission::model()->hasGlobalPermission('surveys','create'))
         {
             // Check if survey title was set
@@ -1512,6 +1513,13 @@ class SurveyAdmin extends Survey_Common_Action
             {
                 $iTokenLength = 36;
             }
+
+            $custom_url = $_POST['custom_url'];
+            if(strlen($custom_url) < 5) {
+                $custom_url = NULL;
+            } else {
+                $custom_url = sanitize_paranoid_string($custom_url);
+            }
                               
             // Insert base settings into surveys table
             $aInsertData = array(
@@ -1555,6 +1563,7 @@ class SurveyAdmin extends Survey_Common_Action
             'publicgraphs' => $_POST['publicgraphs'],
             'assessments' => $_POST['assessments'],
             'emailresponseto' => $_POST['emailresponseto'],
+            'custom_url' => $custom_url,
             'tokenlength' => $iTokenLength
             );
 
@@ -1578,6 +1587,12 @@ class SurveyAdmin extends Survey_Common_Action
             if (!is_null($iSurveyID))
             {
                 $aInsertData['wishSID'] = $iSurveyID;
+            }
+
+            if(!is_null($custom_url) && Survey::model()->check_for_duplicate_custom_url($custom_url)) {
+                Yii::app()->session['flashmessage'] = $clang->gT("Survey could not be created because it had a duplicate custom_url");
+                $this->getController()->redirect($this->getController()->createUrl('admin/survey/sa/newsurvey'));
+                return;
             }
 
             $iNewSurveyid = Survey::model()->insertNewSurvey($aInsertData);
