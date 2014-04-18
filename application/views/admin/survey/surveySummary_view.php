@@ -7,6 +7,7 @@
             <?php echo flattenText($surveyinfo['surveyls_title'])." (".$clang->gT("ID")." ".$surveyinfo['sid'].")";?>
         </td>
     </tr>
+
     <tr>
         <td>
             <strong><?php echo $clang->gT("Survey URL") ." - ".getLanguageNameFromCode($surveyinfo['language'],false).":";?></strong>
@@ -16,9 +17,17 @@
         <a href='<?php echo $tmp_url?>' target='_blank'><?php echo $tmp_url; ?></a>
         </td>
     </tr>
-        <?php
-        foreach ($aAdditionalLanguages as $langname)
-        {?>
+
+    <?php $custom_url = $surveyinfo['custom_url']; ?>
+    <?php if($custom_url !== NULL): ?>
+        <?php $custom_url = Yii::app()->getBaseUrl(true) . '/' . $custom_url; ?>
+        <tr>
+            <td><strong>Custom URL:</strong></td>
+            <td><a href="<?php echo $custom_url ?>" target="_blank"><?php echo $custom_url ?></a></td>
+        </tr>
+    <?php endif ?>
+
+    <?php foreach ($aAdditionalLanguages as $langname): ?>
         <tr>
             <td>
                 <strong><?php echo getLanguageNameFromCode($langname,false).":";?></strong>
@@ -28,9 +37,8 @@
             <a href='<?php echo $tmp_url?>' target='_blank'><?php echo $tmp_url; ?></a>
             </td>
         </tr>
-
-        <?php
-        } ?>
+    <?php endforeach ?>
+    
     <tr>
         <td>
             <strong><?php $clang->eT("Description:");?></strong>
