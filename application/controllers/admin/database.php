@@ -933,6 +933,7 @@ class database extends Survey_Common_Action
                     $endtext = html_entity_decode(Yii::app()->request->getPost('endtext_'.$langname), ENT_QUOTES, "UTF-8");
                     $sURLDescription = html_entity_decode(Yii::app()->request->getPost('urldescrip_'.$langname), ENT_QUOTES, "UTF-8");
                     $sURL = html_entity_decode(Yii::app()->request->getPost('url_'.$langname), ENT_QUOTES, "UTF-8");
+                    $custom_url = html_entity_decode(Yii::app()->request->getPost('custom_url'), ENT_QUOTES, "UTF-8");
 
                     // Fix bug with FCKEditor saving strange BR types
                     $short_title = Yii::app()->request->getPost('short_title_'.$langname);
@@ -958,7 +959,10 @@ class database extends Survey_Common_Action
                     $SurveyLanguageSetting=SurveyLanguageSetting::model()->findByPk(array('surveyls_survey_id'=>$iSurveyID, 'surveyls_language'=>$langname));
                     $SurveyLanguageSetting->attributes=$data;
                     $SurveyLanguageSetting->save(); // save the change to database
-
+                    $survey = Survey::model()->findByPk($iSurveyID);
+                    $survey->custom_url;
+                    $survey->custom_url = $custom_url;
+                    $survey->save();
                 }
             }
             Yii::app()->session['flashmessage'] = $clang->gT("Survey text elements successfully saved.");

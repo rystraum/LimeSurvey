@@ -2,8 +2,22 @@
 $aReplacementData=array();
 ?>
 <div class='menubar-title ui-widget-header'>
-    <strong><?php $clang->eT("Question"); ?></strong> <span class='basic'><?php echo ellipsize(FlattenText($qrrow['question']),200); ?> (<?php echo $clang->gT("ID").":".$qid; ?>)</span>
+    <strong><?php $clang->eT("Question"); ?></strong> 
+    <span class='basic'><?php echo ellipsize(FlattenText($qrrow['question']),200); ?> (<?php echo $clang->gT("ID").":".$qid; ?>)</span>
 </div>
+
+<div class='menubar' id="question_menu">
+  <div class='menubar-title ui-widget-header'>
+    <a href="<?php echo $this->createUrl("/admin/survey/sa/view/surveyid/".$surveyid."/gid/".$gid) ?>">
+      <strong><?php $clang->eT("Question"); ?></strong>
+      <span class='basic'><?php echo ellipsize(FlattenText($qrrow['question']),200); ?> (<?php echo $clang->gT("ID").":".$qid; ?>)</span>
+    </a>
+  </div>
+  <ul class="nav nav-pills">
+    
+  </ul>
+</div>
+
 <div class='menubar-main'>
     <div class='menubar-left'>
         <img id='separator16' src='<?php echo $sImageURL; ?>separator.gif' class='separator' alt='' />

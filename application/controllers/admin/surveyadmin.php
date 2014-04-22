@@ -798,6 +798,7 @@ class SurveyAdmin extends Survey_Common_Action
                 if ($esrow['surveyls_language'] == Survey::model()->findByPk($iSurveyID)->language)
                     $aTabTitles[$sLang] .= '(' . $clang->gT("Base language") . ')';
 
+                $esrow['custom_url'] = Survey::model()->findByPk($iSurveyID)->custom_url;
                 $esrow = array_map('htmlspecialchars', $esrow);
                 $aData['esrow'] = $esrow;
                 $aData['action'] = "editsurveylocalesettings";
