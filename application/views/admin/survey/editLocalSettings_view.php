@@ -35,10 +35,17 @@
 
     <li>
         <label for="custom_url"><?php $clang->eT("Custom URL:") ?></label>
-        <input type="text" style="width: 40%" id="custom_url" name="custom_url" value="<?php echo $esrow['custom_url'] ?>" >
+        <input type="text" style="width: 30%" id="custom_url" name="custom_url" value="<?php echo $esrow['custom_url'] ?>" >
+        <span class="help-inline annotate custom_url">
+          At least 5 alpha-numeric characters.
+        </span>
+        <span class="help-inline custom_url_help_text">
+          Your form's URL will be generated upon creation.
+        </span>
     </li>
     <input type='hidden' name='url_<?php echo $esrow['surveyls_language'] ?>' value='<?php echo ($esrow['surveyls_url']!="")? $esrow['surveyls_url'] : "http://" ?>' />
     <input type='hidden' name='urldescrip_<?php echo $esrow['surveyls_language'] ?>' value='<?php echo $esrow['surveyls_urldescription'] ?>' />
     <input type='hidden' name='dateformat_<?php echo $esrow['surveyls_language'] ?>' value='<?php echo $esrow['surveyls_dateformat'] ?>' />
     <input type='hidden' name='numberformat_<?php echo $esrow['surveyls_language'] ?>' value='<?php echo $esrow['surveyls_numberformat'] ?>' />
 </ul>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl ?>/scripts/custom_url.js"></script>

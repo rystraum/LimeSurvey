@@ -960,12 +960,22 @@ class database extends Survey_Common_Action
                     $SurveyLanguageSetting->attributes=$data;
                     $SurveyLanguageSetting->save(); // save the change to database
                     $survey = Survey::model()->findByPk($iSurveyID);
-                    $survey->custom_url;
-                    $survey->custom_url = $custom_url;
-                    $survey->save();
+                    $taken = Survey::model()->findByAttributes(array('custom_url' => $custom_url));
+                    
+                    if(empty($taken) || ($taken->sid === $iSurveyID)) {
+                        $survey->custom_url = $custom_url;
+                        $survey->save();
+                    } else {
+                        Yii::app()->session['flashmessage'] = $clang->gT("The custom url has already been taken. It was not saved. ");
+                    }
                 }
             }
-            Yii::app()->session['flashmessage'] = $clang->gT("Survey text elements successfully saved.");
+            if(empty(Yii::app()->session['flashmessage'])) {
+                Yii::app()->session['flashmessage'] = $clang->gT("Survey text elements successfully saved.");
+            } else {
+                Yii::app()->session['flashmessage'] .= $clang->gT("Survey text elements successfully saved.");
+            }
+            
 
             if ($sDBOutput != '')
             {

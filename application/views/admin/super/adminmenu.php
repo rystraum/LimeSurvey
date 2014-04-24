@@ -1,4 +1,6 @@
 <script type="text/javascript">
+window.check_custom_url_url = '<?php echo $this->createUrl("check_url.json") ?>';
+window.formsgen_base_url = "<?php echo Yii::app()->getBaseUrl(true) ?>";
 $(document).ready(function(){
     $("a[href~='"+document.location.pathname+"']").parents('.nav li').addClass('active');
 });

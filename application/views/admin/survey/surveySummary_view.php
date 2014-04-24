@@ -20,7 +20,7 @@
 
     <?php $custom_url = $surveyinfo['custom_url']; ?>
     <?php if($custom_url !== NULL): ?>
-        <?php $custom_url = Yii::app()->getBaseUrl(true) . '/' . $custom_url; ?>
+        <?php $custom_url = Yii::app()->getBaseUrl(true) . '/index.php/' . $custom_url; ?>
         <tr>
             <td><strong>Custom URL:</strong></td>
             <td><a href="<?php echo $custom_url ?>" target="_blank"><?php echo $custom_url ?></a></td>
