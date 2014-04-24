@@ -72,6 +72,7 @@ class SurveyController extends LSYii_Controller
             'register' => 'application.controllers.register',
             'statistics_user' => 'application.controllers.statistics_user',
             'tcpdf_check' => 'application.controllers.tcpdf_check',
+            'custom_url_check' => 'application.controllers.survey.custom_url_check',
             'uploader' => 'application.controllers.uploader',
             'verification' => 'application.controllers.verification'
         );

@@ -23,6 +23,7 @@ $route['llous/index'] = "llous";
 
 //Admin Routes
 $route['admin/index'] = "admin";
+$route['admin/check_url.json'] = "survey/custom_url_check";
 $route['admin/<action:\w+>/sa/<sa:\w+>/*'] = 'admin/<action>/sa/<sa>';
 $route['admin/<action:\w+>/<sa:\w+>/*'] = 'admin/<action>/sa/<sa>';
 

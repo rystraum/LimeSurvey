@@ -90,7 +90,8 @@
           $(document).ready(function() {
             var check_url = function() {
               var check_custom_url = custom_url.value;
-              var request_url = '<?php echo Yii::app()->getConfig("api_url") ?>/check_url.json';
+              var blah = "<?php echo Yii::app()->getConfig("api_url") ?>/check_url.json";
+              var request_url = '<?php echo $this->createUrl("check_url.json") ?>';
               var $curl_span = $('span.custom_url');
               $.ajax({
                 url: request_url,
